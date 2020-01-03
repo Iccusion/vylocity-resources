@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - World/gameHeight</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,7 +14,36 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>gameHeight</b>: height in pixels of the game screen<br />
+				<div class="content_title">World/gameHeight</div>
+				<div id="doc_usage"><span class="keyword_2">World</span><br />&emsp;&emsp;gameHeight = <span class="num">540</span></div>
+				<div class="content_subtitle">Default Value</div>
+				<div class="general_info_box">
+					<span class="num">540</span>
+				</div>
+				<div class="content_subtitle">Variable Type</div>
+				<div class="general_info_box">
+					<a onclick="doc('general/number')">number</a>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					The desired height in pixels for the game's container.<br /><br />
+					This height will be used for containers on vylocity.com and in other areas that are in Vylocity's control. All content will scale with this height as the starting point and the engine will use this height to determine how much of the map is viewable if no <a onclick="doc('Client/mapView')">Client/mapView</a> is defined.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=4>
+/* change the World/gameHeight to 600 */
+World
+	gameWidth = 600
+</code>
+			
+				</div>
+				<div class="content_subtitle">Related</div>
+				<div id="related_box">
+					<a onclick="doc('World')">World</a>
+					<a onclick="doc('general/number')">number</a>
+					<a onclick="doc('Client/mapView')">Client/mapView</a>
+				</div>
 			</div>
 		</div>
 	</body>
