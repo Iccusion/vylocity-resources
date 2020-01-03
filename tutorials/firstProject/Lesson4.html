@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project - Lesson 4: Threads, Spawns, and Basic Loops</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="./Lesson3.html" class="tutorial_prev_button"><span></span></a>
+					<a target="_self" href="./Lesson5.html" class="tutorial_next_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project - Lesson 4: Threads, Spawns, and Basic Loops</div>
+				<div id="tutorial_content">
+
+
+Now that we have a basic understanding of how functions and the code inside of functions work, it is time to find out what else we can do inside of a function. If statements are not the only statements that can be used inside of a function. Threads, spawns, and loops can also be used. We will cover threads, spawns, and the different types of loops that can be done in this tutorial.<br /><br />
+
+We will continue from the project we created in the previous tutorials. If you are just now jumping in, go to the previous tutorial and create a project to match the project at the bottom of the page.<br /><br />
+
+We will start with threads. Threads allow you to make things happen automatically and do so off on their own. Common uses for a thread is to make a monster move around, or simulate gravity in a side-scroller, or create a thread that handles many different actions for an NPC. The possibilities are endless. There is a built-in thread that acts as a game loop which is best to use (which we will go over in the next tutorial), but learning how a timed loop works is important. So let's take a look at what a thread looks like and see how it works during runtime.<br /><br />
+
+Open the <b>FirstProject</b> project from previous tutorials and head to the <b>main</b> code file. Create a new <b>onNew</b> event function under the <b>Mob/Monster</b> type that looks something like the code below.<br /><br /> 
+
+<code>
+Mob
+	Monster
+		onNew()
+			this.dir = 'east'
+			thread(10)
+				if (this.xCoord <= 3)
+					this.dir = 'east'
+				else if (this.xCoord >= 23)
+					this.dir = 'west'
+				this.stepDir(this.dir, 2)
+</code>
+
+<br /><br />
+
+There is a lot going on in the code above, as well as a built-in function and a built-in variable that we have not learned about yet. So let's go over the code.<br /><br />
+
+The first line in the <b>onNew</b> event function is changing a built-in variable that all <b>Movable</b> types have called <b>dir</b>. This variable determines the direction that the <b>movable</b> is facing and can then be used to calculate different things. We saw a bit of these directions back when we made move states when working with the <b>iconState</b> variable. The <b>dir</b> variable can be equal to the following values: <b>north</b>, <b>south</b>, <b>east</b>, <b>west</b>, <b>northeast</b>, <b>northwest</b>, <b>southeast</b>, <b>southwest</b>. The reason we are setting the <b>dir</b> variable is because we will be using it to determine the direction to move later in the function.<br /><br />
+
+You may have noticed that we are directly setting the <b>dir</b> variable without using some type of <b>setDir</b> function like we learned about previously. Using the <b>get</b> and <b>set</b> functions are optional. Sometimes it is better to use the functions, sometimes it is better to use direct variable access. What is best for certain situations is something you will have to learn over time. In these tutorials we will be using both methods.<br /><br />
+
+On the second line in the <b>onNew</b> event function we are creating our first <b>thread</b>. All the code indented under this thread will execute over and over until the thread is interrupted. We'll learn how to interrupt it later. The <b>10</b> is telling the thread to execute every 10 milliseconds. So the code under the <b>thread</b> will execute every 10 milliseconds in this case. Once the thread starts, execution will continue on to the next line of code under the thread itself. Execution will never stop and wait for the thread to end, which allows us to have the thread do its thing while we continue on and do other things.<br /><br />
+
+Now, inside the <b>thread</b>, we have an if statement and an else which check our monster's <b>xCoord</b> and then changes the <b>dir</b> variable depending on the value of the <b>xCoord</b>. This should all look familiar from the last tutorial. Then the last line under the thread calls a built-in function called <b>stepDir</b>. We pass <b>this.dir</b> and <b>2</b> into it. The first parameter is the direction we want <b>this</b> (in this case our monster) to move in, and the second parameter is the number of steps in positional units to move. Because our tile size is 32, 32 positional units make up one tile or coordinate, so our monster will move 2 units (or about 16% of the tile) inside of our coordinate every 10 milliseconds, which is an entire tile every 160 milliseconds.<br /><br />
+
+So essentially what our thread is doing is moving our monster east or west by 2 positional units every 10 milliseconds. If our monster's x-coordinate is less than or equal to 3, we change the monster's direction to 'east', and if the monster's x-coordinate is more than or equal to 23, we change the monster's direction to 'west', forever.<br /><br />
+
+Build and run the code and all your monsters should now move back and forth on the map. Some may teleport to the top because they run into an older event we created.<br /><br />
+
+So we now have the ability to make things happen automatically, which is pretty much a must for every game. But sometimes we only want something to happen once, on its own, after a short amount of time. This is where the <b>spawn</b> operation comes in.<br /><br />
+
+A <b>spawn</b> is very similar to a <b>thread</b> but the code under it only executes one time. So let's make use of a spawn to see it in action. In the <b>main</b> code file, edit the <b>Mob/Player</b> <b>onNew</b> event function to look something like the code below.<br /><br />
+
+<code>
+Mob
+	Player
+		onNew()
+			spawn(5000)
+				this.setLoc(1, 1)
+			this.setLoc(this.xCoord + 5, this.yCoord + 5)
+</code>
+
+<br /><br />
+
+The last line under the <b>onNew</b> event function is from a previous tutorial, so we will skip the explanation for it, hopefully you know what is happening. But above that line is our <b>spawn</b> operation with the value <b>5000</b> in it. There are 1000 milliseconds in a second, so what our spawn does is wait 5 seconds before it executes the code indented under it, which happens to be a single line that sets our player's location to 1,1 on the map. Because the <b>spawn</b> waits, the code after the spawn executes right away, so our player will still be teleported to 10,10, then after the specified time, the spawn will execute.<br /><br />
+
+Build and run. Move around for a bit, then after 5 seconds your player should automatically teleport to 1,1 on the map.<br /><br />
+
+The most important thing to remember about the <b>thread</b> and <b>spawn</b> is that any code after will be executed right away and the code indented under will not be executed until the specified amount of time has passed. Execution will not wait until the thread or spawn has finished, this means any code after the thread or spawn will not know of any changes made under the thread or spawn and the function will most likely have finished executing and returning by the time the thread or spawn is finished. Think of the code under the thread or spawn as code put off to the side, floating around on its own branch.<br /><br />
+
+Before we continue on to learn about loops, we will go over how to interrupt both a thread and a spawn. In order to do this, we will need to use one of the many static objects that VyScript has. We will not go into too much detail on static objects in this tutorial, we will be covering them in later tutorials, so do not worry too much about them. But basically a static object is an object in VyScript that always exists and can not be modified (well they can be modified, but they aren't meant to be). They contain useful functions and variables for various things relating to the engine and language. Because only one of each static object exist, we reference it directly with its name. The static object we will be using is the <b>Event</b> static object.<br /><br />
+
+The two <b>Event</b> functions that we will be using are <b>Event.interruptThread</b> and <b>Event.interruptSpawn</b>. Basically what these do is interrupt a specific thread or spawn. In order for us to know what thread or spawn to interrupt, we need to get a reference to them, which we can simply do with a variable.
+
+We will start with interrupting our spawn. Under the <b>Mob/Player</b> <b>onNew</b> event function, make changes so that the event function looks something like below.<br /><br />
+
+<code>
+Mob
+	Player
+		onNew()
+			var s = spawn(5000)
+				this.setLoc(1, 1)
+			this.setLoc(this.xCoord + 5, this.yCoord + 5)
+			Event.interruptSpawn(s)
+</code>
+
+<br /><br />
+
+What is happening here is we are storing the spawn into a local variable called <b>s</b> and then later in the function we are calling the interrupt and passing the <b>s</b> variable into it. Basically we are stopping the spawn from ever executing. If you wanted, you could store the spawn in a non-local variable and interrupt it elsewhere in the code. In a future tutorial we can see an example of this.<br /><br />
+
+If you build and run the game, your player should no longer be teleported to the 1,1 location on the map after 5 seconds.<br /><br />
+
+Now for interrupting threads. Interrupting threads and interrupting spawns essentially work the same way, except we use different functions belonging to the <b>Event</b> static object. For our code, we will interrupt the thread from within itself, just to show that it can be done. In the <b>main</b> code file, under the <b>Mob/Monster</b> <b>onNew</b> event function, make the code look like the code below.<br /><br />
+
+<code>
+Mob
+	Monster
+		onNew()
+			this.dir = 'east'
+			var c = 0
+			var t = thread(10)
+				c ++
+				if (this.xCoord <= 3)
+					this.dir = 'east'
+				else if (this.xCoord >= 23)
+					this.dir = 'west'
+				this.stepDir(this.dir, 2)
+				if (c > 500)
+					Event.interruptThread(t)
+</code>
+
+<br /><br />
+
+What we added here is a new local variable called <b>c</b> which we set to <b>0</b> upon creation. We then increase the value of it by 1 every time the thread is executed. Putting <b>++</b> after a variable will increase the value of it (if it is a number) by 1. Putting <b>--</b> (two -) after a variable will decrease the value of it (also if it is a number) by 1. Finally, at the end of the thread we do a check to see if <b>c</b> is greater than <b>500</b> and if it is, we interrupt our thread. Basically our thread runs for 5 seconds and then interrupts itself. Every 100 thread executions will be a second.<br /><br />
+
+Build and run the game and the monsters should now stop automatically moving after 5 seconds.<br /><br />
+
+Now that we know about threads and spawns, let's dive into loops. Unlike a thread, a loop will not go off and do its own thing. Code execution for other code will not continue until the loop is finished. You want to avoid having the loop do too many things or last too long so that your game does not freeze. A loop that never ends or lasts a very long time can freeze your game forever.<br /><br />
+
+There are many different types of loops. The first one we will go over is the <b>while</b> loop. A <b>while</b> loop is much like an <b>if</b> statement which executes the code indented under it over and over until the <b>while</b> is false.<br /><br />
+
+Let's take a look at an example of a <b>while</b> loop. In the <b>main</b> code file, change the <b>Mob/Player</b> <b>onLogin</b> event function to look something like the code below.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			var c = 100
+			while (c > 0)
+				c --
+			alert(mes)
+</code>
+
+<br /><br />
+
+We have a mixture of old and new code here. The first and last lines in the <b>onLogin</b> event function are old, so we wont go over them, but the three lines in the middle are new. What is happening here is we are creating a new local variable called <b>c</b>, like we have done before, and then doing a <b>while</b> statement. Under the <b>while</b> we are decreasing the value of <b>c</b> by 1. The <b>while</b> is executed like an if statement and the code under it will execute over and over until the <b>while</b> returns <b>false</b>. In this case the while will execute until <b>c</b> is less than or equal to 0. Our <b>while</b> simply checks if <b>c</b> is greater than <b>0</b> and if it is, it executes the code in the <b>while</b> statement. Once the <b>while</b> is finished, code execution continues and our alert appears. For the most part this code is pointless, other than to show how it works, because the loop is executed so quickly that it's basically as if it is not there.<br /><br />
+
+The <b>while</b> loop is not a very commonly used loop. A more common loop is the <b>for</b> loop. There are two types of <b>for</b> loops in VyScript. The first and most common is the <b>for</b> loop that executes until a certain thing is reached. It sounds a lot like a <b>while</b> loop, but it is more customizable.<br /><br />
+
+Let's put one to use. In the <b>main</b> code file, replace our <b>while</b> loop and make the code under the <b>Mob/Player</b> <b>onLogin</b> event function look like the code below.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			for (var i = 0; i < 3; i ++)
+				alert(mes)
+</code>
+
+<br /><br />
+
+What we have here is basically a loop that executes three times and in our case displays three alerts. You'll notice that there are three sections in the <b>for</b> itself. Each section is divided by a semi-colon. The first section is where we can define variables to be used by the actual <b>for</b> statement in the later sections and inside the loop itself. The second section is where we do a calculation, much like an <b>if</b> statement, to see if the loop should end. If the statement is true, the loop will continue, if the statement is false, the loop will stop. And finally in the third section is what we want to do after each loop. In our case, we increase the value of the <b>i</b> variable we created by 1 each time the loop runs. So we create a variable, set it to 0, increase it by 1 after each loop, and then check if it is less than <b>3</b> before the next loop. If it is more than or equal to 3, we stop the loop.<br /><br />
+
+Build and run to see the results.<br /><br />
+
+The second type of <b>for</b> loop is a loop that executes for each value inside of an object, string, or array. We have not gone over arrays yet, and strings are much like arrays, so we will use an object for our example. We will cover arrays and strings in future tutorials.<br /><br />
+
+Head to the <b>main</b> code file and change the code with our old <b>for</b> loop to look like the following.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			alert(mes)
+			var o = {'a': 1, 'b': 2}
+			for (var n in o)
+				alert(n)
+</code>
+
+<br /><br />
+
+The first two lines of the event function are old code, but after that we create a new local variable which holds a new basic object which has two variables <b>a</b> and <b>b</b> which are set to <b>1</b> and <b>2</b> respectively. Then we use the second type of <b>for</b> loop to loop every variable in the <b>o</b> object and alert the value.<br /><br />
+
+So if we build and run the game, we should get three alerts. The first is our old message, the second should be an alert with <b>a</b> in it, and the third should be an alert with <b>b</b> in it.<br /><br />
+
+If we wanted to get the values of the variables instead of the variable names, or both, we could put <b>o[n]</b> instead of just <b>n</b> in the alert. Change the code to look like the following.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			alert(mes)
+			var o = {'a': 1, 'b': 2}
+			for (var n in o)
+				alert(n + ': ' + o[n])
+</code>
+
+<br /><br />
+
+Now when we build and run the alerts should display <b>a: 1</b> and <b>b: 2</b> which is the variable names and then the values with a string containing a colon and a space in the middle of it. Do not worry about the string manipulation too much right now, we will cover it in the next tutorial.<br /><br />
+
+Like mentioned before, arrays and strings can also be looped through with this method, so we will go over them in the coming tutorials.<br /><br />
+
+Finally, we have the <b>foreach</b> loop. This loop is mainly useful for looping arrays, so we will cover it more in the coming tutorials, but essentially what it does is grab the value rather than the name or index of what you are looping. So to show how this works we will put some objects inside objects and use a <b>foreach</b> on them. Replace the previously used loop code to look like the following.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			alert(mes)
+			var ob1 = {'a': 1, 'b': 2}
+			var ob2 = {'a': 2, 'b': 3}
+			var ob = {'a': ob1, 'b': ob2}
+			foreach (var o in ob)
+				alert(o.a + o.b)
+</code>
+
+<br /><br />
+
+So, ignoring the first two lines, what we do here is create three new objects. The third object <b>ob</b> we set the <b>a</b> and <b>b</b> variables to be references to the first two objects. What this means is <b>ob.a</b> will be a reference to <b>ob1</b> and <b>ob.b</b> will be a reference to <b>ob2</b>. Our <b>foreach</b> loop loops the variables inside of <b>ob</b> and sets <b>o</b> to be a reference to the value of each variable. So the <b>foreach</b> loop will run two times, since the <b>ob</b> object has two variables, and <b>o</b> will be equal to <b>ob1</b> in the first iteration and then <b>ob2</b> in the second. For each iteration we do an alert which adds the two variables for each object together and alerts the total.<br /><br />
+
+If you build and run, the last two alerts should show up as <b>3</b> and <b>5</b> since <b>ob1.a</b>+<b>ob1.b</b>=<b>3</b> and <b>ob2.a</b>+<b>ob2.b</b>=<b>5</b>.<br /><br />
+
+So, we have now learned how to create our own threads and spawns, and how to work with basic loops, as well as learned a bit more about some of the built-in functions and variables VyScript has to offer. In the next tutorial we will dive into the engine's built-in game loop ticker, mouse events, and the appearance system.<br /><br />
+
+If you followed everything in this tutorial, the source of your project should look something like this. <a href="https://vylocity.com/ide/Vylocity/FirstProject4/" target="_blank">https://vylocity.com/ide/Vylocity/FirstProject4/</a>
+
+					<br /><br />
+				
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="./Lesson3.html" class="tutorial_prev_button"><span></span></a>
+						<a target="_self" href="./Lesson5.html" class="tutorial_next_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">References</div>
+					<div class="tutorials_box">
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

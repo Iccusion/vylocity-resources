@@ -1,0 +1,99 @@
+
+@import 'https://fonts.googleapis.com/css?family=Oswald|Scada|Roboto+Condensed';
+
+html, iframe, body, div, span, input, a, b, u, i, center, table, td, tr, img, canvas {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+body {
+	font-family: monospace;
+	height: 100%;
+}
+
+#top_bar {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 51px;
+	margin: 0 auto 0 auto;
+	z-index: 100;
+	border-bottom: 1px solid #000000;
+}
+#inner_top_bar {
+	height: 50px;
+	width: 100%;
+	z-index: 101;
+	background-color: #4a5876;
+	border-bottom: 1px solid #8793b0;
+}
+#inner_top_bar_content {
+	text-align: right;
+	font-size: 0;
+}
+#inner_top_bar_content .inner_tb_left {
+	float: left;
+	padding: 0;
+	margin: 0;
+	margin-left: 8px;
+}
+#inner_top_bar_content .inner_tb_left .divider {
+	display: inline-block;
+	width: 2px;
+	height: 18px;
+	margin: 15px 0px 5px 8px;
+	border: 1px solid #414d67;
+	background-color: #dbdbdb;
+}
+#inner_top_bar_content .inner_tb_center {
+	float: left;
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+	margin-left: 16px;
+}
+#inner_top_bar_content .inner_tb_right {
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+#inner_top_bar_content .inner_tb_logo_button {
+	display: inline-block;
+	padding: 10px 14px 14px 14px;
+}
+
+#inner_top_bar_content .inner_tb_button:hover {
+	color: #dabf70 !important;
+	border-top: 2px solid #dabf70 !important;
+	background-color: #3f4b64 !important;
+	z-index: 104;
+	transition: none;
+}
+#inner_top_bar_content .inner_tb_button {
+	display: inline-block;
+	float: left;
+	height: 26px;
+	color: #ffffff;
+	font-size: 16px;
+	padding: 10px 22px 10px 22px;
+	font-family: 'Oswald', Courier, monospace;
+	letter-spacing: 1px;
+	font-weight: normal;
+	text-transform: uppercase;
+	margin: 0;
+	z-index: 102;
+	text-decoration: none;
+	text-align: center;
+	cursor: pointer;
+	border-top: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+	transition: background 0.4s, border 0.4s, color 0.4s;
+}
+#inner_top_bar_content a {
+	border-top: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+}
+#inner_top_bar_content .inner_tb_center a:first-letter, #inner_top_bar_content .inner_tb_right a:first-letter {
+	color: #dabf70;
+}

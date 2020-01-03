@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>getRawData(pAtlas, pIcon, pState, pFrame)</b>
+			CLIENT ONLY<br />
+			<div class="resources_page_documentation_sub_box">
+			pAtlas: name of the icon atlas involved<br />
+			pIcon: name of the icon involved<br />
+			pState: optional; name of the icon state involved<br />
+			pFrame: optional; number of the frame involved<br />
+			called: grabs an object with the width and height of the icon and an array of pixel data for the entire icon. The array of pixel data can then be changed and used elsewhere or drawn onto another icon. To read the width and height you could use object.width and object.height, where object is the object returned by the function. The object data array is as follows: object.data[0] is the red value (0-255) of the pixel at 0,0, object.data[1] is the green value (0-255) of the pixel at 0,0, object.data[2] is the blue value (0-255) of the pixel at 0,0, and object.data[3] is the alpha value (0-255) of the pixel at 0,0. Then object.data[4], object.data[5], object.data[6], and object.data[7] are the respective values for the pixel at 1,0. This trend continues through the whole array for every pixel.<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>openMySQL(pDatabase)</b>
+			SERVER-ONLY<br />
+			<div class="resources_page_documentation_sub_box">
+			pDatabase: object containing database information<br />
+			{<br />
+			<div class="resources_page_documentation_sub_box">
+				host: optional; hostname of database; default localhost<br />
+				port: optional; port the database is on; default 3306<br />
+				localAddress: optional; source IP to use for TCP connection<br />
+				socketPath: optional; path to unix domain socket to connect to (ignoring host and port)<br />
+				user: name of user<br />
+				password: password of user<br />
+				database: optional; name of database<br />
+				charset: optional; charset to use (known as "collation" in MySQL); default UTF8_GENERAL_CI<br />
+				timezone: optional; timezone used to store local dataes; default 'local'<br />
+				connectTimeout: optional; milliseconds before timeout; default 10 seconds<br />
+				stringifyObjects: optional; stringify objects instead of converting values; default false<br />
+				insecureAuth: optional; allow connecting to MySQL instances that ask for old authentication; default false<br />
+				typeCast: optional; determines if column values should be converted to native JavaScript types; default true<br />
+				queryFormat: optional; custom query format function<br />
+				flags: optional; list of connection flags to use other than default<br />
+				ssl: optional; object with ssl parameters or a string containing name of ssl profile<br />
+				acquireTimeout: optional; milliseconds before a timeout occurs during the connection acquisition<br />
+				waitForConnections: optional; determines action when no connections are available and the limit has been reached; true to wait until a connection is open or false to callback with an error; default true<br />
+				connectionLimit: optional; maximum number of connections to create at once; default 10<br />
+				queueLimit: optional; maximum number of connection requests the pool will queue before returning an error from; 0 for no limit; default 0<br />
+				multipleStatements: optiona; default false; allows multiple statements to be run in a single query by dividing them with a semi-colon ( ; ); increases the risk of possible SQL injections, so be sure to escape everything properly<br />
+			</div>
+			}<br />
+			pFunc: the function to call once the connection to the MySQL database has been established or attempted; returns one argument that contains any error information<br />
+			called: returns the connection pool object after connecting to the MySQL database pDatabase<br />
+			<b>pool functions:</b>
+			<div class="resources_page_documentation_sub_box">
+				<b>getConnection(pFunc)</b>
+					<div class="resources_page_documentation_sub_box">
+					pFunc: function to call after a connection has been obtained; first argument will be an error, second will be a reference to the connection object<br />
+					called: grabs an open connection to the database<br />
+					</div>
+				<b>end(pFunc)</b>
+					<div class="resources_page_documentation_sub_box">
+					pFunc: function to call after connection is fully ended<br />
+					called: closes connection after finishing any remaining processes<br />
+					</div>
+				<b>connection functions:</b>
+				<div class="resources_page_documentation_sub_box">
+					<b>query(pQuery, pValues, pFunc)</b>
+						<div class="resources_page_documentation_sub_box">
+						pQuery: string containing MySQL query; ex { 'SELECT * FROM `Table`' }<br />
+						pValues: optional; array of values or an object to replace any ? or ?? in pQuery with (values are automatically escaped)<br />
+						pFunc: function to call after the query is finished; callback has different possible parameters depending on query type, first parameter is for errors, second is the result (either an object or an array of rows), the third can be an array of fields when selecting<br />
+						called: runs a query<br />
+						</div>
+					<b>escape(pString)</b>
+						<div class="resources_page_documentation_sub_box">
+						pString: string to escape<br />
+						called: returns a query safe escaped string to be used for a value in a query<br />
+						</div>
+					<b>escapeId(pString)</b>
+						<div class="resources_page_documentation_sub_box">
+						pString: string to escape<br />
+						called: returns a query safe escaped string to be used for an id in a query<br />
+						</div>
+					<b>release(pFunc)</b>
+						<div class="resources_page_documentation_sub_box">
+						called: releases the connecton back to the pool so it can be used again<br />
+						</div>
+					<b>destroy()</b>
+						<div class="resources_page_documentation_sub_box">
+						called: terminates the connection and prevents any queued data from being processed<br />
+						</div>
+				</div>
+			</div>
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - global:newDiob</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="content_title">global:newDiob</div>
+				<div id="doc_usage"><span class="keyword_2">new</span> <span class="keyword_2">Diob</span>(<span class="string">pType</span>, <span class="keyword">pArg1</span>, <span class="keyword">pArg2</span>, <span class="keyword">...</span>, <span class="keyword">pArgn</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pType</span><span class="parameters_par_desc">A <a onclick="doc('general/string')" class="string">string</a> containing the <a onclick="doc('general/type')" class="string">type</a> path of the <a onclick="doc('Object')" class="keyword_2">Object</a> to be created as a <a onclick="doc('Diob')" class="keyword_2">Diob</a>.</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pArg1, pArg2, ..., pArgn</span><span class="parameters_par_desc"><span class="keyword_1 mr8">optional</span>Parameters to pass as arguments into the new <a onclick="doc('Diob')" class="keyword_2">Diob</a>'s <a onclick="doc('Object/onNew')">onNew()</a> event function.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Returns</div>
+				<div id="returns_box">
+					<a onclick="doc('Diob')" class="keyword_2 mr14">Diob</a>The newly created <a onclick="doc('Diob')" class="keyword_2">Diob</a>.
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					Creates a new <a onclick="doc('Diob')" class="keyword_2">Diob</a> with the specified <a onclick="doc('Object')" class="keyword_2">Object</a> <a onclick="doc('general/type')" class="string">type</a> of <span class="bold">pType</span> and returns it.<br /><br />
+					If any of the optional parameters are included, they will be sent into the new <a onclick="doc('Diob')" class="keyword_2">Diob</a>'s <a onclick="doc('Object/onNew')">onNew()</a> event function as arguments.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+new Diob('Mob')
+new Diob('Obj/A')
+new Diob('Mob/B', 123)
+// create 'Obj/C' and override the 'alpha' value with 0.5
+new Diob('Obj/C{alpha=0.5}', 1, 2)
+</code>
+<code hl=4>
+function example()
+	// create a new diob with the type 'Mob/Test' and pass in the number 45
+	var d = new Diob('Mob/Test', 45)
+	// output the diob's num value through an alert
+	alert(d.num)
+
+Mob/Test
+	// this onNew() event function is automatically called when a new 'Mob/Test' is created
+	onNew(pNum)
+		// set this diob's 'num' value to pNum, which equals 45 from the above code
+		this.num = pNum
+</code>
+			
+				</div>
+				<div class="content_subtitle">Related</div>
+				<div id="related_box">
+					<a onclick="doc('Object')">Object</a>
+					<a onclick="doc('Diob')">Diob</a>
+					<a onclick="doc('Object/onNew')">Object/onNew()</a>
+					<a onclick="doc('global/delDiob')">global:delDiob()</a>
+					<a onclick="doc('Object/onDel')">Object/onDel()</a>
+					<div class="divider"></div>
+					<a onclick="doc('general/type')">general:type</a>
+					<a onclick="doc('general/function')">general:function</a>
+					<a onclick="doc('Client/alert')">Client/alert()</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

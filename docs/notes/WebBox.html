@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<b>WebBox</b>
+<div class="resources_page_documentation_box">
+	<b>desc:</b> web boxes are a type of interface which interface objects can have which can contain certain HTML and some special VS web code; each web box is given a unique id that can be used to set the style of the entire box, #wb_interfacename_elementname where interfacename is the name of the interface and elementname is the name of the element with the web box; #ti_interfacename_elementname for text inputs; spaces in the names are removed<br />
+	<b>allowed tags:</b> 'SPAN', 'IMG', 'A', 'DIV', 'BR', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'STRONG', 'EM', 'UL', 'OL', 'LI', 'B', 'U', 'I', 'P', 'SECTION', 'TIME', 'PRE', 'INPUT', 'TEXTAREA'<br />
+	<b>allowed attributes:</b> 'style', 'id', 'href', 'src', 'class', 'datetime', 'contenteditable', 'value'<br />
+	events: events may execute client commands; for example onMouseDown='command:test(1, 2)'; you can pass the event object by typing 'event' as a parameter, for example onKeyDown='command:test(1, event)' will pass an event object containing information about the mouse or key used<br />
+	<b>allowed events:</b> 'onFocus', 'onUnfocus', 'onMouseDown', 'onMouseUp', 'onMouseMove', 'onMouseClick', 'onMouseDblClick', 'onMouseEnter', 'onMouseExit', 'onKeyDown', 'onKeyUp'<br />
+	<b>A href:</b> href of an A tag may contain a client command which will be executed when the link is clicked; for example href='command:test(1, 2)' would execute the client command 'test' with the parameters 1 and 2 when the link is clicked<br />
+	<b>IMG src:</b> src of an IMG tag may contain a diob ID which uses that diob's icon for the display; for example src='diob:id', where 'id' is the id of the diob to use, would use that diob's icon for the image; you can also use 'vyi:atlas:icon:state:frame' to reference directly to an icon with 'atlas' being te only non-optional option; you can also get the path to a custom file with 'vyf:filename' or the text inside with 'vyf:filename:text'<br />
+</div>
+			</div>
+		</div>
+	</body>
+</html>

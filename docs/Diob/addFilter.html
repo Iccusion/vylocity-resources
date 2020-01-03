@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>addFilter(pName, pType, pArgs)</b>
+			<div class="resources_page_documentation_sub_box">
+			CLIENT ONLY<br />
+			pName: name of the filter; only one name may be used at a time, using the name will remove the old filter with that name<br />
+			pType: the type of filter to add; below is the types and their specific possible pArgs values<br />
+			(<br />
+				<div class="resources_page_documentation_sub_box">
+				'colorMatrix': color-based filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'matrix': optional; color matrix to use; ex ( [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0] )<br />
+					'contrast': optional; number to determine contrast<br />
+					'brightness': optional; number to determine brightness<br />
+					'saturate': optional; number between 0-1 to determine saturation<br />
+					'hue': optional; degrees to alter the hue<br />
+					</div>
+				'blackAndWhite': black and white filter<br />
+				'grayscale': grayscale filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'amount': number to grayscale by<br />
+					</div>
+				'lsd': LSD effect<br />
+				'negative': negative image filter<br />
+				'night': night filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'intensity': number of intensity<br />
+					</div>
+				'predator': predator filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'amount': number to alter by<br />
+					</div>
+				'sepia': sepia filter<br />
+				'rbSwap': swap red and blue values<br />
+				'blur': blur filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'strength': default 2; number to determine strength of blur</br >
+					'quality': default 1; number of passes for blur; the more passes the higher the quality<br />
+					'blurX': optional; default 2; strength of the blur on the x-axis<br />
+					'blurY': optional; default 2; strength of the blur on the y-axis<br />
+					'kernelSize': optional; default 5; size of kernel; possible values (5, 7, 9, 11, 13, 15)
+					</div>
+				'displacement': use an onscreen diob to displace other things with<br />
+					<div class="resources_page_documentation_sub_box">
+					'diob': reference to a diob<br />
+					'scale': number to scale the displacement<br />
+					</div>
+				'noise': noise filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'intensity': default 0.5; number of noise intensity<br />
+					'seed': default Math.random(); seed for noise generation<br />
+					</div>
+				'custom': custom filter<br />
+					<div class="resources_page_documentation_sub_box">
+					'filter': a reference to the filter<br />
+					</div>
+				</div>
+			)<br />
+			pArgs: an object which determines the settings of the filter, all filters may use the values below and some filters have their own additional values<br />
+			{<br />
+				<div class="resources_page_documentation_sub_box">
+				'alpha': number between 0 and 1 determining the alpha of the filter<br />
+				'blendMode': value of blend mode; possible values ('normal', 'add', 'multiply', 'screen')<br />
+				'padding': add extra width and height to the filter<br />
+				'resolution': number determining resolution of filter, lower for worse quality but better performance<br />
+				</div>
+			}<br />
+			called: adds the specified filter<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

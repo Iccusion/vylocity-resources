@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>UTC(pYear, pMonth, pDay, pHour, pMin, pSec, pMillisec)</b>
+			<div class="resources_page_documentation_sub_box">
+				pYear: four-digit value for the year to set<br />
+				pMonth: sets month; 0-11; negative for last year; over 11 for next year<br />
+				pDay: sets day; 1-31; 0 or negative for last month; over days of month for next month<br />
+				pHour: optional; day to set; 0-23; negative values for previous day; values of 23 for next day<br />
+				pMin: optional; minutes to set; 0-59; negative for previous hour; over 59 for next hour<br />
+				pSec: optional; seconds to set; 0-59; negative for previous minute; over 59 for next minute<br />
+				pMillisec:</b> optional; milliseconds to set; 0-999; negative for previous second; over 999 for next second<br />
+				called: sets year, month, day, and (optional) hour, min, sec, milliseconds based on universal time and returns milliseconds since midnight Jan 1, 1970 from the new date according to universal time<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

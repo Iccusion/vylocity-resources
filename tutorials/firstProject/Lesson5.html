@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project - Lesson 5: Ticker, Mouse Events, and Appearance</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="./Lesson4.html" class="tutorial_prev_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project - Lesson 5: Ticker, Mouse Events, and Appearance</div>
+				<div id="tutorial_content">
+
+Now that we understand threads, spawns, and loops, it is time to learn about a more efficient and easy method to handle timed loops. Your game should try to avoid threads and spawns if possible and only work with the built-in ticker system. This tutorial will cover the built-in ticker system which allows any object to be added to an internal game loop and repeatedly execute code after a short delay. We will go over some ways to handle a game loop with the ticker system and also throw in some mouse events and basics of the appearance system.<br /><br />
+
+We will continue from the project we created in the previous tutorials. If you are just now jumping in, go to the previous tutorial and create a project to match the project at the bottom of the page.<br /><br />
+
+Our last tutorial left our project in a bit of a mess, so we will clean it up a bit to start. Open up our previous <b>FirstProject</b> project, go into the <b>main</b> code file and remove the <b>onNew</b> and <b>onLogin</b> code found under our <b>Mob/Player</b> type. The below code is the code you should delete.<br /><br />
+
+<code>
+		onNew()
+			var s = spawn(5000)
+				this.setLoc(1, 1)
+			this.setLoc(this.xCoord + 5, this.yCoord + 5)
+			Event.interruptThread(s)
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			alert(mes)
+			var ob1 = {'a': 1, 'b': 2}
+			var ob2 = {'a': 2, 'b': 3}
+			var ob = {'a': ob1, 'b': ob2}
+			foreach (var o in ob)
+				alert(o.a + o.b)
+</code>
+
+Without the need for our custom <b>myFunction</b> function, we can also delete it. Find the below code in the same file and delete it.<br /><br />
+
+<code>
+	function myFunction(pX, pY, pBool)
+		if (!pBool || pX > 3)
+			if (pX !== 3 && pY !== 3)
+				this.setLoc(pX, pY)
+			else if (pX <= 3)
+				this.setLoc(3, 1)
+			else
+				this.setLoc(1, 1)
+			return 'It worked!'
+		else
+			return 'It did not work!'
+</code>
+
+We will start with the ticker system and the basics of game loops. The Vylocity engine has a game loop in the background that always runs, much like a <b>thread</b> from the previous tutorial. The ticker system executes every 10 milliseconds, so the same as <b>thread(10)</b>. Each iteration of the loop, it loops through ticker objects and executes that Object's <b>onTick</b> event function and does whatever code is inside of it for that Object. In order for an Object to be added to the ticker, we must call <b>Event.addTicker</b> with the Object we wish to add. Once added, that Object will have it's <b>onTick</b> event function executed every 10ms (unless otherwise specified) until we remove it.<br /><br />
+
+So let's replace our current thread that we gave to our monster with the ticker system. In the <b>main</b> code file find our <b>Mob/Monster</b> code and replace its <b>onNew</b> code and add the <b>onTick</b> event under it like the code below.<br /><br />
+
+<code>
+Mob
+	Monster
+		onNew()
+			this.dir = 'east'
+			Event.addTicker(this)
+		onTick()
+			if (this.xCoord <= 3)
+				this.dir = 'east'
+			else if (this.xCoord >= 23)
+				this.dir = 'west'
+			this.stepDir(this.dir, 2)
+</code>
+
+So what is our code doing. Under the monster's <b>onNew</b> event we add the monster to the ticker system, then each tick we execute our old thread code which moves the monster east and west. With this system we do not have to create and track a new thread and we also group it with all the other events for the most efficient method possible. There are many more benefits to using the ticker system that we will learn more about below. Build and run the project to see that everything works the same as before.<br /><br />
+
+Our code is doing the exact same thing it was doing with our custom thread (but with simpler and less confusing code), which is good. But now we have more power and control. One of the things that gives us more control is the ticker settings object. The <b>Event.addTicker</b> function takes in an optional second parameter which allows us to give the ticker for our Object some special instructions such as how often <b>onTick</b> is called, how often our tracker resets, and if our Object should be removed from the ticker once it reaches its reset. The last one basically allows us to add the Object to the ticker for a specified amount of time before removing it.<br /><br />
+
+So let's make use of this ticker settings object. Change the monster's <b>onNew</b> function to look like the code below.<br /><br />
+
+<code>
+Mob
+	Monster
+		onNew()
+			this.dir = 'east'
+			Event.addTicker(this, {'delay': 100})
+</code>
+
+The above code adds the <b>{'delay': 100}</b> object to our <b>Event.addTicker</b> call. Delay is the amount of ticks to wait before executing the Object's <b>onTick</b> event. We set it to 100 which means 99 ticks will happen without anything happening to our monster, then on the 100th tick, we execute our code. Because the internal loop runs at 10ms, 100 ticks would be 1000ms (add a zero) or 1 second. So every second our monster makes one step. Build and run to see it in action.<br /><br />
+
+Before we take a look at the other values the ticker settings object can have, we will learn about two more event functions involved with the ticker system. When an Object is added to the ticker it has its <b>onTickerAdd</b> event function called and when it is removed it has its <b>onTickerRemove</b> event function called. These events allow us to do special things at the start and end of our action loops. For the sake of testing these event functions, we will learn a variable involved with the appearance system early (we will cover other variables and information on the appearance system later in the tutorial). That variable is the <b>color</b> variable. Each Diob has a <b>color</b> variable which allows us to change the color of the icon that belongs to the Diob without making a new icon. Assuming you did not make the color of your monster's icon just the color red, we should be able to tell when we set our monster's color to red and back again as we add and remove it from the ticker.<br /><br />
+
+Add the two following event functions to the <b>Mob/Monster</b> type.<br /><br />
+
+<code>
+Mob
+	Monster
+		onTickerAdd()
+			this.color = 'rgb(100, 0, 0)'
+		onTickerRemove()
+			this.color = ''
+</code>
+
+The above code will overlay a solid red color over our monster's icon when it is added to the ticker, then remove the red once it is removed from the ticker. The <b>color</b> variable can take in rgb (red, green, blue values from 0-255, where 0 is black and 255 is white), hex codes, or a color matrix (this requires its own tutorial).<br /><br />
+
+If we build and run the project now, our monsters will just be a solid red color. In order to see the color change, we will need to remove the monster from the ticker so that it reverts back to normal. So let's change our ticker settings object so that our monster's ticker tracker resets and removes from the ticker. Change our <b>Event.addTicker</b> call to be <b>Event.addTicker(this, {'resetAt': 500, 'resetEnd': true})</b> so that our monster's <b>onNew</b> function looks like the code below.<br /><br />
+
+<code>
+Mob
+	Monster
+		onNew()
+			this.dir = 'east'
+			Event.addTicker(this, {'resetAt': 500, 'resetEnd': true})
+</code>
+
+This will have the internal ticker counter (each internal tick will increase the counter) reset after 500 ticks. So with each tick being 10ms, after 5 seconds our counter will reset. With our new <b>resetEnd</b> value set, instead of only resetting, our ticker will end (the monster will be removed from the ticker as if <b>Event.removeTicker</b> was called). So our monster will be removed after 5 seconds and should stop moving and our new <b>onTickerRemove</b> event should be called, which removes the red color. Build, run, and see for yourself.<br /><br />
+
+When getting down to the basics of how a game works, a game loop is at the core. Especially for the AI and other automated events that make the game a game. Even the player's actions can be interpreted by the game loop in order for the action to happen. Our current setup only allows us to do a block of code every 10ms (or whatever delay we specify) but games can get more complex. An example would be if our monster had different attacks or actions that happen at varying rates of delay. The best solution to this problem is to have our ticker execute at the lowest possible speed (if we have code that needs executed every 1000ms and then every 5000ms, 1000ms is the smallest amount and covers both cases so our delay can be 100 and the 5000ms block will execute after 5 onTick calls) and then use if statements to check how much time has passed since last reset or last execution of our if statement so that different code executes at different times.<br /><br />
+
+In order to handle our different executions for the same monster, we will need to make use of the argument passed into the <b>onTick</b> event function that tells us what the ticker tracker count is at. Each time the internal ticker fires and our Object is in the ticker, this value is increased by one. We can use this variable to determine what action we should take. Change our <b>Mob/Monster</b>'s <b>onTick</b> event function code to look like what is below.<br /><br />
+
+<code>
+Mob
+	Monster
+		onTick(pT)
+			if (this.xCoord <= 3)
+				this.dir = 'east'
+			else if (this.xCoord >= 23)
+				this.dir = 'west'
+			this.stepDir(this.dir, 2)
+			if (!(pT % 150))
+				this.setTransition({'scale': 2}, -1, 500)
+				this.setTransition({'scale': 1}, -1, 500, true)
+</code>
+
+We have three new lines here, and they are pretty complex compared to what we have been working with, so let's break it down as best as possible. Do not worry about understanding <b>setTransition</b> too much right now, it's a pretty complex function with lots of options which will be covered better in a future tutorial. But the basic idea of the function is it allows you to transition a variable over time from one value to another (in this case, a very smooth animation of scale). There are a few appearance variables that you are allowed to pass into this function in order to transition it from one value to another, but in our case we are making use of <b>scale</b>, which is basically making our monster go from normal size to double its visual size (the icon) over 500ms. Our second <b>setTransition</b> returns the scale back to 1 (normal) over another 500ms. The last parameter of our second <b>setTransition</b> is the queue toggle, which basically means add this transition to a queue to be executed after any current transitions are complete. You might also notice that our <b>onTick</b> event now has an argument called <b>pT</b> which holds our ticker counter.<br /><br />
+
+In order for our <b>setTransition</b> codes to be reached, it has to get past our if statement. So what is happening in <b>if (!(pT % 150))</b>? Well, the % operation gives you the remainder of division between the two numbers surrounding it. So 390 % 100 would be 90 for example. We divide our monster's ticker count by 150 and then check if the remainder is 0, which means 150 divides into our current counter perfectly, so 150 ticks have happened (1500ms). Breaking everything down, every 1500ms our monster's scale will go to 2 over 500ms then back to 1 over another 500ms (for 500ms it will stay normal before going to 2 again).<br /><br />
+
+There are a couple things to consider with what we have created here. Because we set our <b>resetAt</b> ticker count reset to 500, our third scale (three 150s) would happen at 450 and our counter would reset at 500 (assuming we didn't have <b>resetEnd</b> set) so 50ms of tracking would be lost. Also, the first <b>onTick</b> call will have <b>pT</b> set to 1, which has a remainder when divided with 150, so the first tick when the ticker starts will not execute anything. So if you want the code to execute when the ticker starts and then every 150ms after, you will need to subtract 1 from <b>pT</b> so that the first tick is 0 and it makes its way through our if statement. Or you could put the code into a custom function and call it under the if statement as well as in <b>onTickerAdd</b>, whatever works best for you.<br /><br />
+
+Build and run the project to see our creation in action.<br /><br />
+
+While on the subject of the ticker, let's give our <b>World</b> a ticker that we can use for general purposes.<br /><br />
+
+We will find out more about this over time, but the <b>World</b> static object has many useful functions we can call to interact with the world. One of those functions we will need to know about for this next code is the <b>getDiobs</b> function, which returns an array of every Diob in the world. We will go over it a bit more below.<br /><br />
+
+Find our <b>World</b> type in the code and give it the events in the code below.<br /><br />
+
+<code>
+World
+	onNew()
+		Event.addTicker(this)
+	onTick(pT)
+		if (pT === 1)
+			foreach (var d in World.getDiobs('Mob', true))
+				d.text = 'hello'
+		else if (pT === 50)
+			foreach (var d in World.getDiobs('Mob', true))
+				d.text = ''
+</code>
+
+We are introduced to two new things here (one previously mentioned). <b>World/getDiobs</b> gives us an array (a list) of all diobs in the world, but because we passed in two parameters, we narrow down what it should return a bit. The first parameter is the type to look for. We put <b>'Mob'</b> for our type. Normally this would mean only return diobs that have the exact type of 'Mob' but we also put <b>true</b> for the second parameter, which means include child types as well, so anything that starts with 'Mob' (including our 'Mob/Monster' type) will be returned. Then our <b>foreach</b> loops each thing in the array returned by our <b>getDiobs</b> call, referencing each diob with the variable <b>d</b>, which we use to set the <b>text</b> of it to equal the 'hello' string. This is all assuming our <b>pT</b> argument is equal to 1 (the first call). So what does <b>text</b> do? Well it is another appearance variable which displays text above the diob on the map. In our case, each 'Mob' in the game will have the word 'hello' drawn on it. Our second block of code basically clears the text of every Mob in the game after 500ms of having it set (50 ticks).<br /><br />
+
+Note: <b>World/getDiobs</b> is pretty expensive because it looks through every diob in the game and your game could have hundreds of thousands of them, or more. Doing this a lot every second could slow down the game. There are most likely better solutions for anything you are trying to implement that is more efficient than using <b>World/getDiobs</b>. Some of those things will be learned in future tutorials.<br /><br />
+
+The amount of things you can accomplish with the ticker system is infinite. Majority of your automated game logic will probably happen inside of the ticker system.<br /><br />
+
+Most other code will probably happen from built-in engine events like mouse events (for games being played on the computer), among other things. So let's take a look at how to manage mouse events.<br /><br />
+
+There are many mouse event functions. We will list them all here and give a brief description, but we will only make use of a few of them.<br /><br />
+
+Let us start by applying a few new appearance variables to our player as we mouse over it and then return the values back to the defaults after we mouse off of it. Add the following event functions and code to our <b>Mob/Player</b> type code.<br /><br />
+
+<code>
+Mob
+	Player
+		onMouseEnter()
+			this.scale = 2
+			this.alpha = 0.5
+			this.angle = 0.5
+		onMouseExit()
+			this.scale = 1
+			this.alpha = 1
+			this.angle = 0
+</code>
+
+Nothing too complex is happening here, but let's go over it. When a client (you) mouses over a <b>Mob/Player</b> Diob, <b>onMouseEnter</b> is executed, which sets the diob's <b>scale</b> to 2, <b>alpha</b> to 0.5, and <b>angle</b> to 0.5. Then when the client moves their cursor off of the Diob, <b>onMouseExit</b> is executed and <b>scale</b> returns to 1, <b>alpha</b> to 1, and <b>angle</b> to 0.<br /><br />
+
+We introduced two new appearance variables called <b>alpha</b> and <b>angle</b>. We can change how transparent our Diob's icon is with the <b>alpha</b> variable. It is a value between 0 and 1 where 0 is completely transparent (it cannot be visually seen) and 1 (the default) is completely visible. We set it to 0.5 which is 50% visible. Then we can rotate our icon with the <b>angle</b> variable (which is a value in radians). We set it to 0.5 which is about 28.6 degrees.<br /><br />
+
+Both mouse event functions we just learned have three arguments that gives us additional information to work with. The first argument is a reference to the client that triggered the mouse event (which will be you, since you're the only one playing), the second is the x position over the Diob the mouse interacted at, and the third is the y position over the Diob the mouse interact at.<br /><br />
+
+Most of the mouse events have similar arguments, but let's make use of the ones that belong to <b>onMouseMove</b> and add the following mouse event function to our <b>Mob/Player</b> type code.<br /><br />
+
+<code>
+Mob
+	Player
+		onMouseMove(pClient, pX, pY)
+			this.setAnchor(pX / this.width, pY / this.height)
+</code>
+
+We are introduced to a new appearance variable here called <b>anchor</b>, which is our pivot point where all our transformations (scale, angle, so on) and such happen. The default value is 0.5, which means everything happens from the center of our icon. Our code grabs the x and y values passed into the event function (named <b>pX</b> and <b>pY</b> respectively) and gets the percentage of the icon that it covers. Origin of everything starts from the top-left corner, so an anchor of 0 means top-left and an achor of 1 means bottom-right. Our x and y values also start from the top-left as well, so mousing over the Diob in the top-left corner would return 0 and mousing over the bottom-right could return 31 (because our size is 32x32 and we start at 0, so 31 is the max).<br /><br />
+
+There are many more mouse event functions left to talk about, but we will only test out one last one called <b>onMouseClick</b>. Before we do so, here is a list of the rest that were not covered here, and a brief description of what they handle.<br /><br />
+
+					<div class="tutorials_box">
+						<a href="../../docs/Diob/onMouseDblClick.html">Diob/onMouseDblClick()</a>
+						<a href="../../docs/Diob/onMouseDown.html">Diob/onMouseDown()</a>
+						<a href="../../docs/Diob/onMouseUp.html">Diob/onMouseUp()</a>
+						<a href="../../docs/Diob/onMouseWheelScrollUp.html">Diob/onMouseWheelScrollUp()</a>
+						<a href="../../docs/Diob/onMouseWheelScrollDown.html">Diob/onMouseWheelScrollDown()</a>
+					</div><br />
+					
+<b>Diob/onMouseDblClick()</b> is executed when double clicking the Diob, <b>Diob/onMouseDown()</b> is executed when the mouse is held down on the Diob, <b>Diob/onMouseUp()</b> is executed when the mouse is released over the Diob, <b>Diob/onMouseWheelScrollUp()</b> is executed when the mouse scroll wheel is scrolled upward while over the Diob, and <b>Diob/onMouseWheelScrollDown()</b> is executed when the mouse scroll wheel is scrolled downward while over the Diob.<br /><br />
+
+So let's add a <b>onMouseClick</b> mouse event to our <b>Mob/Player</b> type code that just simply executes code we've seen before.<br /><br />
+
+<code>
+Mob
+	Player
+		onMouseClick()
+			this.setLoc(1, 1)
+</code>
+
+With this, any time we click on our player mob it will return to 1,1 coordinates on the map. Feel free to build and run to test it out.<br /><br />
+
+Now that we know about all of the mouse event functions, it is time to learn about the Client versions of them. Every mouse interaction in the game will trigger the proper mouse event for a Client, even if no Diob is involved. The Client and all Diobs have the same mouse event functions, but the Client versions have different arguments.<br /><br />
+
+We wont go over all of the mouse event functions again, but we will add a Client version of <b>onMouseDown</b> just to see it in action and get another chance to use <b>setTransition</b>. Anywhere in the <b>main</b> code file enter the code found below. Just do not interrupt any of our other type code. If you are worried about doing that, the safest bet is to add a new line at the top or bottom of the file and enter it there.<br /><br />
+
+<code>
+Client
+	onMouseDown(pD)
+		if (!pD) return
+		pD.setTransition({'angle': Math.PI}, -1, 1000)
+		pD.setTransition({'angle': 0}, -1, 1000, true)
+</code>
+
+Now any time we mouse down (first part of a click) on a Diob, it will rotate to 180 degrees (<b>Math.PI</b> is a static variable that is equal to the value of pi, which is ~3.14 radians or half a circle) and then back to 0. The purpose of the first line of code might stick out (along with the fact that you can put a single line of code after something like an if statement). What we do in the first line is check to see if the argument <b>pD</b> has any value (meaning it is set to something). An if statement can return true if you only check a variable without any expressions and it has a value that is set and not 0, null, or undefined. Because of this fact, we check if <b>pD</b> is set and if it's not we exit the event function to avoid errors. Our Client mouse events can be triggered even if we aren't interacting with a Diob, which means <b>pD</b> can be undefined, so we need to make sure it is not undefined before trying to use a function that is unable to be called.<br /><br />
+
+Build and run the project to see the code in action.<br /><br />
+
+There are two more things that go along with the mouse system which we will talk about but not make use of.<br /><br />
+
+Every Diob has a <b>mouseOpacity</b> variable which determines how the mouse interacts with it. The default value of the variable is 2, which means the mouse interacts with the physical box of the Diob. If this variable was set to 1, it would use the icon as the mouse interaction, but because both our physical box and our visual icon should match up at 32x32, this variable setting does not really matter to us right now. However, if we set it to 0, no mouse events would be triggered on the Diob. This could allow you to have something visual but not take up the mouse interaction when it is above something else.<br /><br />
+
+The last thing that goes with the mouse system is of course the ability to change the mouse cursor. For the purpose of testing, we will throw some code in to make our cursor look like our player. Add the following code to our <b>Client</b> type code.<br /><br />
+
+<code>
+Client
+	onConnect()
+		this.setMouseCursor(this.mob)
+</code>
+
+We have a new event function here called <b>onConnect</b>, which basically calls when a client first connects to the world. We use it for the purpose of setting our cursor as soon as possible, but not before our player has been created and given an icon (using <b>Client/onNew()</b> would mean we do not have a player yet).<br /><br />
+
+So, we have now learned how to use the ticker system, how to manage mouse events, and learned a bit about some Diob variables associated with the appearance system.<br /><br />
+
+This tutorial is fairly packed, so if you had any issues or need to double check anything, be sure to check out the source below.<br /><br />
+
+If you followed everything in this tutorial, the source of your project should look something like this. <a href="https://vylocity.com/ide/Vylocity/FirstProject5/" target="_blank">https://vylocity.com/ide/Vylocity/FirstProject5/</a>
+
+					<br /><br />
+				
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="./Lesson4.html" class="tutorial_prev_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">References</div>
+					<div class="tutorials_box">
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

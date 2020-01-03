@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>move(pArg1, pArg2)</b>
+			<div class="resources_page_documentation_sub_box">
+			pArg1: either a direction or a number<br />
+			pArg2: either y position to move or null<br />
+			called: calls either movable.movePos or movable.moveDir depending on the specified arguments; if pArg1 is a number, movable.movePos will be called, otherwise movable.moveDir will be called; this moves the movable until told to stop; you can stop movement by calling a different movement function or calling this function with no or null arguments<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

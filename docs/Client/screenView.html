@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>screenView</b>: an object containing variables for the screenView (ex: {'scaleTo': 'ratio', 'scaleNearest': true})<br />
+		{<br />
+			<div class="resources_page_documentation_sub_box">
+			scaleNearest: true or false; default false; if true pixels will base themselves off nearest neighbor when scaled; if false pixels will be smoothed out to blend with other pixels when scaled<br />
+			scaleTo: default 'normal'; how to handle scaling of the screen; possible values:<br />
+				<div class="resources_page_documentation_sub_box">
+				'normal': normal scaling<br />
+				'ratio': keep aspect ratio<br />
+				'multiple': scale to only multiples of two<br />
+				'multiAspect': scale if the window size is the same aspect ratio as the game size, or use multiple if not<br />
+				'none': no scaling<br />
+				</div>
+			disableImageSmoothing: true or false; true acts the same as 'scaleNearest' when scaling, but it also removes smoothing caused by other things<br />
+			</div>
+		}<br />
+			
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - global:delDiob</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="content_title">global:delDiob</div>
+				<div id="doc_usage"><span class="keyword_2">del</span> <span class="keyword_2">Diob</span>(<span class="keyword">pDiob</span>, <span class="keyword">pArg1</span>, <span class="keyword">pArg2</span>, <span class="keyword">...</span>, <span class="keyword">pArgn</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pDiob</span><span class="parameters_par_desc">A reference to the <a onclick="doc('Diob')" class="keyword_2">Diob</a> to delete.</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pArg1, pArg2, ..., pArgn</span><span class="parameters_par_desc"><span class="keyword_1 mr8">optional</span>Parameters to pass as arguments into the <a onclick="doc('Diob')" class="keyword_2">Diob</a>'s <a onclick="doc('Object/onDel')">onDel()</a> event function.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Returns</div>
+				<div id="returns_box">
+					<span class="keyword_2">undefined</span>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					Deletes the <a onclick="doc('Diob')" class="keyword_2">Diob</a> referenced by <span class="keyword">pDiob</span>.<br /><br />
+					If any of the optional parameters are included, they will be sent into the <a onclick="doc('Diob')" class="keyword_2">Diob</a>'s <a onclick="doc('Object/onDel')">onDel()</a> event function as arguments.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>This function requires having a reference to a <a onclick="doc('Diob')" class="keyword_2">Diob</a>. The best method to get a reference is to store the reference yourself when you create the <a onclick="doc('Diob')" class="keyword_2">Diob</a> with <a onclick="doc('global/newDiob')">global:newDiob()</a>, but many built-in functions can help you get a reference. You can find a list of built-in functions which will assist you in getting a reference at <a onclick="doc('notes/DiobReference')">notes:DiobReference</a>.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>The <a onclick="doc('Diob')" class="keyword_2">Diob</a> will become a blank <a onclick="doc('general/object')">object</a> and no longer be used by the engine, but any references to the <a onclick="doc('Diob')" class="keyword_2">Diob</a> in the code will still exist, so be sure to properly remove the <a onclick="doc('Diob')" class="keyword_2">Diob</a> from arrays, stop threads and other events associated with the <a onclick="doc('Diob')" class="keyword_2">Diob</a>, and clear any variables that reference the <a onclick="doc('Diob')" class="keyword_2">Diob</a> before deleting. The garbage collection will not kick in if these things are not done and the left over <a onclick="doc('general/object')">object</a> will float around in the memory forever.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+/* create a new diob and then delete it */
+var d = new Diob('Mob')
+del Diob(d)
+del Diob(d, 123)
+</code>
+<code hl=4>
+// get the first 'Mob/Test' that can be found in the world and delete it
+var d = World.getDiobs('Mob/Test')[0]
+del Diob(d, 45)
+
+Mob/Test
+	// this onDel() event function is automatically called when a 'Mob/Test' is deleted
+	onDel(pNum)
+		// output the number passed in to the Client that owns this mob, which equals 45 from the above code
+		this.client.alert(pNum)
+</code>
+			
+				</div>
+				<div class="content_subtitle">Related</div>
+				<div id="related_box">
+					<a onclick="doc('general/object')">general:object</a>
+					<a onclick="doc('Object')">Object</a>
+					<a onclick="doc('Diob')">Diob</a>
+					<a onclick="doc('Object/onDel')">Object/onDel()</a>
+					<a onclick="doc('global/newDiob')">global:newDiob()</a>
+					<a onclick="doc('Object/onNew')">Object/onNew()</a>
+					<div class="divider"></div>
+					<a onclick="doc('notes/DiobReference')">notes:DiobReference</a>
+					<a onclick="doc('World/getDiobs')">World.getDiobs()</a>
+					<a onclick="doc('Client/alert')">Client/alert()</a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

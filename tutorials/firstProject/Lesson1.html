@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project - Lesson 1: Objects</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="../firstProject.html" class="tutorial_prev_button"><span></span></a>
+					<a target="_self" href="./Lesson2.html" class="tutorial_next_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project - Lesson 1: Objects</div>
+				<div id="tutorial_content">
+					<a href="../../docs/general/object.html">Objects</a> are the most important things in VyScript. Most things are <a href="../../docs/general/object.html">objects</a> in some form, so it is crucial to understand what an <a href="../../docs/general/object.html">object</a> is.<br /><br />
+					In simplistic terms, an <a href="../../docs/general/object.html">object</a> is a container that holds named <a href="../../docs/general/variable.html">variables</a> (you can give them any name you like) and each one points to some type of value. That value can be a <a href="../../docs/general/number.html" class="num">number</a>, a <a href="../../docs/general/string.html" class="string">string</a>, a <a href="../../docs/general/boolean.html" class="keyword">boolean</a>, an <a href="../../docs/general/array.html">array</a>, an <a href="../../docs/general/object.html">object</a>, a <a href="../../docs/general/function.html">function</a>, or other various <a href="../../docs/general/variable.html">values</a>.<br /><br />
+					The most basic form of an <a href="../../docs/general/object.html">object</a> takes on the JSON (JavaScript Object Notation) format. When written, a JSON looks something like <span class="inline_hl_1 bold">{<span class="string">"var1"</span>: <span class="num">1</span>, <span class="string">"var2"</span>: <span class="num">2</span>}</span>, where <span class="bold">var1</span> (a <a href="../../docs/general/variable.html">variable</a> with a name represented by a <a href="../../docs/general/string.html" class="string">string</a>) has the value of <span class="num">1</span> and <span class="bold">var2</span> has the value of <span class="num">2</span>.<br /><br />
+					While basic <a href="../../docs/general/object.html">objects</a> have a JSON-like format, the <a href="../../docs/general/object.html">object</a> can come in many forms. Below are some examples of a few of those forms.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>Do not add any example code to your project unless specifically told to.<br /><br />
+					<code>
+{var1: 1, var2: 2}
+{'var1': 1, 'var2': 2}
+{"var1": 1, "var2": 2}
+					</code>
+					<div class="content_subtitle">Object Types</div>
+					Basic <a href="../../docs/general/object.html">objects</a> are individual <a href="../../docs/general/object.html">objects</a> that have their own values and do not share any values or have any relationship to other <a href="../../docs/general/object.html">objects</a>. An <a href="../../docs/Object.html" class="keyword">Object</a> is a special type of <a href="../../docs/general/object.html">object</a> that can be used as a blueprint to create new <a href="../../docs/general/object.html">objects</a> which have default values and share certain properties. An <a href="../../docs/Object.html" class="keyword">Object</a> has a <a href="../../docs/general/type.html" class="string">type</a> in order to identify it. Below is some example code of how we can define our own <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">type</a> that is defined as <span class="bold">MyObject</span> and has two variables called <span class="bold">myVar1</span> and <span class="bold">myVar2</span> which equal <span class="num">1</span> and <span class="num">2</span>.<br /><br />
+					<code>
+MyObject
+	var myVar1 = 1
+	var myVar2 = 2
+					</code>
+					Proper indentation is <span class="underline">required</span> in VyScript. In order to indent a line, simply insert a tab into the code with the tab key. Each indentation determines the ownership of the line of code. In the code above, both <a href="../../docs/general/variable.html">variables</a> have one indentation to show they belong to the <span class="bold">MyObject</span> <a href="../../docs/Object.html" class="keyword">Object</a>. <span class="bold">MyObject</span> is the parent of the <a href="../../docs/general/variable.html">variables</a>.<br /><br />
+					Most <a href="../../docs/Object.html" class="keyword">Objects</a> are allowed to have child <a href="../../docs/general/type.html" class="string">types</a>. Children will inherit the properties from all parent <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a>. Children will override any property the parent has given them if it has the same one set. Below is some example code of how to create child <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a>.<br /><br />
+					<code>
+MyObject
+	var myVar1 = 1
+	var myVar2 = 2
+	Child1
+		var myVar1 = 45
+		var myVar3 = 'child1'
+	Child2
+		var myVar2 = 54
+		var myVar3 = 'child2'
+					</code>
+					In the code above we define three <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a>, with two of them inheriting properties from a parent. <span class="bold">MyObject</span> is the lowest level parent and it gives every child the <span class="bold">myVar1</span> and <span class="bold">myVar2</span> properties. <span class="bold">MyObject/Child1</span> and <span class="bold">MyObject/Child2</span> (<span class="keyword_1 mr8">Note:</span>when writing <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a>, each <a href="../../docs/Object.html" class="keyword">Object</a> is separated by a forward slash) are the child <a href="../../docs/Object.html" class="keyword">Objects</a>. <span class="bold">MyObject/Child1</span> overrides its parent's <span class="bold">myVar1</span> with <span class="num">45</span> and defines its own <span class="bold">myVar3</span> <a href="../../docs/general/variable.html">variable</a> which is a <a href="../../docs/general/string.html" class="string">string</a> with the value <span class="string">'child1'</span>. <span class="bold">MyObject/Child2</span> overrides its parent's <span class="bold">myVar2</span> with <span class="num">54</span> and defines its own <span class="bold">myVar3</span> <a href="../../docs/general/variable.html">variable</a> which is a <a href="../../docs/general/string.html" class="string">string</a> with the value <span class="string">'child2'</span>.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>Putting <span class="inline_hl_1"><span class="keyword_2">var</span>&nbsp;</span> infront of a <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/variable.html">variable</a> definition is optional as long as you provide a value, but it can be helpful to quickly and easily see what the line represents and know for sure that the <a href="../../docs/general/variable.html">variable</a> is custom.<br /><br />
+					<div class="content_subtitle">Default Object Types</div>
+					VyScript has some <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a> built-in to it to help developers work with the Vylocity engine.<br /><br />
+					The most important <a href="../../docs/Object.html" class="keyword">Object</a> is the <a href="../../docs/Diob.html" class="keyword">Diob</a>, which stands for <span class="bold">display object</span>. Most engine features require a <a href="../../docs/Diob.html" class="keyword">Diob</a>, so in most cases we will be working with <a href="../../docs/Object.html" class="keyword">Objects</a> that are or inherit from <a href="../../docs/Diob.html" class="keyword">Diob</a>.<br /><br />
+					We wont be going over all the different <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a> that inherit from <a href="../../docs/Diob.html" class="keyword">Diob</a> in this tutorial, but below is a list of them.<br /><br />
+					<div class="tutorials_box">
+						<a href="../../docs/Movable.html">Movable</a>
+						<a href="../../docs/Mob.html">Mob</a>
+						<a href="../../docs/Particle.html">Particle</a>
+						<a href="../../docs/Overlay.html">Overlay</a>
+						<a href="../../docs/Tile.html">Tile</a>
+						<a href="../../docs/Region.html">Region</a>
+						<a href="../../docs/Interface.html">Interface</a>
+					</div><br />
+					While <a href="../../docs/Diob.html" class="keyword">Diob</a> is the most used, there are a few other built-in <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a>. Here is a list of those <a href="../../docs/Object.html" class="keyword">Objects</a>.<br /><br />
+					<div class="tutorials_box">
+						<a href="../../docs/Client.html">Client</a>
+						<a href="../../docs/Sound.html">Sound</a>
+					</div><br />
+					<div class="content_subtitle">First Project</div>
+					Now that we understand the basics of <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a>, we can set a few properties of one of the built-in ones to make some changes to our project.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>If you did not do the first <a href="../firstProject.html">First Project</a> tutorial, be sure to head back and do it first. The rest of this tutorial will assume that it has already been done.<br /><br />
+					The <a href="../../docs/World.html" class="keyword">World</a> <a href="../../docs/Object.html" class="keyword">Object</a> is the game's main <a href="../../docs/Object.html" class="keyword">Object</a>. Only one of them exists and the engine creates it for you automatically. It holds <a href="../../docs/general/variable.html">variables</a> and <a href="../../docs/general/functions.html">functions</a> which are needed to set game (the world) settings and access resources or <a href="../../docs/Object.html" class="keyword">Objects</a> that exist in the world. One of those settings allows us to set the size of the game window, so that is what we will do first.<br /><br />
+					Open the <span class="bold">main</span> code file in our <span class="bold">First Project</span> project and enter the following code.<br /><br />
+					<code>
+World
+	gameWidth = 960
+	gameHeight = 540
+					</code>
+					This code sets the game's width to <span class="num">960</span> pixels and the game's height to <span class="num">540</span> pixels.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>Built-in <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/variable.html">variables</a> do not have <span class="inline_hl_1"><span class="keyword_2">var</span>&nbsp;</span> included in it's definition.<br /><br />
+					Because these values are the default sizes for the engine, they wont technically make any difference, so try a few other numbers and then build and run the project to see it in action for yourself. Once you are satisfied, change it back so that we're all on the same page moving forward.<br /><br />
+					Now we need something to look at other than a black screen. In the previous tutorial we created some icons, but now we need to define some <a href="../../docs/Diob.html" class="keyword">Diobs</a> in the code so we have something to assign our icons to and some things to place down on our map.<br /><br />
+					As we learned in the previous tutorial, a map is made up of a grid of <a href="../../docs/Tile.html" class="keyword">Tiles</a>. Each coordinate on the map has one <a href="../../docs/Tile.html" class="keyword">Tile</a> and each <a href="../../docs/Tile.html" class="keyword">Tile</a> is a container that holds overlapping <a href="../../docs/Diob.html" class="keyword">Diobs</a> in it's <a href="../../docs/Tile/getContents.html">contents</a>. The engine automatically gives each coordinate a <a href="../../docs/Tile.html" class="keyword">Tile</a> so that the developer does not have to (but they can be replaced with a custom <a href="../../docs/Tile.html" class="keyword">Tile</a> if desired). Because of this, we can simply change the default <a href="../../docs/Tile.html" class="keyword">Tile</a> <a href="../../docs/general/type.html" class="string">type</a> to give certain properties to every <a href="../../docs/Tile.html" class="keyword">Tile</a> on our map, so add the following code to the bottom of our <span class="bold">main</span> code file.<br /><br />
+					<code>
+Tile
+	atlasName = 'icons'
+	iconName = 'tile'
+					</code>
+					This code gives every <a href="../../docs/Tile.html" class="keyword">Tile</a> an <a href="../../docs/Diob/atlasName.html">atlasName</a> of <span class="string">'icons'</span> and an <a href="../../docs/Diob/iconName.html">iconName</a> of <span class="string">'tile'</span>. We defined these two things when we created our <span class="bold">icons</span> icon atlas file. The <a href="../../docs/Diob/atlasName.html">atlasName</a> is the icon atlas file we want to use and <a href="../../docs/Diob/iconName.html">iconName</a> is the name of the icon inside of that icon atlas.<br /><br />
+					So now we can build our project (Project->Build) and go to the <span class="bold">map</span> map file we created in the previous tutorial. Each <a href="../../docs/Tile.html" class="keyword">Tile</a> should now be using the icon we assigned it. If we run the project (Project->Run) we should now see the map using our icons and be able to move the screen around on the map by using the arrow keys or the WASD keys.<br /><br />
+					Every player that connects to the <a href="../../docs/World.html" class="keyword">World</a> is given a <a href="../../docs/Client.html" class="keyword">Client</a>, and every <a href="../../docs/Client.html" class="keyword">Client</a> has ownership and control over a player <a href="../../docs/Mob.html" class="keyword">Mob</a>, known as a <a href="../../docs/Client/playerMob.html">playerMob</a>. A <a href="../../docs/Mob.html" class="keyword">Mob</a> automatically inherits from <a href="../../docs/Movable.html" class="keyword">Movable</a> (and that automatically inherits from <a href="../../docs/Diob.html" class="keyword">Diob</a>) which allows the <a href="../../docs/Mob.html" class="keyword">Mob</a> to move around on the map and interact with things. If not specified otherwise, every new <a href="../../docs/Client.html" class="keyword">Client</a> creates a new <a href="../../docs/Mob.html" class="keyword">Mob</a> to act as the <a href="../../docs/Client/playerMob.html">playerMob</a>.<br /><br />
+					Now that the map has a visual representation, let's also give our player a visual representation. Add the following code at the bottom of our <span class="bold">main</span> code file.<br /><br />
+					<code>
+Mob
+	atlasName = 'icons'
+	iconName = 'player'
+	xCoord = 5
+	yCoord = 5
+					</code>
+					This code gives every <a href="../../docs/Mob.html" class="keyword">Mob</a> an <a href="../../docs/Diob/atlasName.html">atlasName</a> of <span class="string">'icons'</span>, an <a href="../../docs/Diob/iconName.html">iconName</a> of <span class="string">'player'</span>, an <a href="../../docs/Diob/xCoord.html">xCoord</a> of <span class="num">5</span>, and a <a href="../../docs/Diob/yCoord.html">yCoord</a> of <span class="num">5</span>. The <a href="../../docs/Diob/xCoord.html">xCoord</a> is a <a href="../../docs/Diob.html" class="keyword">Diob</a>'s <span class="bold">x</span> coordinate on the map and the <a href="../../docs/Diob/yCoord.html">yCoord</a> is a <a href="../../docs/Diob.html" class="keyword">Diob</a>'s <span class="bold">y</span> coordinate on the map, starting from the top-left of the map. So our player should be located at <span class="num">5</span>,<span class="num">5</span> when it is created, which is <span class="num">5</span> <a href="../../docs/Tile.html" class="keyword">Tiles</a> from the top edge of the map and <span class="num">5</span> <a href="../../docs/Tile.html" class="keyword">Tiles</a> from the left edge of the map.<br /><br />
+					Build and run the project and you should now see yourself moving around on the map.<br /><br />
+					Let's now create some child <a href="../../docs/general/type.html" class="string">types</a>.<br /><br />
+					Change your <a href="../../docs/Mob.html" class="keyword">Mob</a> <a href="../../docs/general/type.html" class="string">type</a> definition code to look something like the code below.<br /><br />
+					<code>
+Mob
+	atlasName = 'icons'
+	Player
+		iconName = 'player'
+		xCoord = 5
+		yCoord = 5
+	Monster
+		iconName = 'monster'
+					</code>
+					Our project now has two new <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a> called <span class="bold">Mob/Player</span> and <span class="bold">Mob/Monster</span>. We will use <span class="bold">Mob/Player</span> as our player character and <span class="bold">Mob/Monster</span> as a generic monster.<br /><br />
+					In order for the engine to know that we want the player character to be <span class="bold">Mob/Player</span> we will need to define it. This can be done by setting the <a href="../../docs/World/mainMob.html">mainMob</a> <a href="../../docs/general/variable.html">variable</a> under <a href="../../docs/World.html" class="keyword">World</a>. We simply point it to <span class="bold">Mob/Player</span> and every new <a href="../../docs/Client.html" class="keyword">Client</a> that connects will have a <a href="../../docs/Client/playerMob.html">playerMob</a> using our new <span class="bold">Mob/Player</span> <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">type</a>.<br /><br />
+					Find your <a href="../../docs/World.html" class="keyword">World</a> definition and change it to look like the code below.<br /><br />
+					<code>
+World
+	gameWidth = 960
+	gameHeight = 540
+	mainMob = 'Mob/Player'
+					</code>
+					Now that we have a monster <a href="../../docs/Mob.html" class="keyword">Mob</a>, we will want to put some <span class="bold">Mob/Monster</span> down on our map.<br /><br />
+					In order for the map editor to know about our new <a href="../../docs/general/type.html" class="string">types</a>, we have to build the project. So build the project and then open the <span class="bold">map</span> map file.<br /><br />
+					On the left side of the map editor is a box labeled <span class="bold">Diob Types</span>. This is a list of all the <a href="../../docs/Object.html" class="keyword">Object</a> <a href="../../docs/general/type.html" class="string">types</a> that exist in our game that we can place down on our map.<br /><br />
+					Click on the <span class="bold">+</span> in the list that is next to the <span class="bold">Mob</span> label to show our two new <a href="../../docs/general/type.html" class="string">types</a>. Select <span class="bold">Mob/Monster</span>, which will just be labeled <span class="bold">Monster</span>, and then place a few of them on the map in the middle of the page by simply clicking.<br /><br />
+					Build and run the project and as we move around on the map, we should see our monsters, which we are unable to move through because they are dense/solid.<br /><br />
+					Every <a href="../../docs/Diob.html" class="keyword">Diob</a> has a <a href="../../docs/Diob/density.html">density</a> <a href="../../docs/general/variable.html" class="string">variable</a> that determines if things collide with it or not. Any <a href="../../docs/Diob.html" class="keyword">Diob</a> that is a <a href="../../docs/Mob.html" class="keyword">Mob</a> or inherits from it will automatically have a <a href="../../docs/Diob/density.html">density</a> of 1, which makes it solid.<br /><br />
+					<a href="../../docs/Mob.html" class="keyword">Mob</a> is meant more for living things in the game, things that might have some sort of intelligence. But we also need things that are used for decoration or maybe just used for simple interactions.<br /><br />
+					Let's add some new <a href="../../docs/general/type.html" class="string">types</a> to our project that we can place on the map for decoration. Add the following code to the bottom of your <span class="bold">main</span> code file.<br /><br />
+					<code>
+Diob
+	atlasName = 'icons'
+	Solid
+		iconName = 'solid'
+		density = 1
+	NotSolid
+		iconName = 'not_solid'
+		layer = 20
+					</code>
+					We now have two new <a href="../../docs/general/type.html" class="string">types</a> in our project called <span class="bold">Diob/Solid</span> and <span class="bold">Diob/NotSolid</span>. As the names indicate, <span class="bold">Diob/Solid</span> is solid and <span class="bold">Diob/NotSolid</span> is not, however <span class="bold">Diob/NotSolid</span> has <a href="../../docs/Diob/layer.html" class="num">layer</a> set to <span class="num">20</span>. The <a href="../../docs/Diob/layer.html" class="num">layer</a> <a href="../../docs/general/variable.html">variable</a> determines the order of things being drawn onto the screen. Things with higher <a href="../../docs/Diob/layer.html" class="num">layers</a> will be drawn after things with lower <a href="../../docs/Diob/layer.html" class="num">layers</a> so they will appear above or closer to the viewer.<br /><br />
+					<a href="../../docs/Mob.html" class="keyword">Mob</a> has a default <a href="../../docs/Diob_layer.html" class="num">layer</a> of <span class="num">4</span> so our player will move under our <span class="bold">Diob/NotSolid</span>.<br /><br />
+					Build the project and add some of our new <a href="../../docs/general/type.html" class="string">types</a> to the <span class="bold">map</span> map file. Once done, build again and run the game and then run around the map to see how the engine handles everything.<br /><br />
+					Before we end this tutorial, let's add some new child <a href="../../docs/general/type.html" class="string">types</a> to our <a href="../../docs/Tile.html" class="keyword">Tile</a> definition so we can place down some <a href="../../docs/Tile.html" class="keyword">Tiles</a> that have different appearances.<br /><br />
+					Find your <a href="../../docs/Tile.html" class="keyword">Tile</a> definition in the <span class="bold">main</span> code file and make it look like the code below.<br /><br />
+					<code>
+Tile
+	atlasName = 'icons'
+	iconName = 'tile'
+	Grass
+		iconName = 'grass'
+	Dirt
+		iconName = 'dirt'
+					</code>
+					Build the project, open the <span class="bold">map</span> map file and place some of our new <span class="bold">Tile/Grass</span> and <span class="bold">Tile/Dirt</span> on the map. Then build the project again and run it to see the final results of this tutorial in action.<br /><br />
+					<span class="keyword_1 mr8">Note:</span>As you place down <a href="../../docs/Tile.html" class="keyword">Tiles</a> you will notice that the one you placed down replaces the old one. This is because each coordinate is designed to have one single <a href="../../docs/Tile.html" class="keyword">Tile</a> which acts as a "floor" for the map visually. You can stack tiles by holding the <span class="bold">Shift</span> or <span class="bold">Ctrl</span> keys, but it is not recommended unless you only want to add an addition visual thing that is not interacted with.<br /><br />
+					
+					If you followed everything in this tutorial, the source of your project should look something like this: <a href="https://vylocity.com/ide/Vylocity/FirstProject1/">https://vylocity.com/ide/Vylocity/FirstProject1/</a><br /><br />
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="../firstProject.html" class="tutorial_prev_button"><span></span></a>
+						<a target="_self" href="./Lesson2.html" class="tutorial_next_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">References</div>
+					<div class="tutorials_box">
+						<a href="../../docs/general/object.html">general:object</a>
+						<a href="../../docs/general/variable.html">general:variable</a>
+						<a href="../../docs/general/number.html">general:number</a>
+						<a href="../../docs/general/string.html">general:string</a>
+						<a href="../../docs/general/boolean.html">general:boolean</a>
+						<a href="../../docs/general/array.html">general:array</a>
+						<a href="../../docs/general/function.html">general:function</a>
+						<a href="../../docs/Object.html">Object</a>
+						<a href="../../docs/general/type.html">general:type</a>
+						<a href="../../docs/Diob.html">Diob</a>
+						<a href="../../docs/Movable.html">Movable</a>
+						<a href="../../docs/Mob.html">Mob</a>
+						<a href="../../docs/Particle.html">Particle</a>
+						<a href="../../docs/Overlay.html">Overlay</a>
+						<a href="../../docs/Tile.html">Tile</a>
+						<a href="../../docs/Region.html">Region</a>
+						<a href="../../docs/Interface.html">Interface</a>
+						<a href="../../docs/World.html">World</a>
+						<a href="../../docs/Client.html">Client</a>
+						<a href="../../docs/Sound.html">Sound</a>
+						<a href="../../docs/World/gameWidth.html">World.gameWidth</a>
+						<a href="../../docs/World/gameHeight.html">World.gameHeight</a>
+						<a href="../../docs/Tile/getContents.html">Tile/getContents()</a>
+						<a href="../../docs/Diob/atlasName.html">Diob/atlasName</a>
+						<a href="../../docs/Diob/iconName.html">Diob/iconName</a>
+						<a href="../../docs/Client/playerMob.html">Client/playerMob</a>
+						<a href="../../docs/Diob/xCoord.html">Diob/xCoord</a>
+						<a href="../../docs/Diob/yCoord.html">Diob/yCoord</a>
+						<a href="../../docs/Diob/density.html">Diob/density</a>
+						<a href="../../docs/Diob/layer.html">Diob/layer</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

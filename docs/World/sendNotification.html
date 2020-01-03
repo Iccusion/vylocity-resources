@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>sendNotification(pName, pMessage, pFunc)</b>
+			<div class="resources_page_documentation_sub_box">
+			pName: name of the Vyocity account to send notification to<br />
+			pMessage: message to send; 256 characters max<br />
+			pFunc: function to call after the notification has been sent or attempted; function is called with up to two parameters where the first is true or false depending on the success of the send and the second is a string containing an error message if there was one<br />
+			called: sends a notification with the message pMessage to the Vylocity account pName and then calls pFunc; server-side only<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<link rel="stylesheet" type="text/css" href="_style.css" />
+		<script type="text/javascript" src="../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="firstProject/Lesson1.html" class="tutorial_next_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project</div>
+				<div id="tutorial_content">
+					Welcome to Vylocity!<br /><br />
+					Vylocity is a game creation service that helps game developers easily create web-based games from anywhere and on any device. Vylocity projects are created and managed using the Vylocity IDE (integrated development environment) which consists of multiple tools such as the code editor, the icon editor, the map editor, the interface editor, the macro editor, and the sound editor. Vylocity uses a custom JavaScript-like programming language known as VyScript, which is the most important part of the creation process, so these tutorials will mostly cover how to use it.<br /><br />
+					But before we jump into the first official VyScript scripting tutorial, it's important to get a basic understanding of how to create and manage projects, as well as use the Vylocity IDE in general.<br /><br />
+					In order to create and manage a project on Vylocity, simply visit <a href="/ide/">http://vylocity.com/ide/</a>. You can also get to this page from the main website's top navigation bar using the <div class="tb_link_hl">Create</div> link.<br /><br />
+					Once at the IDE start page you will see a number of text boxes. If you have an account, the <span class="bold">Page Path</span> row will have a text box where you can enter a name to identify your project and get to the IDE for that project using a web link. Usually this will just be the game's name without any symbols or spaces. If you do not have an account then this will be automatically generated and after the project has been created you will need to remember or store the link so that you can get back to it in the future. The rest of the boxes are pretty self explanatory.<br /><br />
+					All of the text boxes can be left blank and changed later, but for the purposes of these tutorials we will be naming the project <span class="bold">First Project</span>. So enter <span class="bold">FirstProject</span> into the first box if you have an account and <span class="bold">First Project</span> into the second.<br /><br />
+					Once all the information is entered, hit the <div class="button_hl">Create Project</div> button.<br /><br />
+					After a short delay you should be taken to a new page. This page is the IDE application for your new project. This application can be used for everything you need to make and maintain your project's source. You can return to this page from any internet-connected device at any time to continue working on your project (of course if you made the project with an account you'll have to log in first).<br /><br />
+					Before we start creating some files and learning how to use some of the tools, let's make sure we know how to leave the project and return to it without using the direct link. If you are not logged into a Vylocity account, you can skip this step (but be sure to remember it for the future).<br /><br />
+					At the top of the page is a blue bar and on the left side of that bar are some menu buttons. These buttons can be used to do various things in the project just like any normal computer application.<br /><br />
+					Click on the <span class="file_menu_hl">File</span> menu button and a new drop down menu should appear. Go to the bottom of the menu and click on the <span class="inline_hl_1">Exit</span> option to exit the project and return to the IDE starter page. It may ask if you are sure you want to leave (this is so you don't accidentally leave without saving any changes you made), just accept and exit.<br /><br />
+					This page should be familiar, but now at the bottom of the page your project should be listed (you have to be logged into a Vylocity account to see any projects listed). Click on the <span class="bold">First Project</span> listing and let's return back to the project's IDE so we can start creating some files and learn some of the basics of some of the tools.<br /><br />
+					Now that we are back in the project's IDE, let's create our project's first file. The first page you see when creating a new project is the <span class="bold">New File</span> page. In order to create a new file for the project we just have to simply enter the name of the file and then select the type of file we want. Every project needs a code file, so enter <span class="bold">main</span> into the text box labeled <span class="bold">File Name</span> and click on the <span class="bold">Code</span> box.<br /><br />
+					Our new code file will open in the code editor for us. Each line has a number and each line can be selected and you can enter code into it just like a normal text box. However, the text we enter will take on a specific syntax in order for us to tell the builder what we want to happen (a script). The code editor will automatically highlight and change colors of certain words and phrases as we type to help us understand what is happening. We wont be creating any scripts in this specific tutorial, but basically every tutorial after this one will be focusing on scripts.<br /><br />
+					Even though we haven't actually made anything for our project, every project can be built and ran right out of the gate using all the defaults of a Vylocity project.<br /><br />
+					After we make changes to our project and want to play test or see our changes in things like the map editor and interface editor, we have to build the project. In order to build we can go up to the menu bar at the top of the page and select <span class="file_menu_hl">Project</span> and then <span class="inline_hl_1">Build</span> or we can hold the <span class="bold">Ctrl</span> key and press the <span class="bold">K</span> key.<br /><br />
+					The builder will go through all of our project's code and check it for errors. If no errors are found, it will turn our VyScript scripts into JavaScript and put everything together with the Vylocity engine so that our game can be played. Because we have not entered any code (hopefully) yet, building should not result in any errors. The builder will also go through any of changed resource files and properly package them along with all project files so that the engine can work with all of the resources while the game is running.<br /><br />
+					Now in order to run the game we can once again go up to <span class="file_menu_hl">Project</span> and then <span class="inline_hl_1">Run</span> or we can hold the <span class="bold">Ctrl</span> key and press the <span class="bold">R</span> key.<br /><br />
+					A window should pop up (if one does not, be sure to allow vylocity.com to display pop ups). This is our game, but because we have not created anything yet, the screen will be black and nothing will be happening.<br /><br />
+					<div class="content_subtitle">Code Editor</div>
+					Close the game window (the popup window) and let's learn a bit more about the code editor and builder errors. In the <span class="bold">main</span> code file enter the following code:<br /><br />
+					<code>
+This is some text!
+					</code>
+					Build the project by going up to <span class="file_menu_hl">Project</span> and <span class="inline_hl_1">Build</span> or by holding the <span class="bold">Ctrl</span> key and pressing the <span class="bold">K</span> key.<br /><br />
+					After the build loading screen goes away, a red window should appear. This red window is a list of the build errors. In order for our project to build, there cannot be any errors, so we will have to fix each error and build again. Each line in the red box is a different error. In this case we should only have one error which looks something like <span class="error_hl">main:2: Invalid object type (Thisissometext!)</span>. This text format is the file name, the line number, the error itself, and then the specific text involved. This exact error is because the builder is not expecting random text out of nowhere so it tried to interprete what we wrote the best it could and was unable to do so because the text broke a syntax rule. We can click on the error to jump to the location in the code file so we can fix it.<br /><br />
+					We wont go over specifically why this code throws an error since we aren't yet learning VyScript itself, but what we can do is <a href="../docs/general/comment.html">comment</a> out the text so that the builder ignores it. At the start of the text add two forward slashes ( <span class="bold">/</span> ) and everything on that line after the two slashes will turn into a <a href="../docs/general/comment.html">code comment</a> and be ignored by the builder when we build the project. Below is an example of how it should look.<br /><br />
+					<code>
+// This is some text!
+					</code>
+					Comments are a good way for us to add custom text to our code files to make notes, remind us what certain code does, let other people know what specific code does, or maybe temporarily remove something we plan to add back later when we need it again.<br /><br />
+					While the two forward slashes will only <a href="../docs/general/comment.html">comment</a> things after it on the same line, we can <a href="../docs/general/comment.html">comment</a> across multiple lines using <span class="bold">/*</span> and <span class="bold">*/</span> where our commented text will be between these two groups of symbols. Below is some example code of a multi-line <a href="../docs/general/comment.html">comment</a> (do not put the <a href="../docs/general/comment.html">comment</a> into your project).<br /><br />
+					<code>
+/*
+This is a
+multi-line
+comment
+*/
+					</code>
+					Now that our <span class="bold">This is some text!</span> text has become a <a href="../docs/general/comment.html">comment</a>, we should be able to build again and get rid of the error. Go ahead and do that.<br /><br />
+					We haven't had to save a file yet because building automatically saves any changed files for us, but saving without building is important. We only want to build if we need to run the game to see our changes or if see specific changes in the map editor or interface editors.<br /><br />
+					There are quite a few ways to save a file. You can right-click on the file's tab at the top of the IDE and select the <span class="inline_hl_1">Save</span> option, you can right-click on the file in the files list to the left of the IDE and select the <span class="inline_hl_1">Save</span> option, you can go up to the <span class="file_menu_hl">File</span> menu and select <span class="inline_hl_1">Save</span>, or you can hold the <span class="bold">Ctrl</span> key and press the <span class="bold">S</span> key.<br /><br />
+					Go ahead and delete all the text in our <span class="bold">main</span> code file so we can start from fresh in the next tutorial where we will start to learn VyScript and then save the file using one of the above mentioned methods.<br /><br />
+					<div class="content_subtitle">Icon Editor</div>
+					In order for us to have an actual game, there needs to be some type of visual representation. This is done by using Vylocity icons, which are images with data attached to them to determine how the icon will be used. We use the icon editor in order to create and modify these icons, as you would in most image or photo editors. We wont go into all of the details, but we will need some icons in order to see some of our upcoming tutorial scripts in action. So we'll learn some of the most basics and create some temporary icons to give future things a visual representation.<br /><br />
+					We need to create our icon atlas file so we can add some icons to it. There are quite a few ways to make a new file, but the easiest way is to click on the <span class="bold">+</span> button next to our <span class="bold">main</span> file tab toward the top of the page. If you are unable to find the button you can go up to <span class="file_menu_hl">File</span> and select <span class="inline_hl_1">New File</span>.<br /><br />
+					Type <span class="bold">icons</span> (lowercase i) into the <span class="bold">File Name</span> text box and select the box labeled <span class="bold">Icon</span>.<br /><br />
+					Our new <span class="bold">icons</span> file should open up in the icon editor. One icon atlas holds many icons. Usually you want related icons in the same icon atlas file. For example, if our game has a "lava level" then we probably want all lava related art assets in the same icon atlas so when the player enters the level they only need to download and access a single file that has all the related assets they will need. Of course you can categorize the assets depending on the project. A smaller project probably doesn't need a whole icon atlas for a specific thing and you might get away with putting all scenery-based assets in a single file. Setup things the way that best fits your project.<br /><br />
+					On the left side of the icon atlas file is a box titled <span class="bold">Icons</span>. This box is where all of this file's icons will be listed. At the top the box, on the right, is a <span class="bold">+</span> button we can press to add a new icon to the file. Do this and enter <span class="bold">tile</span> in the <span class="bold">Icon Name</span> text box and click the <div class="button_hl">Create</div> button (or press the <span class="bold">enter</span> key) while leaving everything else the way it is.<br /><br />
+					You should now see an icon in the icon list called <span class="bold">tile</span> and a box with a grid on it in the middle of the screen. The box in the middle is our icon canvas where we can paint onto the icon. Feel free to mess around and draw on the canvas. Once you are done go up to the <span class="file_menu_hl">Edit</span> menu at the top of the page and select <span class="inline_hl_1">Revert</span> to return everything to a blank canvas.<br /><br />
+					Next to the <span class="bold">Icons</span> box is a <span class="bold">Tools</span> box. Under the <span class="bold">Tools</span> box mouse over the different tools to see what they are. Find and select the tool labeled <span class="bold">Fill Tool</span>.<br /><br />
+					On the right side of the icon editor is a box titled <span class="bold">Color</span> which has color sliders. Click or move the sliders on the one labeled <span class="bold">G</span> so that you select a green color.<br /><br />
+					Once you have a green color selected (you can use whatever color you want, this icon will be our main ground icon) click on the icon canvas in the middle of the editor in order to fill the entire thing with our color using the fill tool.<br /><br />
+					Create a new icon in our current <span class="bold">icons</span> icon atlas file called <span class="bold">player</span>, select a new color and fill the canvas with it. This icon will be used to represent our player character in the following tutorials. Also create a new icon called <span class="bold">monster</span>, select a new color and fill the canvas with it. This icon will be used to represent a monster in the following tutorials.<br /><br />
+					We'll need a few more icons, so create the following icons and give them each a new color, <span class="bold">grass</span>, <span class="bold">dirt</span>, <span class="bold">solid</span>, <span class="bold">not_solid</span>. These icons will be used as tiles and obstacles in the coming tutorials.<br /><br />
+					<div class="content_subtitle">Other Editors</div>
+					We wont do anything in the other editors for this tutorial, we will talk about them more in the following tutorials. However, we do still need a couple more files for the next tutorial which we will go ahead and create here.<br /><br />
+					Create a new map file called <span class="bold">map</span> and a new macro file called <span class="bold">macros</span>. When creating the map file it will ask what size the map should be, just leave it at the defaults and click the <div class="button_hl">Set Size</div> button.<br /><br />
+					A map file holds the information for a map, which is what the player in our game will walk around on and interact with things.<br /><br />
+					A macro file holds the information for our macros, which are commands that are called when certain keys are pressed in our game.<br /><br />
+					<div class="content_subtitle">Clean Up</div>
+					Organization is very important with a project. If you do not properly organize and categorize things, the larger your project gets the harder it can be to navigate and find things. One way to organize is to put files into folders. You can create a folder by going up to the <span class="file_menu_hl">File</span> menu and selecting <span class="inline_hl_1">New Folder</span> or by right-clicking on the files list on the left side of the IDE and selecting the <span class="inline_hl_1">New Folder</span> option.<br /><br />
+					Go ahead and create four folders called <span class="bold">code</span>, <span class="bold">icons</span>, <span class="bold">maps</span>, and <span class="bold">macros</span>.<br /><br />
+					You can move files around in the files list by selecting and dragging them. Drag the <span class="bold">main</span> icon file onto the <span class="bold">code</span> folder, the <span class="bold">icons</span> icon atlas file onto the <span class="bold">icons</span> folder, the <span class="bold">map</span> map file onto the <span class="bold">maps</span> folder, and the <span class="bold">macros</span> macro file onto the <span class="bold">macros</span> folder.<br /><br />
+					Build the project or use the <span class="bold">Save All</span> to save everything so it is ready for the next tutorial!<br /><br />
+					If you followed everything in this tutorial, the source of your project should look something like this: <a href="https://vylocity.com/ide/Vylocity/FirstProject/">https://vylocity.com/ide/Vylocity/FirstProject/</a><br /><br />
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="./firstProject/Lesson1.html" class="tutorial_next_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">Lessons</div>
+					<div class="tutorials_box">
+						<a target="_self" href="./firstProject/Lesson1.html">Lesson 1: Objects</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

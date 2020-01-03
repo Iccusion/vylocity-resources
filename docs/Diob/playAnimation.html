@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>playAnimation(pAtlas, pIcon, pState, pFrame, pEnd, pSet, pFunc)</b>
+			<div class="resources_page_documentation_sub_box">
+			pAtlas: atlas of the icon for the animation<br />
+			pIcon: optional; icon name of the icon for the animation<br />
+			pState: optional; state of the icon for the animation<br />
+			pFrame: optional; frame number to start the animation at; default 1<br />
+			pEnd: optional; frame number to end animation after; default frames.length<br />
+			pSet: optional; object with settings; 'loop' for number of times to loop the animation before stopping (default 0), 'rFrame' set to return to previous animation frame when animation ends, or any animator setting; ex ( {'loop': true, 'speed': 2} )<br />
+			pFunc: CLIENT-ONLY optional; function to call after the animation has ended<br />
+			called: sets the diob's icon and then plays the animation for that icon, returning to the old icon (or new if changed during animation) when the animation has ended; call function with no parameters to stop current animation<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

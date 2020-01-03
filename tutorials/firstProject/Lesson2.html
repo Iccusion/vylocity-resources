@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project - Lesson 2: Default Variables and Basic Event Functions</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="./Lesson1.html" class="tutorial_prev_button"><span></span></a>
+					<a target="_self" href="./Lesson3.html" class="tutorial_next_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project - Lesson 2: Default Variables and Basic Event Functions</div>
+				<div id="tutorial_content">
+				
+
+Now that we know how to make object types and how to give them density and layer, as well as different icons, we will cover some of the other things that we can set the defaults of. We will also cover event functions and how to call a few of the built-in functions from within those event functions.<br /><br />
+
+To start, we will change a few of the default variables for some of our object types. We will continue from our last project <b>FirstProject</b>.<br /><br />
+
+Vylocity has many built in variables and functions that let developers easily make games. In order to make use of some of these systems, we need to tell the engine that we want to use them by setting certain variables under the object type we wish to change.<br /><br />
+
+First off is <b>width</b> and <b>height</b>. We can change the width and height of any diob. By default the width and height are set to 32. The default size of all diobs in the game can be changed with a <b>World</b> variable called tileSize, but we will keep it at 32x32 for these tutorials. Width and height only determine the physical size of a Diob. If they are changed to something like 48 and the icon assigned to the diob is 32x32, there will be a blank area. When the diob interacts with other diobs on the map, it will interact as if it is 48x48 and not 32x32. The icon is just a visual representation. In fact, you don't even have to give a diob an icon at all, it can just be an 'invisible' thing there. But we will make sure the icon and physical size match up here so we can see the size properly represented. In the <b>main</b> code file, modify the <b>Mob</b> code to look like the following.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+	Player
+		iconName = 'player'
+		xCoord = 5
+		yCoord = 5
+	Monster
+		iconName = 'monster'
+		width = 64
+		height = 64
+</code>
+
+<br /><br />
+
+This will make our monsters 64x64. After making that change, go to the <b>icons</b> icon file and add a new icon called <b>monster</b>, but this time change the icon size to 64px by 64px. Modify the new monster icon to look how you want and then right-click on the old <b>monster</b> icon and select <b>Delete</b> to get rid of it. Build and run and the monsters should now be 64x64 in size. Both physically and visually.<br /><br />
+
+Now let's add some offsets to both the position and the icon of the monsters. For the sake of having less code be shown below and to show that it can be done, we will define <b>Mob/Monster</b> again, but with our new changes. Both instances of the type will be implemented on build. Everything does not have to be grouped together in the code. So after the <b>Mob</b> chunk of code, add the following.<br /><br />
+
+<code>
+Mob
+	Monster
+		layer = 5
+		xCoordOffset = 5
+		yCoordOffset = 5
+		xIconOffset = -10
+		yIconOffset = -10
+</code>
+
+<br /><br />
+
+What this code will do is it will offset the monster on the x-axis by 5 pixels and the y-axis by 5 pixels, but then it will offset the icon that is attached to the monster on the x-axis by -10 pixels and the y-axis by -10 pixels. Build and run and run into a monster on the map in different ways to see how it has changed the monster.<br /><br />
+
+Now that we have seen how the offsets work, go ahead and delete the chunk of code we just added.<br /><br />
+
+There are many other variables we can set, but for this tutorial, we will end, variable-wise, on the variable <b>iconState</b>. Icon states let you change how something looks, usually for a short time, without changing the icon itself. An example of what you would use an icon state for is something like an 'attack' animation or walking or even changing direction for a <b>Movable</b>. But you can use it for anything you wish.<br /><br />
+
+We will start by creating icon states in the icon editor first. Go to the <b>icons</b> icon file, right-click on the <b>player</b> icon and select <b>New Icon State</b>. Enter <b>some_state</b> as the name. Icon states must have a name because a blank name is basically the icon itself. After hitting <b>Create</b> the icon should now have a + off to the left in the icon list. Clicking the + will display all of the icon states for that icon under it. As you can see, the icon state is automatically given the same icon as the icon itself. This is because icon states are mainly just modifications to the main icon, so you'll most likely want to work off of it to make changes. Go ahead and edit the <b>some_state</b> icon state so it is visually different than the <b>player</b> icon.<br /><br />
+
+Head back over to the <b>main</b> code file and type <b>iconState = 'some_state'</b> under the <b>Mob/Player</b> type (with one tab before for indentation). Build and run and your player should now look like the new icon state you created.<br /><br />
+
+While we are setting the default icon state of the player, icon states are designed to be changed during runtime, in some cases many times, so later in this tutorial we will learn how to manually change the icon state with code within an event function.<br /><br />
+
+Now that you have seen how to change the default icon state if you want, go ahead and delete the line we just added that set it. The reason for this is because if we manually change the icon state, the built-in icon state handler will not work. When we manually change the icon state of something, we basically tell the engine to stop automatically changing the icon state, but if we return the icon state to a blank string, the automatic system will kick back in. When using the default movement, the Vylocity engine will automatically change the icon state of the moving diob, like mentioned above. In order to get this working, we will need to create some new icon states for our player icon.<br /><br />
+
+Head over to the <b>icons</b> icon and add the following icon states to the <b>player</b> icon: <b>north</b>, <b>south</b>, <b>east</b>, <b>west</b>, <b>northeast</b>, <b>northwest</b>, <b>southeast</b>, <b>southwest</b>. Give them icons that help you tell what direction the player is facing. The Vylocity engine will use these icon states when the player is facing the respective direction in the game and not moving. We will handle the icon states for moving in a bit. Once you have the icons the way you want, build and run the game. When you stop moving, your icon state should be the icon state of the direction you are left facing.<br /><br />
+
+Now for movement. Add the following icon states to the <b>player</b> icon: <b>move_north</b>, <b>move_south</b>, <b>move_east</b>, <b>move_west</b>, <b>move_northeast</b>, <b>move_northwest</b>, <b>move_southeast</b>, <b>move_southwest</b>. Give them proper icons then build and run. You should now see the icon change when moving, with the icon representing the proper direction.<br /><br />
+
+That will do it for default object type variables for this tutorial.<br /><br />
+
+We're off to event functions and calling code inside of them, including built-in functions. Event functions are basically functions that are called by the engine when certain things happen in the game. Adding code to an event function lets you make changes to your game during runtime. Most of your code will execute from an event function. We will go over some of the basic and most common ones.<br /><br />
+
+When every diob is created, an event function called <b>onNew</b> is called. We can use this event to tell the game what to do when certain diobs are created. We are going to use the <b>onNew</b> event function for our player mob to change its location on the map after it has been created. In the <b>main</b> code file, change your <b>Mob</b> chunk of code to appear like below.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+	Player
+		iconName = 'player'
+		xCoord = 5
+		yCoord = 5
+		onNew()
+			this.setLoc(15, 15)
+	Monster
+		iconName = 'monster'
+		width = 64
+		height = 64
+</code>
+
+<br /><br />
+
+You can see under <b>Mob/Player</b> that a new thing is added, this is the <b>onNew</b> event function declaration. Tabbed under it is a single line of code which is called when <b>onNew</b> is called by the engine, which is every time a diob of type <b>Mob/Player</b> is created in the world in this case.<br /><br />
+
+So what does the line <b>this.setLoc(15, 15)</b> mean? Well it tells the engine to call the function <b>setLoc</b> which belongs to the object <b>this</b>, which sets the location of the diob. The <b>this</b> in any function is a reference to the object that is calling the function. In an event function, <b>this</b> will always be the diob that the event function belongs to, so our <b>Mob/Player</b> mob in this case. The two 15s are passed into the function, telling the function to set the <b>xCoord</b> and <b>yCoord</b> of our player to 15 and 15 respectively.<br /><br />
+
+Build and run and you will now see that your player mob spawns more towards the middle of the map. Technically, when the player is created it appears at 5,5 but then we use our <b>onNew</b> event function to change it to 15,15.<br /><br />
+
+The amount of things you can do inside of an event function are infinite. But below are a few code examples of functions you can call to set some of the variables we have learned about so far. You can also just set the variable directly, which is the best option when you are only changing one variable.<br /><br />
+
+<b>this.layer = 20</b> would set the layer of the diob to 20.<br /><br />
+
+<b>this.setSize(64, 96)</b> or <b>this.width = 64</b> and <b>this.height = 96</b> would set the width of the diob to 64 and height of the diob to 96.<br /><br />
+
+<b>this.setIcon('icons', 'some_icon')</b> or <b>this.atlasName = 'icons'</b> and <b>this.iconName = 'some_icon'</b> would change the diob's icon to the icon that exists in the 'icons' file and is named 'some_icon'.<br /><br />
+
+<b>this.setIconOffsets(10, 20)</b> or <b>this.xIconOffset = 10</b> and <b>this.yIconOffset = 20</b> would set the diob's icon x-offset to 10 and y-offset to 20.<br /><br />
+
+<b>this.setCoordOffsets(10, 20)</b> or <b>this.xCoordOffset = 10</b> and <b>this.yCoordOffset = 20</b> would set the actual diob's x-axis offset to 10 and y-axis offset to 20.<br /><br />
+
+<b>this.setIconState('some_state')</b> or <b>this.iconState = 'some_state'</b> would set the diob's icon state to 'some_state'.<br /><br />
+
+These are nice functions to be able to use, but sometimes you want to get the values so you can alter them or display them, or whatever you want. Each of the above functions also have a 'get' version and most variables can be directly accessed to get the value. For example <b>this.getSize()</b> would return the diob's width and height and <b>this.layer</b> would return the diob's layer. The other functions and variables work the same way, just change the 'set' to 'get' and remove the parameters between the parenthesis, or just simply access the single variable you want.<br /><br />
+
+Let's change the code in our player's <b>onNew</b> event function to grab some variables. Change your <b>Mob</b> code to look like the code below.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+	Player
+		iconName = 'player'
+		xCoord = 5
+		yCoord = 5
+		onNew()
+			this.setLoc(this.getCoords().x + 5, this.getCoords().y + 5)
+	Monster
+		iconName = 'monster'
+		width = 64
+		height = 64
+</code>
+
+<br /><br />
+
+So what is going on here is we are calling <b>this.getCoords</b> which returns an object holding two variables 'x' and 'y' which lets us know what the diob's x and y coords are. We then add 5 to both the x and y values and pass them into the <b>setLoc</b> function. So when we build and run this, our player should now appear at 10,10 on the map since our default location is 5,5 and we add 5 to each position.<br /><br />
+
+So what exactly is returned by <b>this.getCoords</b> and why can we do <b>.x</b> and <b>.y</b> after accessing them? Well, the function returns a basic object like we learned about in the previous tutorial, which holds the variables for us so we can access them.<br /><br />
+
+<code>
+{'x': 5, 'y': 5}
+</code>
+
+<br /><br />
+
+The object returned has two variables called <b>x</b> and <b>y</b> where the first variable is equal to the number 5 and the second is equal to the number 5 (because our player's xCoord and yCoord are 5). To access the first variable, we would use the code <b>object.x</b> where <b>object</b> is a variable holding a reference to the above object. So how do we create that reference? Well, any variable can hold the object, but for the sake of this tutorial, we will use a local variable.<br /><br />
+
+Local variables are variables that are defined inside a function and only the code inside of that function has access to them, known as a scope. So a line of code creating such a variable that holds our above object would look like this:<br /><br />
+
+<code>
+var object = {'x': 5, 'y': 5}<br /><br />
+</code>
+
+<br /><br />
+
+So here is some example code of how this might work inside the <b>onNew</b> event function. Do not include this in your project, just observe how it works. Also notice that you can put <b>Mob/Player</b> on a single line if you want to only change it.<br /><br />
+
+<code>
+Mob/Player
+	onNew()
+		var object = {'varName1': 34, 'varName2': 67}
+		this.setLoc(object.varName1, object.varName2)
+</code>
+
+<br /><br />
+
+What the above code would do is create a local variable that holds a new object. It then calls the function to set the mob's location and uses the values in the <b>object</b> variable. So in this case, the mob would be moved to the coordinate 34,67.<br /><br />
+
+So now let's make some changes to our actual function to make use of local variables and our understanding of basic objects. Change your <b>Mob</b> chunk of code in the <b>main</b> code file to look like the code below.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+	Player
+		iconName = 'player'
+		xCoord = 5
+		yCoord = 5
+		onNew()
+			var coords = this.getCoords()
+			this.setLoc(coords.x + 5, coords.y + 5)
+	Monster
+		iconName = 'monster'
+		width = 64
+		height = 64
+</code>
+
+<br /><br />
+
+What we do here is create a new local variable called <b>coords</b> which holds the object that the <b>getCoords</b> function returns, which would look like {'x': 5, 'y': 5}, then we access the x and y variables of the object during our <b>setLoc</b> call.<br /><br />
+
+Calling getCoords isn't the most efficient method of getting the x and y coordinates, especially if we only want one of them. Creating an object (which is what getCoords does) is much more expensive when it comes to processing than just accessing variables that already exist, but the above methods were good examples of how function code works. A good programming tip would be to limit the amount of processing you do as much as possible. The less code running, the better. But obviously you need to get your task completed, so make sure you do that.<br /><br />
+
+So before we move on, we will change our code to use the most efficient method, which also demonstrates accessing variables directly. Change the <b>Mob</b> chunk of code which we just changed to look like the code below.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+	Player
+		iconName = 'player'
+		xCoord = 5
+		yCoord = 5
+		onNew()
+			this.setLoc(this.xCoord + 5, this.yCoord + 5)
+	Monster
+		iconName = 'monster'
+		width = 64
+		height = 64
+</code>
+
+<br /><br />
+
+Directly accessing variables is almost always the best and most efficient way to read values.<br /><br />
+
+So now that we have a feel of functions, local variables, objects, some built-in functions we can call, and how event functions work. What other event functions could we use? Here's a list of the basic event functions you could use.<br /><br />
+
+<b>Diob</b>: onBumped, onNew, onDel<br /><br />
+
+<b>Tile</b>: onEnter, onEntered, onExit, onExited<br /><br />
+
+<b>Movable</b>: onBump, onMove, onMoved, onCrossed, onUncrossed<br /><br />
+
+To reinforce how inherit works, all diobs have the above <b>Diob</b> event functions, then all tiles have all the <b>Diob</b> event functions and the <b>Tile</b> functions, and all movables have all the <b>Diob</b> event functions and the <b>Movable</b> event functions, but none of the <b>Tile</b> event functions.<br /><br />
+
+So how do some of these work? In order to execute code when a diob has been bumped into by another diob (basically when a dense movable is prevented from moving because of a dense diob) you would use the <b>onBumped</b> event function. The <b>onBump</b> event function would also be called during this process, but only for the movable that bumped into the dense diob.<br /><br />
+
+Let's put an <b>onBumped</b> event into our project. Let's have it set the player's location to 1,1 on the map if they run into an <b>Diob/Solid</b> diob. At the bottom of your <b>main</b> code file, make your <b>Diob</b> chunk of code resemble what is below.<br /><br />
+
+<code>
+Diob
+	atlasName = 'icons'
+	Solid
+		iconName = 'solid'
+		density = true
+		onBumped(pBumper)
+			pBumper.setLoc(1, 1)
+	NotSolid
+		iconName = 'not_solid'
+		layer = 20
+</code>
+
+<br /><br />
+
+The <b>onBumped</b> event function has an extra part to it. When it is called, it passes the <b>Movable</b> that bumped into the diob into it as the first argument of the function. You can name your arguments anything you want, but in this case we call it <b>pBumper</b>. This variable holds the reference to the movable that bumped this obj. We then call <b>setLoc</b> on it to make the movable, our player mob in our case, teleport to the 1,1 location on the map. Build and run and run into a diob on the map that is of the type <b>Diob/Solid</b> to see our event in action.<br /><br />
+
+Note: The standard in VyScript for naming arguments is to start it with a <b>p</b> to show that it was passed into the function call as a parameter. This is entirely optional and arguments can be given any name you want<br /><br />
+
+Let's briefly go over the other mentioned event functions. The event function <b>tile.onEnter</b> is called when a movable tries to enter a tile on the map. If you wish, you can stop the movable from entering by returning false inside of it. We'll discuss <b>return</b> more in the functions tutorial. Moving on, <b>tile.onExit</b> is called when a movable tries to exit a tile on the map, <b>tile.onEntered</b> is called when a movable succeeds in entering the tile, and <b>tile.onExited</b> is called when the movable succeeds in exiting the tile.<br /><br />
+
+Like mentioned before, the event function <b>diob.onNew</b> is called when a diob is created. Then <b>diob.onDel</b> is called when a diob is deleted, <b>movable.onMove</b> is called when a movable is attempting to move, <b>movable.onMoved</b> is called when a movable has successfully moved, <b>movable.onCrossed</b> is called when a movable's position on the map overlaps another diob's position, and <b>movable.onUncrossed</b> is called when a movable's position on the map no longer overlays another diob's position.<br /><br />
+
+We wont go over them all, but let's add one of the events to our grass tile to make it change to a dirt icon when our player enters it and the opposite for our dirt tile. In your <b>main</b> code file, make the <b>Tile</b> chunk of code look like the code below.<br /><br />
+
+<code>
+Tile
+	atlasName = 'icons'
+	iconName = 'tile'
+	Grass
+		iconName = 'grass'
+		onEntered()
+			this.setIcon('icons', 'dirt')
+	Dirt
+		iconName = 'dirt'
+		onEntered()
+			this.setIcon('icons', 'grass')
+</code>
+
+<br /><br />
+
+Build and run to see our new events in action.<br /><br />
+
+So now we have seen how to work with variables and event functions. In the next tutorial we will go over how to create our own functions and go into a little more detail on some of what can be done inside both event functions and our custom functions.<br /><br />
+
+If you followed everything in this tutorial, the source of your project should look something like this. <a href="https://vylocity.com/ide/Vylocity/FirstProject2/" target="_blank">https://vylocity.com/ide/Vylocity/FirstProject2/</a>
+
+					<br /><br />
+				
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="./Lesson1.html" class="tutorial_prev_button"><span></span></a>
+						<a target="_self" href="./Lesson3.html" class="tutorial_next_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">References</div>
+					<div class="tutorials_box">
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

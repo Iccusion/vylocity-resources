@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			
+			<b>alterColor(pInfo, pAtlas, pIcon, pState, pFrame, pFunc)</b>
+			CLIENT ONLY<br />
+			<div class="resources_page_documentation_sub_box">
+			pInfo: an object containing information to be used for the color alteration<br />
+			pAtlas: name of the icon atlas involved<br />
+			pIcon: name of the icon involved<br />
+			pState: optional; name of the icon state involved<br />
+			pFrame: optional; number of the frame involved<br />
+			pFunc: optional; function to call after the icon has changed; passes an error as the first argument if there was en error<br />
+			called: alters color of the specified icon(s) based on the specified info; For example {'type': 'normal', 'red': 100} or just {'red': 100} would add 100 red to all pixels; {'red': -100} would reduce 100 red from all pixels; {'type': 'swap', 'red': 100, 'blue': 100, 'green': 100, 'newRed': 200} would find all pixels with the color rgb(100, 100, 100) and replace it with rgb(200, 100, 100); If any of the colors are not included, such as 'alpha', it will ignore that color, otherwise if it is set, it will take that color into account; {'type': 'multiply', 'hex': '#FFF'} would multiply blend white onto the icon, you can use 'hex' for the red, green, and blue values; for 'swap' you can use 'colors' which should equal an array of objects containing all of the color swaps you want to do if there is more than one<br />
+			</div>
+			
+			</div>
+		</div>
+	</body>
+</html>

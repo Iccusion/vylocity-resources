@@ -1,0 +1,255 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project - Lesson 3: Basic Custom Functions and Statements</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="./Lesson2.html" class="tutorial_prev_button"><span></span></a>
+					<a target="_self" href="./Lesson4.html" class="tutorial_next_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project - Lesson 3: Basic Custom Functions and Statements</div>
+				<div id="tutorial_content">
+
+Now that we have covered event functions, adding our own custom functions should be pretty easy. Any object, including ones you make during runtime using the curly braces, can have functions attached to them. Not only that, but a variable itself can be a function. You can create functions inside another function and even change what is in an existing function during runtime. Basically, functions are everywhere and they are very flexible. In order to properly make a game, you will need functions. Lots of functions.<br /><br />
+
+So let's create our first function. We'll return to our project we have been using the past tutorials called <b>FirstProject</b> and go into the <b>main</b> code file. After the <b>Mob/Player</b> and <b>Mob/Monster</b> declarations, we will add some new lines.<br /><br />
+
+Example codes will start to be more condensed in order to show only what is important for that particular example. By now you should be able to understand what you are reading and be able to add the code under the proper type. In this example below, just simply put the code after <b>Mob</b> at the end of your <b>Mob</b> chunk of code in the code file. Or you can just put the code how it is displayed in your project and it will work, it'll just be less organized. If this confuses you any, be sure you check the link at the bottom of this tutorial to see what the final source of this tutorial should look like.<br /><br />
+
+<code>
+Mob
+	function myFunction()
+		this.setLoc(1, 1)
+</code>
+
+<br /><br />
+
+We now have a function added to our code. All mobs will now have a function called <b>myFunction</b> which they can call from any other function, including event functions. The code inside our new custom function should be familiar from the previous tutorial. This function with its code will sit in our source and can only be called if we manually call it, the engine will never automatically call it like it would with an event function.<br /><br />
+
+So let's call this function. In order to call it, we are going to learn and use a new event function. All <b>Mob</b> type diobs have the <b>onLogin</b> and <b>onLogout</b> event functions. The first is called when a client connects to a mob and the second is called when a client disconnects from a mob. We'll go into what a 'client' is in a later tutorial, but for now, let's add a login event function to our player mob type that calls our new function.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			this.myFunction()
+</code>
+
+<br /><br />
+
+Try to put the <b>onLogin</b> event function under our already defined <b>Mob/Player</b> code. Just below the <b>onNew</b> event function would be ideal. You do not have to, though.
+
+So what is happening here is, when a client connects to the mob Mob/Player it calls the <b>onLogin</b> event function, which calls our newly added <b>myFunction</b> function, which will set our player's location to 1,1 on the map. So build and run the code and see that we are at 1,1 at the start of the game instead of 5,5 or 10,10 like our other code. The reason we are at 1,1 instead of 10,10, which we set in <b>onNew</b> is because <b>onNew</b> is called before <b>onLogin</b>, so the login event function has the final say on where we end up. All of this happens so fast that we never see the changes.<br /><br />
+
+Now we know how to create our own function and how to call it, but we can also send values to the function and have the function return values. Change the new <b>myFunction</b> to look like the code below.<br /><br />
+
+<code>
+Mob
+	function myFunction(pX, pY)
+		this.setLoc(pX, pY)
+		return 'It worked!'
+</code>
+
+<br /><br />
+
+And change the <b>Mob/Player</b> <b>onLogin</b> code to look like the following.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(2, 2)
+			alert(mes)
+</code>
+
+<br /><br />
+
+Let's pick apart what is going on here.<br /><br />
+
+In the first example code we are adding new arguments to our function. These are values that can be passed into the function, in our case they are assumed to be our x and y values. These variables can be called anything you want, but our in case we name them <b>pX</b> and <b>pY</b>. The first thing we do in our function is pass our two argument variables into the <b>setLoc</b> function. After that, we use something new called <b>return</b>. What <b>return</b> does is it tells the function to return to the function that called it. In this case we tell it not only to return, but to return with a value, which happens to be a string that reads 'It worked!' in our example. Functions may return one value or no value at all. Once the execution reaches the last line of the function it will return automatically, but if you want to include a value or tell it to return prematurely, then we need to include it. We'll see some other examples of <b>return</b> later.<br /><br />
+
+In the second example code we are calling the actual function. We pass two values into the function, which we saw earlier will be read as the x and y values and we store the value that our <b>myFunction</b> function returns into a local variable called <b>mes</b>. Then we call something new called <b>alert</b> with our <b>mes</b> variable passed into it. Basically what <b>alert</b> does is pop up an alert window with a message in it.<br /><br />
+
+Build and run and an alert saying 'It worked!' should appear on your screen then our player should now be at the location 2,2 once you close the alert.<br /><br />
+
+Now that we know some basics about functions, let's take a look at some of the statements that can be used inside of a function. The most common is the <b>if</b> statement and the other statements that go along with it such as <b>else</b> and <b>else if</b>. An <b>if</b> statement is code that checks to see if something is true and then executes the code under it if that statement is infact true. If the statement is not true, then it will skip the code under the <b>if</b> statement and either continue along or run code in an <b>else</b> or <b>else if</b> statement if one is there. An <b>else if</b> statement will be called if the if statement(s) above it are false and an <b>else</b> will be called if no other <b>if</b> statements were true. An <b>else</b> and <b>else if</b> statement must always be attached to an <b>if</b> statement.<br /><br />
+
+Let's see these statements in action. Change our <b>myFunction</b> code to look like the code below.<br /><br />
+
+<code>
+Mob
+	function myFunction(pX, pY)
+		if (pX === 2)
+			this.setLoc(pX, pY)
+		else if (pX === 3)
+			this.setLoc(3, 1)
+		else
+			this.setLoc(1, 1)
+		return 'It worked!'
+</code>
+
+<br /><br />
+
+There's a lot going on here, let's go through it line by line. First thing we do is check if <b>pX</b> is equal to <b>2</b>. The three equal signs there basically say compare the things to the left and right of me and if they are exactly equal to eachother, so if pX holds the number <b>2</b> in it, then the statement is <b>true</b>, otherwise the statement is <b>false</b>. You may also use only two equal signs, but three equals is a strict compare and it's good practice to use them. The difference between the two might be covered in a later tutorial.<br /><br />
+
+So, in order for the code under this <b>if</b> statement to be called, the <b>if</b> statement must be <b>true</b>, so this means the only time this <b>if</b> statement's code will be executed is if <b>pX</b> is equal to the number <b>2</b>. If <b>pX</b> is equal to the number <b>2</b> then after the code under the <b>if</b> statement has been called, the execution will skip all the way down to the <b>return</b> code, because there is no reason to call the <b>else</b> codes. But if <b>pX</b> is not equal to <b>2</b> then the execution will move to the next statement attached to the <b>if</b> if there is one, and in this case there is. Now, the <b>else if</b> is the same deal, but this time <b>pX</b> must be equal to the number <b>3</b> in order for the code under it to be executed. If <b>pX</b> does not equal the number <b>3</b> then we head to the <b>else</b> which runs that code no matter what. Basically what the <b>else</b> is saying is if the two above <b>if</b> statements are not <b>true</b>, do this, but don't do this if they are <b>true</b>.<br /><br />
+
+Now, because we pass <b>2</b> into our <b>myFunction</b> function as the <b>pX</b> value, our first <b>if</b> statement should always execute, meaning our player's location will be set to <b>pX</b>,<b>pY</b> which is <b>2</b>,<b>2</b> in our case. Go ahead and build and run to see that our player appears at <b>2</b>,<b>2</b>.<br /><br />
+
+So how can we get our other statements to execute? Go to our <b>Mob/Player</b> <b>onLogin</b> code and change the code where we call <b>myFunction</b> to pass in the <b>3</b> and <b>3</b> values. So replace the <b>2</b>s with <b>3</b>s.<br /><br />
+
+Build and run and our player should now appear at the <b>3</b>,<b>1</b> location on the map instead of the <b>3</b>,<b>3</b> location. This is because in our <b>myFunction</b> code we have the <b>else if</b> statement (which is called because <b>pX</b> does not equal the number <b>2</b>) that says if <b>pX</b> is equal to the number <b>3</b> (which it is) then set our player's location to <b>3</b>,<b>1</b>. So basically we change the <b>y</b> value from <b>3</b> to <b>1</b>.<br /><br />
+
+Try some values where the <b>x</b> value is not equal to the numbers <b>2</b> or <b>3</b> and no matter what numbers you put, we should always appear at the location <b>1</b>,<b>1</b> because our <b>else</b> basically says that if <b>pX</b> does not equal the number <b>3</b> or <b>2</b> then set the location to <b>1</b>,<b>1</b>.<br /><br />
+
+Many things can be put inside of an if statement. So far we have seen how to compare two things to see if they are equal, but we can also check to see if one of the values is either greater than or less than. These checks can be done on numbers or strings. For strings it would be based on alphabeticalization.<br /><br />
+
+Let's change our previous statements to make use of greater than and less than. Change the <b>myFunction</b> function code to look something like the code below.<br /><br />
+
+<code>
+Mob
+	function myFunction(pX, pY)
+		if (pX > 3)
+			this.setLoc(pX, pY)
+		else if (pX <= 3)
+			this.setLoc(3, 1)
+		else
+			this.setLoc(1, 1)
+		return 'It worked!'
+</code>
+
+<br /><br />
+
+So now our code will first check if <b>pX</b> is greater than the number <b>3</b>. If this is false then we check to see if <b>pX</b> is less than <b>or</b> equal to the number <b>3</b>, which obviously it is if it is a number, since it's not greater than 3, but we are learning here. Then the <b>else</b> you would think would never run because the value has to be either greater than, less than, or equal to <b>3</b>, but in the case that <b>pX</b> is not even a number or string (assuming an error does not occur), then our <b>else</b> will be executed.<br /><br />
+
+Change the numbers in the <b>onLogin</b> event function that we passed into the <b>myFunction</b> to <b>4</b> and <b>5</b> and then build and run. Our player should appear at <b>4</b>,<b>5</b> on the map because the first if statement is executed. Try the values <b>3</b> and <b>4</b> and our player should appear at <b>3</b>,<b>1</b> because of our second if statement.<br /><br />
+
+Now for <b>boolean</b> variable values. A <b>boolean</b> is either equal to <b>true</b> or it is equal to <b>false</b>. Booleans are good for making some type of switch that keeps track of if something is on or off. When you check the boolean in an if statement, it'll execute if the boolean is <b>true</b> and not if it is <b>false</b>. Booleans are pretty common in game development, so expect to be using them often. An example of one being used might be to track if a Mob is stunned or not. Either it is stunned or it is not, true or false.<br /><br />
+
+Let's make use of a boolean and also nest some if statements to show it can be done. Pass a new parameter into the <b>myFunction</b> call code called <b>false</b>. Make your onLogin code look something like this.<br /><br />
+
+<code>
+Mob
+	Player
+		onLogin()
+			var mes = this.myFunction(4, 5, false)
+			alert(mes)
+</code>
+
+<br /><br />
+
+Then change your <b>myFunction</b> function code to look something like this.<br /><br />
+
+<code>
+Mob
+	function myFunction(pX, pY, pBool)
+		if (pBool)
+			if (pX > 3)
+				this.setLoc(pX, pY)
+			else if (pX <= 3)
+				this.setLoc(3, 1)
+			else
+				this.setLoc(1, 1)
+			return 'It worked!'
+		else
+			return 'It did not work!'
+</code>
+
+<br /><br />
+
+Build and run and you should now get an alert that says 'It did not work!' because our <b>pBool</b> value is false and our first if statement in our function checks to see if <b>pBool</b> is true. You will also notice that we appear at the location <b>10</b>,<b>10</b> because we no longer override our mob's <b>onNew</b> code that sets our location. Go back to where we call <b>myFunction</b> in <b>onLogin</b> and change the <b>false</b> to a <b>true</b>. Build and run again and we should now have our old results back.<br /><br />
+
+If statements can do more than only check if a <b>boolean</b> is <b>true</b> or <b>false</b>, it can check if a variable has a value or not or if it is equal to zero. If a variable is equal to <b>null</b> or <b>0</b> or the variable does not exist at all, an if statement will return false for it. In our above example, not only is our if statement checking to see if <b>pBool</b> equals <b>true</b>, it is also checking to see if it has a value at all and is not equal to <b>null</b> or <b>0</b>. To better understand this, here are a few examples of variables and what an if statement would read them as. Do not include them in your code.<br /><br />
+
+<code>
+var a = 0
+if (a) //false
+
+var b = 'a'
+if (b) //true
+
+var c = null
+if (c) //false
+
+var d = 45
+if (d) //true
+</code>
+
+<br /><br />
+
+We can also negate things inside of the if statements. A negation is used with an exclamation mark and when you put it infront of something it basically says, whatever the if statement would read this value as, flip it. So a <b>true</b> would be <b>false</b> and a <b>false</b> would be <b>true</b>. Let's change our <b>myFunction</b> function code to make use of this.<br /><br />
+
+<code>
+Mob
+	function myFunction(pX, pY, pBool)
+		if (!pBool)
+			if (pX !== 3)
+				this.setLoc(pX, pY)
+			else if (pX <= 3)
+				this.setLoc(3, 1)
+			else
+				this.setLoc(1, 1)
+			return 'It worked!'
+		else
+			return 'It did not work!'
+</code>
+
+<br /><br />
+
+So now our first if statement will only execute if <b>pBool</b> is <b>false</b>, because we negate whatever value it happens to have, so in order for us to get the <b>true</b> we need to make the statement run, <b>pBool</b> has to be <b>false</b>. Then inside the first if statement you will notice we changed the first nested if statement to <b>if (pX !== 3)</b>. What this means is if <b>pX</b> does <b>not</b> equal the number <b>3</b> then execute the if statement. So with the function code we now have, <b>pBool</b> needs to be <b>false</b> and <b>pX</b> has to equal something other than <b>3</b> in order for us to move to the location <b>pX</b>,<b>pY</b> which our first nested if statement does.<br /><br />
+
+Finally, we will cover <b>and</b> and <b>or</b>s, which can be used inside of if statements to check multiple things at once. If we want to check if something is equal to something else <b>and</b> another thing is equal to something, we would use the symbols <b>&&</b> between each statement. If we wanted to check if something is equal to something else <b>or</b> another thing is equal to something, we would use the symbols <b>||</b> between each statement.<br /><br />
+
+Let's give it a try. Alter your <b>myFunction</b> function code to look like the code below.<br /><br />
+
+<code>
+Mob
+	function myFunction(pX, pY, pBool)
+		if (!pBool || pX > 3)
+			if (pX !== 3 && pY !== 3)
+				this.setLoc(pX, pY)
+			else if (pX <= 3)
+				this.setLoc(3, 1)
+			else
+				this.setLoc(1, 1)
+			return 'It worked!'
+		else
+			return 'It did not work!'
+</code>
+
+<br /><br />
+
+The <b>myFunction</b> function now calls the first if statement if either <b>pBool</b> is <b>false</b> <b>OR</b> if <b>pX</b> is greater than the number <b>3</b>. Then if that is <b>true</b>, the next if statement executes if <b>pX</b> does <b>not</b> equal the number <b>3</b> <b>AND</b> the variable <b>pY</b> does <b>not</b> equal the number <b>3</b> as well. So if both variables are something other than <b>3</b>, this statement should execute.<br /><br />
+
+So we have now learned how to create our own functions, execute code inside of them, and use statements to check values of things and run different sections of code depending on the results. In the next tutorial we will learn about more statements and other code that we can use inside of functions.<br /><br />
+
+If you followed everything in this tutorial, the source of your project should look something like this. <a href="https://vylocity.com/ide/Vylocity/FirstProject3/" target="_blank">https://vylocity.com/ide/Vylocity/FirstProject3/</a>
+
+					<br /><br />
+				
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="./Lesson2.html" class="tutorial_prev_button"><span></span></a>
+						<a target="_self" href="./Lesson4.html" class="tutorial_next_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">References</div>
+					<div class="tutorials_box">
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

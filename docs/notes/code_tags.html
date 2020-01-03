@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			<b>Code tags:</b>
+<div class="resources_page_documentation_box">
+	<b>desc:</b> code tags are started with '#' and are used to tell the builder what to do<br />
+	<b>tags:</b>
+	<div class="resources_page_documentation_sub_box">
+		<b>#BEGIN CLIENTCODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: all the code under this tag will be put into the multi-player client source; includes all code until #END CLIENTCODE or the end of the file<br />
+			</div>
+		<b>#END CLIENTCODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: ends the client code<br />
+			</div>
+		<b>#BEGIN SERVERCODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: all the code under this tag will be put into the multi-player server source; includes all code until #END SERVERCODE or the end of the file<br />
+			</div>
+		<b>#END SERVERCODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: ends the server-only code<br />
+			</div>
+		<b>#BEGIN JAVASCRIPT</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: all the code under this tag will be put into JavaScript file on the client side; includes all code until #END JAVASCRIPT or the end of the file<br />
+			</div>
+		<b>#END JAVASCRIPT</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: ends the JavaScript code<br />
+			</div>
+		<b>#BEGIN WEBSTYLE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: all the code under this tag will be treated as style and put into style header on the client side; includes all code until #END WEBSTYLE or the end of the file<br />
+			</div>
+		<b>#END WEBSTYLE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: ends the web style code<br />
+			</div>
+		<b>#BEGIN IGNORECODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: all code under this tag will be ignored by the builder until either #END IGNORECODE or the end of the file<br />
+			</div>
+		<b>#END IGNORECODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: ends the ignored code<br />
+			</div>
+		<b>#DISABLE DEBUG</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: code will no longer be built with trys and catches to find bugs that would crash the execution and throw a descriptive error; disabling debug mode will reduce the size of the built project and increase the speed of code execution, but any glitches will crash the execution and not display any specific error messages; disabling this should only be used for fully polished projects that are ready to get as much as they can out of optimization and performance improvements<br />
+			</div>
+		<b>#ENABLE LOCALCLIENTCODE</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: merges the local code with client code so that client code is ran when playing solo; the server will still not be given client code with this setting enabled<br />
+			</div>
+		<b>#ENABLE LOCALSOCKETS</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: enable sockets when the game is running locally (in single player mode) so you can communicate directly with any server<br />
+			</div>
+		<b>#ENABLE CLIENTSHARETYPE [vars]</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: this will give clients all default type variables; array at the end can be used to decide the specific vars to be shared, for example ( ['a', 'b'] ) to only share the 'a' and 'b' vars; array at the end can also have ! infront to share all variables except for the variables in the array; no array at all will share every variable no matter what<br />
+			</div>
+		<b>#INCLUDE SCRIPT url</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: allows you to include a remote JavaScript script into the project, replace 'url' with the path to the file<br />
+			</div>
+		<b>#INCLUDE STYLE url</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: allows you to include a remote CSS file into the project, replace 'url' with the path to the file<br />
+			</div>
+		<b>#DEFINE name(params) value</b>
+			<div class="resources_page_documentation_sub_box">
+			desc: allows you to specify special code that is translated during build, 'name(params)' where (params) is optional is translated into 'value' where ever 'name(params)' is found in the code; ex: '#define MAX 5' would turn all instances of 'MAX' in the code into '5' during build<br />
+			</div>
+	</div>
+</div>
+			</div>
+		</div>
+	</body>
+</html>
