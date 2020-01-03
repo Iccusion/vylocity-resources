@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - World.global</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,7 +14,43 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>global</b>: object containing all global variables and functions<br />
+				<div class="content_title">World.global</div>
+				<div id="doc_usage"><span class="keyword_2">World</span>.global</div>
+				<div class="content_subtitle">Variable Type</div>
+				<div class="general_info_box">
+					<a onclick="doc('general/object')">object</a>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					An <a onclick="doc('general/object')">object</a> with references to all global variables and functions.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=13>
+/* create global functions and variables */
+function test()
+	return 1
+	
+var a = 1
+var b = 2
+
+/* output World.global on World/onNew */
+World
+	onNew()
+		// World.global = {'test': f(), 'a': 1, 'b': 2}
+		World.log(World.global)
+</code>
+			
+				</div>
+				<div class="content_subtitle">Related</div>
+				<div id="related_box">
+					<a onclick="doc('general/object')">general:object</a>
+					<a onclick="doc('World')">World</a>
+					<div class="divider"></div>
+					<a onclick="doc('general/function')">function</a>
+					<a onclick="doc('World/onNew')">World/onNew()</a>
+					<a onclick="doc('World/log')">World.log()</a>
+				</div>
 			</div>
 		</div>
 	</body>

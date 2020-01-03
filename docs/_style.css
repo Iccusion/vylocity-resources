@@ -29,7 +29,7 @@
 	background-color: #252a37;
 	border: 1px solid #272f3e;
 }
-#doc_usage {
+#doc_usage, .general_info_box {
 	margin-top: 4px;
 	margin-bottom: 20px;
 	padding: 8px 8px 8px 20px;
