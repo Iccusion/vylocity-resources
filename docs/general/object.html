@@ -14,14 +14,33 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>objects:</b>
-<div class="resources_page_documentation_box">
-	<b>desc:</b> almost everything is an object; diobs (display objects) are special objects that have a location on the screen or map and a visual representation, with functions and variables to be used to manipulate those things and other data; basic objects are the most basic form and they are defined by using braces ( {} ), the structure of a basic object is the variable name, a colon, and then the variable value, and each variable is separated by a comma, for example {'var1': 1, 'var2': 2} would create an object with two variables called 'var1' and 'var2' with the values 1 and 2 respectively; all object variables can be accessed by either ( variable.value ) or ( variable['value'] )
-</div>
-<b>static objects:</b>
-<div class="resources_page_documentation_box">
-	<b>desc:</b> static objects are objects where only one of them exists and it always exists, you can use them to call functions to manipulate things as needed; current static objects (Math, Date, Icon, World, Util, Map, Event, Macro, Resource, Type, JS)
-</div>
+				<div class="content_title">Objects</div><br /><br />
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					<b>Object</b>s are a data type that can contain many values. You can duplicate defined <b>object</b>s or use them as constructors for many different purposes. <b>Object</b>s are defined by using braces ( {} ) while the values are written using a colon to separate the name and value ( 'name':value ).<br /><br />
+					
+					Diobs (Display Objects) are special objects that have a location on the screen or map and a visual representation, with functions and variables to be used to manipulate those things as well as other data.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+var car = {'type':'Fiat', 'model':'500', 'color':'white'}
+
+World.log(car.color + ' ' + car.type + ' ' + car.model)
+// white Fiat 500
+
+var carClone = new car
+// Creates a copy of the car object.
+</code>
+			
+				</div>
+				<br /><br /><br /><div class="content_title">Static Objects</div><br /><br />
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					<b>Static object</b>s exist in solidarity and permanently. You can use them to call functions and get values.<br />
+					Current <b>Static Object</b>s: Math, Date, Icon, World, Util, Map, Event, Macro, Resource, Type, JS
+				</div>
+
 			</div>
 		</div>
 	</body>

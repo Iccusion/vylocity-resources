@@ -14,6 +14,30 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Array Values</div><br /><br />
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					An <b>array</b> is a list-like data type. Neither the length of an <b>array</b> nor the types of its elements are fixed.<br /><br />
+					<b>Array</b>s cannot use strings as element indexes, as opposed to an object, but must use integers.<br /><br />
+					When setting or accessing an <b>array</b> using bracket notation, the first element in an <b>array</b> is 0.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+var animals = ['Cat', 'Dog']
+
+World.log(animals.length)
+// 2
+
+
+var first = animals[0]
+// Cat
+
+var last = animals[animals.length - 1]
+// Dog
+</code>
+			
+				</div>
 			
 			</div>
 		</div>
