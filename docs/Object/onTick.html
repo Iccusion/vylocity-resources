@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Object:onTick</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,10 +14,34 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>onTick(pT)</b>
-				<div class="resources_page_documentation_sub_box">
-				pT: the current ticker count<br />
-				called: called every 10ms if this object is added to the ticker<br />
+				<div class="content_title">Object:onTick</div>
+				<div id="doc_usage"><span class="keyword_2">onTick</span>(<span class="keyword">pT</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pT</span><span class="parameters_par_desc">Parameters passed as arguments into the function.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This function is called every 10ms if an <a onclick="doc('Object')" class="keyword_2">Object</a> has been added to the ticker.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=9>
+Mob
+	onLogin()
+		Event.addTicker(this)
+		
+		// This will add the Mob to the ticker when they login.
+
+Mob
+	onTick(pT)
+		World.log(pT)
+		
+		// This will output the ticker count every 10ms.
+</code>
+			
 				</div>
 			</div>
 		</div>
