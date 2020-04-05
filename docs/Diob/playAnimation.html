@@ -14,7 +14,7 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-				<div class="content_title"><a onclick="doc('Diob')" class="keyword_2">Diob</a>:playAnimation</div>
+				<div class="content_title">Diob:playAnimation</div>
 				<div id="doc_usage"><span class="keyword_2">playAnimation</span>(<span class="string">pAtlas</span>, <span class="string">pIcon</span>, <span class="string">pState</span>, <span class="num">pFrame</span>, <span class="num">pEnd</span>, <span class="keyword">pSet</span>, <span class="keyword">pFunc</span>)</div>
 				<div class="content_subtitle">Parameters</div>
 				<div id="parameters_box">
@@ -35,9 +35,10 @@
 					</div>
 					<div class="parameters_row content_row_odd">
 						<span class="parameters_par_title">pSet</span><span class="parameters_par_desc"><span class="keyword_1 mr8">optional</span>An <a onclick="doc('general/object')">object</a> with any animator settings, also including 'loop' and 'rFrame'.<br />
-						The 'loop' setting defines the number of times to loop the animation before stopping. Default: 0<br />
+						The 'loop' setting defines the number of times to loop the animation before stopping.<br />
+						A 'loop' value of -1 will make it loop until the animation is manually halted.<br />
 						The 'rFrame' setting defines which animation frame to return to when the animation ends.<br />
-						Example: ({'loop': true, 'speed': 2})</span>
+						Example: ({'loop': -1, 'speed': 2})</span>
 					</div>
 					<div class="parameters_row content_row_even">
 						<span class="parameters_par_title">pFunc</span><span class="parameters_par_desc"><span class="keyword_1 mr8">CLIENT-ONLY optional</span>A function to call after the animation has ended.</span>
