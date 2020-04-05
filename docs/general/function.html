@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Function</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,26 +14,51 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>functions:</b>
-<div class="resources_page_documentation_box">
-	<b>desc:</b> functions contain blocks of code which do various things when called; they can be called by using the name of the function followed by parentheses, for example someFunc() would call the function called someFunc; in order to call an object's function, the variable referencing the object would be put before the function, for example object.someFunc() would call the function someFunc belonging to the object in a variable called object; when calling an object's function, you can reference that object using the 'this' keyword inside the function; you can get an array containing the arguments of the function using the 'arguments' keyword; you can use 'call' and 'apply' to call any function with a different 'this' set, for example object.someFunc.call(otherObj, arg1, arg2) would call object.someFunc but the 'this' of the function would be 'otherObj' instead of 'object' and the arguments of the function would be arg1 and arg2; apply works the same way except the arguments are an array, for example object.someFunc.apply(otherObj, [arg1, arg2])
-</div>
-			<b>function keywords:</b>
-<div class="resources_page_documentation_box">
-	<b>desc</b>: function keywords are variables that every function has which you can access for specific information or to tell the function to do a certain thing<br />
-	<b>arguments</b>
-		<div class="resources_page_documentation_sub_box">
-			desc: an object containing all the arguments passed into the function
-		</div>
-	<b>override</b>
-		<div class="resources_page_documentation_sub_box">
-			desc: put at the top of an object function to make this function override all parent functions for the object
-		</div>
-	<b>retVal</b>
-		<div class="resources_page_documentation_sub_box">
-			desc: a variable containing the information returned by the parent function call
-		</div>
-</div>
+				<div class="content_title">Functions</div><br /><br />
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					A <b>function</b> is a block of code designed to perform a particular task.<br /><br />
+					A <b>function</b> is executed when it is called. It can be reused as many times as needed.<br /><br />
+					A <b>function</b> is defined with the <span class="keyword_2">function</span> keyword, followed by a name, followed by parentheses ().<br /><br />
+					<a onclick="doc('Object')" class="keyword_2">Object</a>s can hold exclusive <b>functions</b>. To reference an <a onclick="doc('Object')" class="keyword_2">Object</a>'s <b>function</b>, the <a onclick="doc('general/variable')">variable</a> referencing the <a onclick="doc('Object')" class="keyword_2">Object</a> has to be put before the <b>function</b> is called.<br />
+					Inside an <a onclick="doc('Object')" class="keyword_2">Object</a>'s <b>function</b>, you can reference the parent <a onclick="doc('Object')" class="keyword_2">Object</a> with the <span class="keyword_2">this</span> keyword.<br /><br />
+					You can obtain an <a onclick="doc('general/array')">array</a> containing the arguments of the <b>function</b> using the <span class="keyword_2">arguments</span> keyword.<br /><br />
+					When Vylocity reaches a <span class="keyword_2">return</span> statement, the <b>function</b> will stop executing.<br />
+					If the <b>function</b> was called from a statement, Vylocity will resume executing the code after the invoking statement.<br /><br />
+					<b>Functions</b> often compute a <span class="keyword_2">return</span> value. The <span class="keyword_2">return</span> value is "returned" back to the "caller".</br /><br />
+					<b>Function</b> names can contain letters, digits and underscores. Digits cannot be the first character in the name of a <b>function</b>. The same rules apply to <a onclick="doc('general/variable')">variables</a>.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+function exampleFunction(x, y)
+	return x * y
+
+// The function returns the product of arguments x and y.
+
+Mob
+	onLogin()
+		World.log(exampleFunction(5, 8))
+		
+		// This will output 40 to the console when a mob logs in.
+</code>
+<code>
+Diob
+	var a = 5
+	function someFunc(x, y)
+		World.log(this.a * x * y)
+	
+	// The function returns the product of arguments x, y and this.a
+
+Mob
+	onLogin()
+		World.log(this.someFunc(5, 8)
+		
+		// This will output 200.
+</code>
+			
+				</div>
+			
 			</div>
 		</div>
 	</body>

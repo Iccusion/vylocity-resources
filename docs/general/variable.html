@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Variable</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,6 +14,38 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Variables</div><br /><br />
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					<b>Variables</b> are containers for storing data values. They can be used in expressions.<br /><br />
+					The <span class="keyword_2">var</span> statement declares a <b>variable</b>, optionally initializing it to a value.<br /><br />
+					<b>Variable</b> names can contain letters, digits and underscores. Digits cannot be the first character in the name of a <b>variable</b>. The same rules apply to <a onclick="doc('general/function')">functions</a>.<br /><br />
+					The current data types are: <a onclick="doc('general/number')">number</a>, <a onclick="doc('general/string')">string</a>, <a onclick="doc('general/boolean')">boolean</a>, <a onclick="doc('general/array')">array</a>, <a onclick="doc('general/object')">object</a><br />
+					The undefined and null data types are special in that they can have only one value.<br /><br />
+					Undefined variables have been declared but have not been assigned a value.<br />
+					A variable can be explicitly emptied of its current contents by assigning it the null value.<br /><br />
+					Default Value: <span class="keyword_2">undefined</span>
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+var x = 5
+var y = 6
+var z = x + y
+var string = 'example'
+var example
+
+/*
+From the example above, you can expect:
+x stores the value 5 as a number data type
+y stores the value 6 as a number data type
+z stores the value 11 as a number data type
+string stores the value example as a string data type
+example stores the value undefined as an undefined data type
+*/
+</code>
+			
+				</div>
 			
 			</div>
 		</div>
