@@ -14,7 +14,14 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>packetDelay</b>: SERVER-ONLY; default 50; number of milliseconds to wait before sending built-in engine packets (custom client packets are sent immediately)<br />
+			
+			<b>getScreenSize(pO)</b>
+			<div class="resources_page_documentation_sub_box">
+			CLIENT ONLY<br />
+			pO: optional; an existing object to set the x and y of<br />
+			called: returns an object containing the x and y of the game scale; ex: {'x': 2, 'y': 2}<br />
+			</div>
+			
 			</div>
 		</div>
 	</body>

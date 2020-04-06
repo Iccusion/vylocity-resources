@@ -283,7 +283,7 @@ WebCodeBox.prototype.setLineText = function(pLine, pNum, pText) {
 				word += '<span class="line_code_num">';
 			}
 			word += c;
-		} else if (c === "'" || c === "\"") {
+		} else if (c === "'" || c === "\"" || c === "`") {
 			if (inString) {
 				word += c;
 				if (inString == c) {
