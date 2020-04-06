@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Object:onTickerAdd</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,9 +14,26 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
-			<b>onTickerAdd()</b>
-				<div class="resources_page_documentation_sub_box">
-				called: called when this object is added to the ticker<br />
+				<div class="content_title">Object:onTickerAdd</div>
+				<div id="doc_usage"><span class="keyword_2">onTickerAdd</span>()</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when an <a onclick="doc('Object')" class="keyword_2">Object</a> has been added to the ticker.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=9>
+Mob
+	onLogin()
+		Event.addTicker(this)
+		
+		// This will add the Mob to the ticker when they login.
+
+Mob
+	onTickerAdd()
+		World.log('This Mob has been added to the ticker.')
+</code>
+			
 				</div>
 			</div>
 		</div>

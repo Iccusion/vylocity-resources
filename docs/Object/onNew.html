@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Object:onNew</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,13 +14,35 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Object:onNew</div>
+				<div id="doc_usage"><span class="keyword_2">onNew</span>(<span class="keyword">pArg1</span>, <span class="keyword">pArg2</span>, <span class="keyword">...</span>, <span class="keyword">pArgn</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pArg1, pArg2, ..., pArgn</span><span class="parameters_par_desc">Parameters passed as arguments into the function.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called after an <a onclick="doc('Object')" class="keyword_2">Object</a> has been created.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=10>
+function example()
+	// create a new object with the type 'Object/Test' and pass in the number 45
+	var d = new Object('Object/Test', 45)
+	// output the object's num value through an alert
+	alert(d.num)
+
+Object/Test
+	// this onNew() event function is automatically called when a new 'Object/Test' is created
+	onNew(pNum)
+		// set this object's 'num' value to pNum, which equals 45 from the above code
+		this.num = pNum
+</code>
 			
-			<b>onNew(pArg1, pArg2, ..., pArgn)</b>
-			<div class="resources_page_documentation_sub_box">
-			pArgn: arguments passed into the function<br />
-			called: called after this object has been created<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>

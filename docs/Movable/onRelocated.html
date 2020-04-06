@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Movable:onRelocated</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,16 +14,39 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Movable:onRelocated</div>
+				<div id="doc_usage"><span class="keyword_2">onRelocated</span>(<span class="num">pX</span>, <span class="num">pY</span>, <span class="string">pMap</span>, <span class="keyword">pMove</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pX</span><span class="parameters_par_desc">The <a onclick="doc('Movable')" class="keyword_2">Movable</a>'s previous <a onclick="doc('Diob/xPos')">xPos</a> (position on the x-axis).</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pY</span><span class="parameters_par_desc">The <a onclick="doc('Movable')" class="keyword_2">Movable</a>'s previous <a onclick="doc('Diob/yPos')">yPos</a> (position on the y-axis).</span>
+					</div>
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pMap</span><span class="parameters_par_desc">The <a onclick="doc('Movable')" class="keyword_2">Movable</a>'s previous <a onclick="doc('Diob/mapName')">mapName</a> (placement between maps).</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pMove</span><span class="parameters_par_desc">Whether or not position changed from movement. <span class="keyword_2">true</span> if position was changed from movement, <span class="keyword_2">false</span> if set directly.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when a <a onclick="doc('Movable')" class="keyword_2">Movable</a> changes between x or y positions or maps.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=3>
+Movable
+	onRelocated(pX, pY, pMap, pMove)
+		if(pMap != this.mapName)
+		World.log('Movable was moved to map ' + pMap)
+		
+		// If the Movable's map changes, output the new map's name.
+</code>
 			
-			<b>onRelocated(pX, pY, pMap, pMove)</b>
-			<div class="resources_page_documentation_sub_box">
-			pX: old x position<br />
-			pY: old y position<br />
-			pMap: old map name<br />
-			pMove: true if position changed from movement, false if set directly<br />
-			called: when this movable changes x or y position or maps<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>

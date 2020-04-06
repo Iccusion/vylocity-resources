@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - String</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,6 +14,29 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">String Values</div><br /><br />
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					A <b>string</b> is zero or more characters written inside quotes. You can use single, double quotes or backticks to define their value.<br /><br />
+					You can combine multiple data values together via the + concatenation operator when one of the operands is a <b>string</b>.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code>
+var singleQuotes = 'This is an example string.'
+var doubleQuotes = "This is an example string."
+var backTick = `This is an example string.`
+
+// Concatenation of several data values.
+var boolean = true
+var number = 3.14
+var string = 'Hello world'
+
+var concat = string + ' ' + number + ' ' + boolean
+// This will have the value 'Hello world 3.14 true' and will be a string data type.
+</code>
+			
+				</div>
 			
 			</div>
 		</div>
