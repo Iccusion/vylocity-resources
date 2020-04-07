@@ -15,7 +15,7 @@
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
 			
-			<b>applyFilter(pFilter, pAtlas, pIcon, pState, pFrame)</b>
+			<b>applyFilter(pFilter, pAtlas, pIcon, pState, pFrame, pFunc)</b>
 			CLIENT ONLY<br />
 			<div class="resources_page_documentation_sub_box">
 			pFilter: an object containing needed information for filter; {'type': 'darken', 'value': 10} would darken the image by 10;<br />
@@ -23,6 +23,7 @@
 			pIcon: name of the icon involved<br />
 			pState: optional; name of the icon state involved<br />
 			pFrame: optional; number of the frame involved<br />
+			pFunc: optional; function to call after the icon has changed; passes an error as the first argument if there was en error<br />
 			called: applies a filter to the icon(s) involved; possible filter types: 'grayscale', 'invert', 'darken', 'lighten'<br />
 			</div>
 			

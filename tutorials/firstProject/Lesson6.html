@@ -1,0 +1,395 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Tutorials - First Project - Lesson 6: Inheritances and Static Objects</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+		<base target="_blank">
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="tutorial_prev_next_box">
+					<a target="_self" href="./Lesson5.html" class="tutorial_prev_button"><span></span></a>
+					<a target="_self" href="./Lesson7.html" class="tutorial_next_button"><span></span></a>
+				</div>
+				<div class="content_title">First Project - Lesson 6: Inheritances and Static Objects</div>
+				<div id="tutorial_content">
+
+We have learned quite a bit about Object types and how to define variables and functions under them, as well as how to create child types (Mob/Player for example). In this tutorial we will focus a bit more on how inheritance works for Object types and how we can manipulate it to fit our needs. We will also introduce a few new static objects that the engine has built-in and go further into detail about some we have already used. Some built-in function variables (behind the scenes variables that every function has that can be used to access information about the function call) will also be introduced.<br /><br />
+
+We will continue from the project we created in the previous tutorials. If you are just now jumping in, go to the previous tutorial and create a project to match the project at the bottom of the page.<br /><br />
+
+Open up our previous <b>FirstProject</b> project in the IDE and open the <b>main</b> code file. If it has been awhile since completing the last tutorial, be sure to look over the code to get yourself familiarized with it.<br /><br />
+
+As we learned in a previous tutorial, Object types have an inheritance system which allows child types to get variables and functions defined under their parent types. If you have any experience in programming, a type is much like a <b>class</b> in other languages.<br /><br />
+
+The lowest level of inheritances (the type that all other types inherit from) is the Object type. The Object type has very few properties and is designed to hold data and track information (much like just a basic object, but with a few extra properties and the ability to use the type system). It does not have the necessary properties needed to be displayed, so the Diob type exists for this reason. Anything that is seen on the screen will have to inherit from Diob. We were shown a list of built-in types that inherit from Diob in a previous tutorial, but we will list them again as a refresher.<br /><br />
+
+					<div class="tutorials_box">
+						<a href="../../docs/Movable.html">Movable</a>
+						<a href="../../docs/Mob.html">Mob</a>
+						<a href="../../docs/Particle.html">Particle</a>
+						<a href="../../docs/Overlay.html">Overlay</a>
+						<a href="../../docs/Tile.html">Tile</a>
+						<a href="../../docs/Region.html">Region</a>
+						<a href="../../docs/Interface.html">Interface</a>
+					</div><br />
+
+All of the above types will inherit from Diob, but we can also create our own. We learned about <b>Mob</b> and <b>Tile</b> already. <b>Movable</b> is <b>Mob</b>'s parent type, which gives it the ability to move around on the map. The rest of the types will be explained more in future tutorials.<br /><br />
+
+Custom inheritances allow us to give our custom type a parent without adding that parent to the our type string. This can simplify our type tree and use smaller type strings, among other things. The best way to understand this more is to just get it into our project! Inside of the <b>main</b> code file, we are going to be making some alterations to our <b>Mob/Player</b> and <b>Mob/Monster</b> type definition codes. Change that code to look like the following.<br /><br />
+
+Note: You can back tab large sections of code by selecting it and then holding shift while pressing tab.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+
+Player : inherit [Mob]
+	iconName = 'player'
+	xCoord = 5
+	yCoord = 5
+	onMouseEnter()
+		this.scale = 2
+		this.alpha = 0.5
+		this.angle = 0.5
+	onMouseExit()
+		this.scale = 1
+		this.alpha = 1
+		this.angle = 0
+	onMouseMove(pClient, pX, pY)
+		this.setAnchor(pX / this.width, pY / this.height)
+	onMouseClick()
+		this.setLoc(1, 1)
+		
+Monster : inherit [Mob]
+	iconName = 'monster'
+	width = 64
+	height = 64
+	onNew()
+		this.dir = 'east'
+		Event.addTicker(this, {'resetAt': 500, 'resetEnd': true})
+	onTick(pT)
+		if (this.xCoord <= 3)
+			this.dir = 'east'
+		else if (this.xCoord >= 23)
+			this.dir = 'west'
+		this.stepDir(this.dir, 2)
+		if (!(pT % 150))
+			this.setTransition({'scale': 2}, -1, 500)
+			this.setTransition({'scale': 1}, -1, 500, true)
+	onTickerAdd()
+		this.color = 'rgb(200, 0, 0)'
+	onTickerRemove()
+		this.color = ''
+</code>
+
+Basically we back tabbed all our player and monster codes and added <b>: inherit [Mob]</b> to both types. It does not seem like we did much, but we turned our <b>Mob/Player</b> type into just <b>Player</b> and our <b>Mob/Monster</b> type into just <b>Monster</b>, which are shorter. One could also argue that the code looks cleaner and more compact. Once a project gets larger and type trees get longer and more complex, things like this come in handy. These are only some of the benefits of this inheritance system.<br /><br />
+
+Before we build and run, we need to make sure we update our <b>World/mainMob</b> to point to our new player type. Find that code and update it to look like below.<br /><br />
+
+<code>
+World
+	mainMob = 'Player'
+</code>
+
+This next step is going to be a new learning experience about the IDE and map editor. Our map contains our old types, so after we build and open the map, it is going to yell at us that <b>Mob/Monster</b> does not exist. We need to fix this issue. When you open the <b>map</b> map file after building, you should get an alert. Simply replace <b>Mob/Monster</b> with <b>Monster</b> and hit OK. Build, open <b>map</b>, replace the types, then build again and run the game and everything should work as normal.<br /><br />
+
+The inherit system allows more than one type to be inherited at the same time (the order of them matters). So let's learn a bit about that before moving on.<br /><br />
+
+We will create a new Object type that will hold some information for us that we can give to whatever other type we want with the inherit system. Above our <b>Mob</b> type (on a blank line and not inside any other code) add the following code.<br /><br />
+
+<code>
+Prop
+	var myVar1 = 1
+	var myVar2 = 2
+</code>
+
+Prop is the name of our new custom Object type (it is not built in) and it has two variables.<br /><br />
+
+We can now give these two variables to our <b>Player</b> type (or any other type we want). Go to our <b>Player</b> type definition which currently looks like <b>Player : inherit [Mob]</b> and make it look like below. Also add the <b>onNew</b> event function shown to the type.<br /><br />
+
+<code>
+Player : inherit [Mob, Prop]
+	onNew()
+		alert(this.myVar2)
+</code>
+
+Now our <b>Player</b> will inherit from <b>Mob</b> and then <b>Prop</b>. You can add as many more types as you want. They will be inherited in order from left to right.<br /><br />
+
+Build and run and we should now get a <b>2</b> alert at the start of the game, since our player's <b>myVar2</b> variable is being outputted and it is equal to 2.<br /><br />
+
+Moving on. So we have our normal <b>Mob</b> type definition without <b>atlasName</b> defined under it and our <b>Player</b> and <b>Monster</b> types which both inherit from <b>Mob</b> (giving them the atlasName). The next thing we will learn about is the <b>override</b> operation, but before we do, we need to set things up and see why we might want to use it.<br /><br />
+
+Under the <b>Mob</b> type, add a new <b>onNew</b> event function like we had for our old <b>Mob/Player</b> type in previous tutorials. Change the <b>Mob</b> type code to look like below.<br /><br />
+
+<code>
+Mob
+	atlasName = 'icons'
+	onNew()
+		this.setLoc(10, 10)
+</code>
+
+This code should be familiar and not need explanation again. Build and run the project. All of our monsters, as well as us, should now all be stacked together at the 10,10 coordinates (the monsters will move together from the location immediately).<br /><br />
+
+We probably do not want our monsters to execute this code, so we need to override it. Note: The obvious solution here is to add the <b>onNew</b> event to <b>Player</b> so that <b>Monster</b> never gets it, but we are learning inheritance manipulation here!<br /><br />
+
+So let's override the <b>onNew</b> event function for <b>Monster</b>. Simply add <b>override</b> to the top of our <b>onNew</b> event function found under our <b>Monster</b> type like shown below.<br /><br />
+
+<code>
+Monster : inherit [Mob]
+	onNew()
+		override
+		this.dir = 'east'
+		Event.addTicker(this, {'resetAt': 500, 'resetEnd': true})
+</code>
+
+Build and run the game and our monsters should now no longer be at the 10,10 coordinates. Our <b>override</b> operation has blocked any inherited <b>onNew</b> code from being executed.<br /><br />
+
+A couple things to take note of when using <b>override</b>. You must put <b>override</b> at the very top of the function as the very first line, every time. Also, <b>override</b> will not prevent child code from being executed. For example, if a new type was added that inherited from <b>Monster</b>, the <b>Monster</b> <b>onNew</b> that starts with the <b>override</b> would execute first, then the child's <b>onNew</b> would call.<br /><br />
+
+Before we move on with inheritances, we need to learn about a new global function that the engine that lets us create brand new diobs during runtime. But before we learn that, lets add a new type definition for us to create (you can create any type during runtime, but this will let us use something we have not used yet). Above the new <b>Prop</b> type (the same was it was added itself) add the type below, along with it's properties.<br /><br />
+
+<code>
+Movable
+	atlasName = 'icons'
+	iconName = 'monster'
+</code>
+
+Mob inherits from Movable, so it will not inherit anything we have already created for our Mob, Player, and Monster types. But because Mob does inherit Movable, anything we add to Movable will be given to our Mob types. This means our <b>atlasName = 'icons'</b> defined under <b>Mob</b> is kind of useless now, but we wont worry about it. We gave the new type the monster icon just for simplicity.<br /><br />
+
+Now that we have a new type with properties that we can create, lets learn how to do that. Find our <b>Tile</b> type definition code and put the following event function code found below under it (make sure the code is indented under <b>Tile</b> and not the <b>Tile/Dirt</b> or <b>Tile/Grass</b> types).<br /><br />
+
+<code>
+Tile
+	onMouseDown()
+		var d = new Diob('Movable')
+		d.setLoc(this)
+</code>
+
+A couple new things here. The <b>new Diob('Movable')</b> code allows us to create a new diob with the specified type during runtime. This is a very important feature and will be use <b>a lot</b> while making your game, so it is good to know (if you wanted to create a different type, you would simply replace 'Movable' with the type). Then of course <b>var d</b> holds a reference to that new diob so that we can work with it, which we do in the next line. The <b>setLoc</b> call should be familiar by now, but this time instead of passing in coordinates, we pass in <b>this</b> alone (which points to our tile). We are able to do this because tiles are locs. Each loc (location or coordinate) has a tile, so they are related.<br /><br />
+
+If you build and run the game, you can click on tiles on the map and place new <b>Movable</b> diobs.<br /><br />
+
+Note: These new diobs look like our monsters, but they are different types, so they will not move or use a ticker like our monsters do.<br /><br />
+
+Before we proceed, let's clean up a bit. We will be using alerts to display some information, show inheritance orders, and other things. So we should remove our current alert located under our player's <b>onNew</b> event function. Find that code and remove the two lines associated with it. It should look like the code below.<br /><br />
+
+<code>
+	onNew()
+		alert(this.myVar2)
+</code>
+
+With that gone, we can continue. We will look into some of the built-in function variables that we have access to. The first is the <b>arguments</b> variable. Any function can access this variable and it will provide useful information about the function call, including an array of the arguments being used. Lets add a child type to our <b>Movable</b> type, give it an <b>onNew</b> event function, and loop the <b>arguments</b> variable to output the value of each argument. Change your <b>Movable</b> type definition code to look like the code below.<br /><br />
+
+<code>
+Movable
+	atlasName = 'icons'
+	iconName = 'monster'
+	Test
+		onNew()
+			foreach (var v in arguments)
+				alert(v)
+</code>
+
+If we ran this code right now, we would not get any alerts because we do not currently have any arguments. With that said, any function can be called with any amount of arguments, even if the function code does not give them names or define them. So that makes it easier for us to add something to alert.<br /><br />
+
+Find our <b>new Diob('Movable')</b> code under the <b>Tile</b> <b>onMouseDown</b> event function and change it to be <b>new Diob('Movable/Test', 1, 2)</b> so that the whole block of code looks like below.<br /><br />
+
+<code>
+Tile
+	onMouseDown()
+		var d = new Diob('Movable/Test', 1, 2)
+		d.setLoc(this)
+</code>
+
+Every parameter passed into <b>new Diob</b> after the type string will become arguments inside of that new diob's <b>onNew</b> event function. So now when we build and run the project and click a tile, we should get two alerts which display <b>1</b> and then <b>2</b>.<br /><br />
+
+Note: You may notice that once the <b>alert</b> appears, everything behind it freezes. This is good lesson to learn. You should not use <b>alert</b> in your game unless you are using it for quick testing.<br /><br />
+
+The <b>arguments</b> variable holds other information other than just a list of the arguments, but we wont go into those details in this tutorial.<br /><br />
+
+Up next is the <b>retVal</b> function variable. This variable holds the return value from a parent's function call.<br /><br />
+
+In order to see this in action, we will add an <b>onNew</b> event function to <b>Movable</b> that returns a value and then output that value under our <b>Movable/Test</b>'s <b>onNew</b> event function. Change the <b>Movable</b> type code to look like the code below.<br /><br />
+
+<code>
+Movable
+	atlasName = 'icons'
+	iconName = 'monster'
+	onNew()
+		return 12
+	Test
+		onNew()
+			alert(retVal)
+</code>
+
+Build and run the code and when you click on a tile, an alert with <b>12</b> in it should appear. This code allows us to pass a value from a parent function call to the child function calls, all the way down if desired.<br /><br />
+
+One last thing to cover related to inheriting, which also overlaps with static objects that we will be covering more shortly, is the ability to go back and call parent functions (or any function really) when using the <b>override</b> system. This gives us the ability to change the order of our function calls if we want to.<br /><br />
+
+In order to do this, we will need to be introduced to a static object function called <b>Type.callFunction</b>. This function allows us to call any function that belongs to any type, and do so with different arguments and even a completely different owner (the <b>this</b> inside the function). Having control over the <b>this</b> of the function is important, because if we call a function that belongs to <b>Mob/A</b> by a diob that has the type <b>Tile/A</b> we want the <b>this</b> of that function call to be the diob that called the function and not a diob that has that function defined.<br /><br />
+
+To see this in action, we will have the <b>Movable/Test</b> type <b>onNew</b> use <b>override</b> and then call the parent <b>onNew</b> at the end, essentially reversing the order that they are called in. Change the <b>Movable</b> type code to look like below.<br /><br />
+
+<code>
+Movable
+	atlasName = 'icons'
+	iconName = 'monster'
+	onNew()
+		foreach (var v in arguments)
+			alert(v)
+	Test
+		onNew()
+			override
+			alert(3)
+			Type.callFunction(this.parentType, 'onNew', this, arguments)
+</code>
+
+Normally when running this code (without an <b>override</b> and <b>Type.callFunction</b> call) we would get three alerts in order from 1 to 3, but with our <b>override</b> we prevent <b>Movable</b>'s <b>onNew</b> from being called first and get a 3 then 1 and 2. The <b>Type.callFunction</b> function has four parameters, which we use above. The first is a string with the Object type that owns the function we want to call, the second is a string with the name of the function, the third is a reference to what object should be the owner of the call (the <b>this</b> inside of it), and the fourth is an array of arguments to pass into the function. For the first parameter we use <b>this.parentType</b> which is a new variable for us, but it holds a string that is the parent's type which is <b>Movable</b> in this case. For the second parameter we use the string <b>'onNew'</b> because that is the name of our function, then we pass in our <b>this</b> and <b>arguments</b> so that they are the same as our current function.<br /><br />
+
+Go ahead and build and run to see the code in action.<br /><br />
+
+That basically does it for the inheritance system. We will now go over some of the built-in static objects and some of their variables and functions. We just used the <b>Type</b> static object above, so we will continue to explore it some more.<br /><br />
+
+The <b>Type</b> static object holds important information relating to our project's Object type system, along with useful functions for being able to manipulate types or gather information on them during runtime. Two of the most important functions the static object has is probably <b>Type.callFunction</b> and <b>Type.getVariable</b>. We already saw the first, so we'll try out the second before moving on to the next static object. If you want to see more properties that the <b>Type</b> static objects has, you can visit the <a href="../../docs/Type.html">documentation page</a>.<br /><br />
+
+To make use of <b>Type.getVariable</b> we will make some changes to our code. What <b>Type.getVariable</b> does is it allows us to get the default value of a variable belonging to the specified type, instead of the current value of a variable belonging to an active Object.<br /><br />
+
+In our code, under the <b>Tile</b> type code that we created awhile back in a previous tutorial, we will give the <b>Tile/Grass</b> and <b>Tile/Dirt</b> types two more event functions which will return their icons back to normal after we exit them. Find that code and make it something like the code below.<br /><br />
+
+<code>
+Tile
+	Grass
+		iconName = 'grass'
+		onEntered()
+			this.setIcon('icons', 'dirt')
+		onExited()
+			this.iconName = Type.getVariable(this.type, 'iconName')
+	Dirt
+		iconName = 'dirt'
+		onEntered()
+			this.setIcon('icons', 'grass')
+		onExited()
+			this.iconName = Type.getVariable(this.type, 'iconName')
+</code>
+
+Our code returns each <b>Tile</b>'s <b>iconName</b> back to the default of <b>'grass'</b> or <b>'dirt'</b> after the thing entering it leaves. We also use a new variable at <b>this.type</b> which is just a string holding the type of our Object. This <b>Type.getVariable</b> function is useful for returning values back to normal or default like this.<br /><br />
+
+Build and run and see how each tile you enter has its icon change as you enter and then return back to normal as you leave.<br /><br />
+
+Another useful and very commonly used static object is the <b>Map</b> static object. It is a static object you will be using quite a bit to work with things on the map, which is a large part of a game. There are way too many properties to cover here, but we will go over a few commonly used ones.<br /><br />
+
+The first function we will learn about is the <b>Map.getRange</b> function. This function will give us an array of all non-tile diobs on the map around the diob we pass into it, with a few variations we can enable. The first parameter of the function is where to start to look for diobs, the second is the number of positional units to the sides of that diob to look, the third is the number of positional units above and below the diob to look, and the fourth is if the diob itself should be included in the returned array.<br /><br />
+
+We will use this function inside of a new event function called <b>onRelocated</b> (which is called every time a diob changes position) that we will put under the <b>Movable/Test</b> type. In order to test this properly, we need to clean up some of our code under the <b>Movable</b> type and get rid of the alerts, so make that code look like the code below.<br /><br />
+
+<code>
+Movable
+	atlasName = 'icons'
+	iconName = 'monster'
+	Test
+		onRelocated()
+			foreach (var d in Map.getRange(this, 50, 50, true))
+				d.scale = 0.5
+</code>
+
+At this point, the code should be somewhat familiar. Basically when a <b>Movable/Test</b> Diob moves in any way (including when it is first placed down on the map or changes maps), it will grab all diobs that are up to 50 positional units away from our <b>Movable/Test</b> Diob (minus the diob itself) that we placed down and loop them, setting each one to have have a <b>scale</b> of 0.5.<br /><br />
+
+Build and run and click some tiles to put <b>Movable/Test</b> diobs on the map and notice when you put one down close to another, it shrinks the ones around it.<br /><br />
+
+You may have noticed that this code can also shrink our player or the monsters, which might not be what we want. We could use an if statement to weed out those things, but there is also a built-in <b>Map</b> function to handle it for us called <b>Map.getRangeByType</b>. The function is the same as <b>Map.getRange</b> but it has two new parameters after the first which can be set to only grab diobs with a certain type or parent type. We saw a version of this when we used <b>World.getDiobs</b> in a previous tutorial.<br /><br />
+
+So lets change our code to use that function. Make the <b>Movable/Test</b> <b>onRelocated</b> function look like the code below.<br /><br />
+
+<code>
+Movable
+	Test
+		onRelocated()
+			foreach (var d in Map.getRangeByType(this, 'Movable', true, 50, 50, true))
+				d.scale = 0.5
+</code>
+
+Now our code should only give is diobs that have the <b>Movable</b> type or has a parent type that starts with <b>Movable</b>. Build and run to test it out.<br /><br />
+
+There are quite a few more functions belonging to the <b>Map</b> static object which are related to these two functions, but we wont be going over them. If you are interested in some of them, you can check out the <a href="../../docs/Map.html">documentation page</a> for the <b>Map</b> static object.<br /><br />
+
+One last <b>Map</b> function that will probably be commonly used is the <b>Map.getDist</b> function, which returns the positional unit distance between two diobs on the map.<br /><br />
+
+Find our <b>Client</b> type code and change the <b>onMouseDown</b> event function code to be like the code below.<br /><br />
+
+<code>
+Client
+	onMouseDown(pD)
+		if (pD)
+			alert(Map.getDist(this.mob, pD))
+</code>
+
+Each time you press the mouse down, it should alert with the positional unit distance from the center of your player mob to center of the diob clicked on. The <b>this.mob</b> variable is a <b>Client</b> variable that references the client's player mob.<br /><br />
+
+Build and run and see how the number increases the further away you click from your player mob (the center of the screen).<br /><br />
+
+The final static object we will be covering in this tutorial is the <b>Util</b> static object, which is basically just a static object containing properties that could not find a home somewhere else. There are quite a few things and we will only be covering a couple, so if you want to learn more about the properties the <b>Util</b> static object has, go check out the <a href="../../docs/Util.html">documentation page</a> for it.<br /><br />
+
+First up is the <b>Util.toRadians</b> function. There is also a <b>Util.toDegrees</b> but because we need radians for angle, we will use degrees that are converted to radians for simplified angle setting. Find the <b>this.angle = 0.5</b> code under our <b>Player</b> type in the <b>onMouseEnter</b> event function and change it to <b>this.angle = Util.toRadians(35)</b> so that the event function looks something like the code below.<br /><br />
+
+<code>
+Player : inherit [Mob, Prop]
+	onMouseEnter()
+		this.scale = 2
+		this.alpha = 0.5
+		this.angle = Util.toRadians(35)
+</code>
+
+Now we can use degrees (35) as an angle. You can build and run to see the code still works properly with the new function call.<br /><br />
+
+One last <b>Util</b> function that might be useful is the <b>Util.pick</b> function. We can either pass an array into it or a bunch of parameters and it will return only one value, basically picking the value for us.<br /><br />
+
+To test, we will replace the <b>Client</b>'s <b>onMouseDown</b> event function again. Make it look like the code below.<br /><br />
+
+<code>
+Client
+	onMouseDown()
+		alert(Util.pick(1, 2, 3, 4, 5))
+</code>
+
+Build and run and each time you click you should get an alert that displays 1 to 5 randomly.<br /><br />
+
+We have learned a bit about the Event, World, Map, Type, and Util static objects. We could probably spend days going over all the possible static objects and all of their properties, but it is good to understand that they all exist and go over a few of the commonly used ones. There are quite a few more static objects that we did not go over. Here is a list some of the other available static objects.<br /><br />
+					<div class="tutorials_box">
+						<a href="../../docs/JS.html">JS</a>
+						<a href="../../docs/Math.html">Math</a>
+						<a href="../../docs/Date.html">Date</a>
+						<a href="../../docs/Resource.html">Resource</a>
+						<a href="../../docs/File.html">File</a>
+						<a href="../../docs/Icon.html">Icon</a>
+						<a href="../../docs/Macro.html">Macro</a>
+					</div><br />
+
+So, we have now learned how to use the inheritance system, a bit about some static objects, and also about some built-in function variables. In the next tutorial we will dive deeper into strings and arrays.<br /><br />
+
+If you followed everything in this tutorial, the source of your project should look something like this. <a href="https://vylocity.com/ide/Vylocity/FirstProject6/" target="_blank">https://vylocity.com/ide/Vylocity/FirstProject6/</a>
+
+					<br /><br />
+				
+					<div class="tutorial_prev_next_box">
+						<a target="_self" href="./Lesson5.html" class="tutorial_prev_button"><span></span></a>
+						<a target="_self" href="./Lesson7.html" class="tutorial_next_button"><span></span></a>
+					</div>
+					<div class="content_subtitle">References</div>
+					<div class="tutorials_box">
+						
+					</div>
+				
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

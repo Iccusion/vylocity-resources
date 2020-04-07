@@ -94,7 +94,6 @@
 			<a onclick="doc('global/newObject')" id="side_global_newObject" class="side_bar_row indent_1" data-tags="newobject,global,type,onnew"><span class="side_bar_row_dot"></span>newObject()</a>
 			<a onclick="doc('global/delObject')" id="side_global_delObject" class="side_bar_row indent_1" data-tags="delobject,global,ondel"><span class="side_bar_row_dot"></span>delObject()</a>
 			<a onclick="doc('World')" id="side_World" class="side_bar_row" data-tags="world"><span id="plus_World" class="plus"></span><span class="side_bar_row_dot hidden"></span>World</a>
-			<a onclick="doc('World/global')" id="side_World_global" class="side_bar_row indent_1" data-tags="global,world"><span class="side_bar_row_dot"></span>global</a>
 			<a onclick="doc('World/gameWidth')" id="side_World_gameWidth" class="side_bar_row indent_1" data-tags="gamewidth,world,size"><span class="side_bar_row_dot"></span>gameWidth</a>
 			<a onclick="doc('World/gameHeight')" id="side_World_gameHeight" class="side_bar_row indent_1" data-tags="gameheight,world,size"><span class="side_bar_row_dot"></span>gameHeight</a>
 			<a onclick="doc('World/gameID')" id="side_World_gameID" class="side_bar_row indent_1" data-tags="gameid,world,api,offline"><span class="side_bar_row_dot"></span>gameID</a>
@@ -114,15 +113,18 @@
 			<a onclick="doc('World/preloadResources')" id="side_World_preloadResources" class="side_bar_row indent_1" data-tags="preloadresources,world,download"><span class="side_bar_row_dot"></span>preloadResources</a>
 			<a onclick="doc('World/pingDelay')" id="side_World_pingDelay" class="side_bar_row indent_1" data-tags="pingdelay,world,multiplayer,hosting"><span class="side_bar_row_dot"></span>pingDelay</a>
 			<a onclick="doc('World/packetDelay')" id="side_World_packetDelay" class="side_bar_row indent_1" data-tags="packetdelay,world,multiplayer,hosting"><span class="side_bar_row_dot"></span>packetDelay</a>
-			<a onclick="doc('World/nodeProcess')" id="side_World_nodeProcess" class="side_bar_row indent_1" data-tags="nodeprocess,world,system"><span class="side_bar_row_dot"></span>nodeProcess</a>
 			<a onclick="doc('World/serverFileName')" id="side_World_serverFileName" class="side_bar_row indent_1" data-tags="serverfilename,world,multiplayer,hosting,source"><span class="side_bar_row_dot"></span>serverFileName</a>
 			<a onclick="doc('World/serverSettings')" id="side_World_serverSettings" class="side_bar_row indent_1" data-tags="serversettings,world,multiplayer,hosting"><span class="side_bar_row_dot"></span>serverSettings</a>
 			<div id="side_World_div1" class="side_bar_row_divider indent_m_1"></div>
+			<a onclick="doc('World/global')" id="side_World_global" class="side_bar_row indent_1" data-tags="global,world"><span class="side_bar_row_dot"></span>global</a>
+			<a onclick="doc('World/nodeProcess')" id="side_World_nodeProcess" class="side_bar_row indent_1" data-tags="nodeprocess,world,system"><span class="side_bar_row_dot"></span>nodeProcess</a>
+			<div id="side_World_div2" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('World/onNew')" id="side_World_onNew" class="side_bar_row indent_1" data-tags="onnew,world,eventfunction"><span class="side_bar_row_dot"></span>onNew()</a>
 			<a onclick="doc('World/onDel')" id="side_World_onDel" class="side_bar_row indent_1" data-tags="ondel,world,eventfunction"><span class="side_bar_row_dot"></span>onDel()</a>
+			<a onclick="doc('World/onError')" id="side_World_onError" class="side_bar_row indent_1" data-tags="onerror,world,eventfunction"><span class="side_bar_row_dot"></span>onError()</a>
 			<a onclick="doc('World/onMessage')" id="side_World_onMessage" class="side_bar_row indent_1" data-tags="onmessage,world,eventfunction,multiplayer,hosting,server"><span class="side_bar_row_dot"></span>onMessage()</a>
 			<a onclick="doc('World/onPost')" id="side_World_onPost" class="side_bar_row indent_1" data-tags="onpost,world,eventfunction,server,multiplayer,hosting"><span class="side_bar_row_dot"></span>onPost()</a>
-			<div id="side_World_div2" class="side_bar_row_divider indent_m_1"></div>
+			<div id="side_World_div3" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('World/getGameSize')" id="side_World_getGameSize" class="side_bar_row indent_1" data-tags="getgamesize,world,view,screen"><span class="side_bar_row_dot"></span>getGameSize()</a>
 			<a onclick="doc('World/getGameVersion')" id="side_World_getGameVersion" class="side_bar_row indent_1" data-tags="getgameversion,world,api"><span class="side_bar_row_dot"></span>getGameVersion()</a>
 			<a onclick="doc('World/getPlayerMode')" id="side_World_getPlayerMode" class="side_bar_row indent_1" data-tags="getplayermode,world"><span class="side_bar_row_dot"></span>getPlayerMode()</a>
@@ -138,6 +140,8 @@
 			<a onclick="doc('World/evalWebScript')" id="side_World_evalWebScript" class="side_bar_row indent_1" data-tags="evalwebscript,world,nodejs,javascript"><span class="side_bar_row_dot"></span>evalWebScript()</a>
 			<a onclick="doc('World/getTileSize')" id="side_World_getTileSize" class="side_bar_row indent_1" data-tags="gettilesize,world,grid"><span class="side_bar_row_dot"></span>getTileSize()</a>
 			<a onclick="doc('World/kickClient')" id="side_World_kickClient" class="side_bar_row indent_1" data-tags="kickclient,world,ondisconnect"><span class="side_bar_row_dot"></span>kickClient()</a>
+			<a onclick="doc('World/shutdown')" id="side_World_shutdown" class="side_bar_row indent_1" data-tags="shutdown,world,multiplayer,hosting"><span class="side_bar_row_dot"></span>shutdown()</a>
+			<a onclick="doc('World/reboot')" id="side_World_reboot" class="side_bar_row indent_1" data-tags="reboot,world,multiplayer,hosting"><span class="side_bar_row_dot"></span>reboot()</a>
 			<a onclick="doc('World/outputText')" id="side_World_outputText" class="side_bar_row indent_1" data-tags="outputtext,world,display,html,webbox,css"><span class="side_bar_row_dot"></span>outputText()</a>
 			<a onclick="doc('World/playSound')" id="side_World_playSound" class="side_bar_row indent_1" data-tags="playsound,world,audio"><span class="side_bar_row_dot"></span>playSound()</a>
 			<a onclick="doc('World/log')" id="side_World_log" class="side_bar_row indent_1" data-tags="log,world,output,console"><span class="side_bar_row_dot"></span>log()</a>
@@ -315,11 +319,24 @@
 			<a onclick="doc('Sound/soundName')" id="side_Sound_soundName" class="side_bar_row indent_1" data-tags="soundname,sound,audio,music,effect,ogg,mp3,wav"><span class="side_bar_row_dot"></span>soundName</a>
 			<a onclick="doc('Sound/volume')" id="side_Sound_volume" class="side_bar_row indent_1" data-tags="volume,sound"><span class="side_bar_row_dot"></span>volume</a>
 			<a onclick="doc('Sound/loop')" id="side_Sound_loop" class="side_bar_row indent_1" data-tags="loop,sound"><span class="side_bar_row_dot"></span>loop</a>
+			<a onclick="doc('Sound/startTime')" id="side_Sound_startTime" class="side_bar_row indent_1" data-tags="starttime,sound"><span class="side_bar_row_dot"></span>startTime</a>
+			<a onclick="doc('Sound/duration')" id="side_Sound_duration" class="side_bar_row indent_1" data-tags="duration,sound"><span class="side_bar_row_dot"></span>duration</a>
+			<a onclick="doc('Sound/isStopped')" id="side_Sound_isStopped" class="side_bar_row indent_1" data-tags="isstopped,sound"><span class="side_bar_row_dot"></span>isStopped</a>
+			<a onclick="doc('Sound/currentTime')" id="side_Sound_currentTime" class="side_bar_row indent_1" data-tags="currenttime,sound"><span class="side_bar_row_dot"></span>currentTime</a>
 			<div id="side_Sound_div1" class="side_bar_row_divider indent_m_1"></div>
+			<a onclick="doc('Sound/onStarted')" id="side_Sound_onStarted" class="side_bar_row indent_1" data-tags="onstarted,sound,event"><span class="side_bar_row_dot"></span>onStarted()</a>
+			<a onclick="doc('Sound/onEnded')" id="side_Sound_onEnded" class="side_bar_row indent_1" data-tags="onended,sound,event"><span class="side_bar_row_dot"></span>onEnded()</a>
+			<a onclick="doc('Sound/onStopped')" id="side_Sound_onStopped" class="side_bar_row indent_1" data-tags="onstopped,sound,event"><span class="side_bar_row_dot"></span>onStopped()</a>
+			<a onclick="doc('Sound/onResumed')" id="side_Sound_onResumed" class="side_bar_row indent_1" data-tags="onresumed,sound,event"><span class="side_bar_row_dot"></span>onResumed()</a>
+			<div id="side_Sound_div2" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('Sound/setVolume')" id="side_Sound_setVolume" class="side_bar_row indent_1" data-tags="setvolume,sound"><span class="side_bar_row_dot"></span>setVolume()</a>
 			<a onclick="doc('Sound/setLoop')" id="side_Sound_setLoop" class="side_bar_row indent_1" data-tags="setloop,sound"><span class="side_bar_row_dot"></span>setLoop()</a>
 			<a onclick="doc('Sound/stop')" id="side_Sound_stop" class="side_bar_row indent_1" data-tags="stop,sound"><span class="side_bar_row_dot"></span>stop()</a>
+			<a onclick="doc('Sound/resume')" id="side_Sound_resume" class="side_bar_row indent_1" data-tags="resume,sound"><span class="side_bar_row_dot"></span>resume()</a>
+			<a onclick="doc('Sound/fade')" id="side_Sound_fade" class="side_bar_row indent_1" data-tags="fade,sound"><span class="side_bar_row_dot"></span>fade()</a>
 			<a onclick="doc('Sound/getRawData')" id="side_Sound_getRawData" class="side_bar_row indent_1" data-tags="getrawdata,sound,file"><span class="side_bar_row_dot"></span>getRawData()</a>
+			<a onclick="doc('Sound/getContext')" id="side_Sound_getContext" class="side_bar_row indent_1" data-tags="getcontext,sound"><span class="side_bar_row_dot"></span>getContext()</a>
+			<a onclick="doc('Sound/getBuffer')" id="side_Sound_getBuffer" class="side_bar_row indent_1" data-tags="getbuffer,sound"><span class="side_bar_row_dot"></span>getBuffer()</a>
 			<a onclick="doc('Interface')" id="side_Interface" class="side_bar_row" data-tags="interface,gui"><span id="plus_Interface" class="plus"></span><span class="side_bar_row_dot hidden"></span>Interface</a>
 			<a onclick="doc('Interface/xPos')" id="side_Interface_xPos" class="side_bar_row indent_1" data-tags="xpos,interface"><span class="side_bar_row_dot"></span>xPos</a>
 			<a onclick="doc('Interface/yPos')" id="side_Interface_yPos" class="side_bar_row indent_1" data-tags="ypos,interface"><span class="side_bar_row_dot"></span>yPos</a>
@@ -403,6 +420,9 @@
 			<a onclick="doc('Client/removeInterfaceElement')" id="side_Client_removeInterfaceElement" class="side_bar_row indent_1" data-tags="removeinterfaceelement,client,gui,screen"><span class="side_bar_row_dot"></span>removeInterfaceElement()</a>
 			<a onclick="doc('Client/getInterfaceElement')" id="side_Client_getInterfaceElement" class="side_bar_row indent_1" data-tags="getinterfaceelement,client,gui,screen"><span class="side_bar_row_dot"></span>getInterfaceElement()</a>
 			<a onclick="doc('Client/getInterfaceElements')" id="side_Client_getInterfaceElements" class="side_bar_row indent_1" data-tags="getinterfaceelements,client,gui,screen"><span class="side_bar_row_dot"></span>getInterfaceElements()</a>
+			<a onclick="doc('Client/getInterfaceElementsFromScreen')" id="side_Client_getInterfaceElementsFromScreen" class="side_bar_row indent_1" data-tags="getinterfaceelementsfromscreen,client,gui,screen"><span class="side_bar_row_dot"></span>getInterfaceElementsFromScreen()</a>
+			<a onclick="doc('Client/getInterfaceNames')" id="side_Client_getInterfaceNames" class="side_bar_row indent_1" data-tags="getinterfacenames,client,gui,screen"><span class="side_bar_row_dot"></span>getInterfaceNames()</a>
+			<a onclick="doc('Client/getInterfaceCanvas')" id="side_Client_getInterfaceCanvas" class="side_bar_row indent_1" data-tags="getinterfacecanvas,client,html"><span class="side_bar_row_dot"></span>getInterfaceCanvas()</a>
 			<a onclick="doc('Client/showInterface')" id="side_Client_showInterface" class="side_bar_row indent_1" data-tags="showinterface,client,gui,screen"><span class="side_bar_row_dot"></span>showInterface()</a>
 			<a onclick="doc('Client/hideInterface')" id="side_Client_hideInterface" class="side_bar_row indent_1" data-tags="hideinterface,client,gui,screen"><span class="side_bar_row_dot"></span>hideInterface()</a>
 			<a onclick="doc('Client/checkInterfaceShown')" id="side_Client_checkInterfaceShown" class="side_bar_row indent_1" data-tags="checkinterfaceshown,client"><span class="side_bar_row_dot"></span>checkInterfaceShown()</a>
@@ -428,6 +448,7 @@
 			<a onclick="doc('Client/getWindowSize')" id="side_Client_getWindowSize" class="side_bar_row indent_1" data-tags="getwindowsize,client,screen"><span class="side_bar_row_dot"></span>getWindowSize()</a>
 			<a onclick="doc('Client/setScreenSize')" id="side_Client_setScreenSize" class="side_bar_row indent_1" data-tags="setscreensize,client"><span class="side_bar_row_dot"></span>setScreenSize()</a>
 			<a onclick="doc('Client/getScreenSize')" id="side_Client_getScreenSize" class="side_bar_row indent_1" data-tags="getscreensize,client"><span class="side_bar_row_dot"></span>getScreenSize()</a>
+			<a onclick="doc('Client/getScreenScale')" id="side_Client_getScreenScale" class="side_bar_row indent_1" data-tags="getscreenscale,client"><span class="side_bar_row_dot"></span>getScreenScale()</a>
 			<a onclick="doc('Client/addWebStyle')" id="side_Client_addWebStyle" class="side_bar_row indent_1" data-tags="addwebstyle,client,css,interface,gui"><span class="side_bar_row_dot"></span>addWebStyle()</a>
 			<a onclick="doc('Client/removeWebStyle')" id="side_Client_removeWebStyle" class="side_bar_row indent_1" data-tags="removewebstyle,client,css,interface,gui"><span class="side_bar_row_dot"></span>removeWebStyle()</a>
 			<a onclick="doc('Client/addCustomFont')" id="side_Client_addCustomFont" class="side_bar_row indent_1" data-tags="addcustomfont,client,text,style"><span class="side_bar_row_dot"></span>addCustomFont()</a>
@@ -578,6 +599,7 @@
 			<a onclick="doc('Util/gzUnzip')" id="side_Util_gzUnzip" class="side_bar_row indent_1" data-tags="gzunzip,util,decompress"><span class="side_bar_row_dot"></span>gzUnzip()</a>
 			<a onclick="doc('Util/getWebStyle')" id="side_Util_getWebStyle" class="side_bar_row indent_1" data-tags="getwebstyle,util,css"><span class="side_bar_row_dot"></span>getWebStyle()</a>
 			<a onclick="doc('Util/getObjectKeys')" id="side_Util_getObjectKeys" class="side_bar_row indent_1" data-tags="getobjectkeys,util,array"><span class="side_bar_row_dot"></span>getObjectKeys()</a>
+			<a onclick="doc('Util/getObjectValues')" id="side_Util_getObjectValues" class="side_bar_row indent_1" data-tags="getobjectvalues,util,array"><span class="side_bar_row_dot"></span>getObjectValues()</a>
 			<a onclick="doc('Util/copyObject')" id="side_Util_copyObject" class="side_bar_row indent_1" data-tags="copyobject,util,duplicate,clone"><span class="side_bar_row_dot"></span>copyObject()</a>
 			<a onclick="doc('Util/getSaveObject')" id="side_Util_getSaveObject" class="side_bar_row indent_1" data-tags="getsaveobject,util"><span class="side_bar_row_dot"></span>getSaveObject()</a>
 			<a onclick="doc('Util/handleCallback')" id="side_Util_handleCallback" class="side_bar_row indent_1" data-tags="handlecallback,util,function"><span class="side_bar_row_dot"></span>handleCallback()</a>
@@ -586,6 +608,8 @@
 			<a onclick="doc('Event/interruptThread')" id="side_Event_interruptThread" class="side_bar_row indent_1" data-tags="interruptthread,event"><span class="side_bar_row_dot"></span>interruptThread()</a>
 			<a onclick="doc('Event/addTicker')" id="side_Event_addTicker" class="side_bar_row indent_1" data-tags="addticker,event,actionloop,gameloop"><span class="side_bar_row_dot"></span>addTicker()</a>
 			<a onclick="doc('Event/removeTicker')" id="side_Event_removeTicker" class="side_bar_row indent_1" data-tags="removeticker,event,actionloop,gameloop"><span class="side_bar_row_dot"></span>removeTicker()</a>
+			<a onclick="doc('Event/getTickers')" id="side_Event_getTickers" class="side_bar_row indent_1" data-tags="gettickers,event,actionloop,gameloop"><span class="side_bar_row_dot"></span>getTickers()</a>
+			<a onclick="doc('Event/toggleTicker')" id="side_Event_toggleTicker" class="side_bar_row indent_1" data-tags="toggleticker,event,actionloop,gameloop"><span class="side_bar_row_dot"></span>toggleTicker()</a>
 			<a onclick="doc('File')" id="side_File" class="side_bar_row" data-tags="file,save"><span id="plus_File" class="plus"></span><span class="side_bar_row_dot hidden"></span>File</a>
 			<a onclick="doc('File/writeText')" id="side_File_writeText" class="side_bar_row indent_1" data-tags="writetext,file,save"><span class="side_bar_row_dot"></span>writeText()</a>
 			<a onclick="doc('File/readText')" id="side_File_readText" class="side_bar_row indent_1" data-tags="readtext,file,load"><span class="side_bar_row_dot"></span>readText()</a>
@@ -618,6 +642,7 @@
 			<a onclick="doc('Map/void')" id="side_Map_void" class="side_bar_row indent_1" data-tags="void,map,edge,static"><span class="side_bar_row_dot"></span>void</a>
 			<a onclick="doc('Map/dirs')" id="side_Map_dirs" class="side_bar_row indent_1" data-tags="dirs,map,static"><span class="side_bar_row_dot"></span>dirs</a>
 			<div id="side_Map_div1" class="side_bar_row_divider indent_m_1"></div>
+			<a onclick="doc('Map/getMaps')" id="side_Map_getMaps" class="side_bar_row indent_1" data-tags="getmaps,map"><span class="side_bar_row_dot"></span>getMaps()</a>
 			<a onclick="doc('Map/getClients')" id="side_Map_getClients" class="side_bar_row indent_1" data-tags="getclients,map"><span class="side_bar_row_dot"></span>getClients()</a>
 			<a onclick="doc('Map/getRange')" id="side_Map_getRange" class="side_bar_row indent_1" data-tags="getrange,map"><span class="side_bar_row_dot"></span>getRange()</a>
 			<a onclick="doc('Map/getRangeByType')" id="side_Map_getRangeByType" class="side_bar_row indent_1" data-tags="getrangebytype,map"><span class="side_bar_row_dot"></span>getRangeByType()</a>
@@ -636,6 +661,7 @@
 			<a onclick="doc('Map/getDiobsByPos')" id="side_Map_getDiobsByPos" class="side_bar_row indent_1" data-tags="getdiobsbypos,map"><span class="side_bar_row_dot"></span>getDiobsByPos()</a>
 			<a onclick="doc('Map/getDiobsByRegion')" id="side_Map_getDiobsByRegion" class="side_bar_row indent_1" data-tags="getdiobsbyregion,map,contents"><span class="side_bar_row_dot"></span>getDiobsByRegion()</a>
 			<a onclick="doc('Map/getDiobsByTag')" id="side_Map_getDiobsByTag" class="side_bar_row indent_1" data-tags="getdiobsbytag,map"><span class="side_bar_row_dot"></span>getDiobsByTag()</a>
+			<a onclick="doc('Map/getScreenDiobs')" id="side_Map_getScreenDiobs" class="side_bar_row indent_1" data-tags="getscreendiobs,map,screen,client"><span class="side_bar_row_dot"></span>getScreenDiobs()</a>
 			<a onclick="doc('Map/getTiles')" id="side_Map_getTiles" class="side_bar_row indent_1" data-tags="gettiles,map"><span class="side_bar_row_dot"></span>getTiles()</a>
 			<a onclick="doc('Map/getTilesByRange')" id="side_Map_getTilesByRange" class="side_bar_row indent_1" data-tags="gettilesbyrange,map"><span class="side_bar_row_dot"></span>getTilesByRange()</a>
 			<a onclick="doc('Map/setLoc')" id="side_Map_setLoc" class="side_bar_row indent_1" data-tags="setloc,map,tile"><span class="side_bar_row_dot"></span>setLoc()</a>
@@ -650,6 +676,7 @@
 			<a onclick="doc('Map/createMap')" id="side_Map_createMap" class="side_bar_row indent_1" data-tags="createmap,map"><span class="side_bar_row_dot"></span>createMap()</a>
 			<a onclick="doc('Map/cloneMap')" id="side_Map_cloneMap" class="side_bar_row indent_1" data-tags="clonemap,map,copy,duplicate"><span class="side_bar_row_dot"></span>cloneMap()</a>
 			<a onclick="doc('Map/deleteMap')" id="side_Map_deleteMap" class="side_bar_row indent_1" data-tags="deletemap,map"><span class="side_bar_row_dot"></span>deleteMap()</a>
+			<a onclick="doc('Map/setMapSize')" id="side_Map_setMapSize" class="side_bar_row indent_1" data-tags="setmapsize,map,width,height"><span class="side_bar_row_dot"></span>setMapSize()</a>
 			<a onclick="doc('Map/getMapSize')" id="side_Map_getMapSize" class="side_bar_row indent_1" data-tags="getmapsize,map,width,height"><span class="side_bar_row_dot"></span>getMapSize()</a>
 			<a onclick="doc('Map/sendDiob')" id="side_Map_sendDiob" class="side_bar_row indent_1" data-tags="senddiob,map,client"><span class="side_bar_row_dot"></span>sendDiob()</a>
 			<a onclick="doc('Macro')" id="side_Macro" class="side_bar_row" data-tags="macro,commands"><span id="plus_Macro" class="plus"></span><span class="side_bar_row_dot hidden"></span>Macro</a>
