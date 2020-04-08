@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Client:onConnect</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,13 +14,29 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Client:onConnect</div>
+				<div id="doc_usage">onConnect(<span class="string">pPar</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pPar</span><span class="parameters_par_desc">A <a class="string">string</a> containing URL parameters sent when the <a onclick="doc('Client')" class="keyword_2">Client</a> connects.<br />
+						Loading a game URL such as "http://127.0.0.1:1234/?test" would send "test" into onNew as pPar on both the server-side and client-side.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when a <a onclick="doc('Client')" class="keyword_2">Client</a> has successfully connected to the world; if solo world, it is called when the main user loads.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=3>
+Client
+	onConnect(pPar)
+		// send an alert with the parameters included
+		alert(pPar)
+</code>
 			
-			<b>onConnect(pPar)</b>
-			<div class="resources_page_documentation_sub_box">
-			pPar: URL parameters sent when the client connected; loading a game URL such as "http://127.0.0.1:1234/?test" would send "test" into onNew as pPar on both the server and client-side<br />
-			called: when a client has successfully connected to the world; if solo world, called when the main user loads<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>

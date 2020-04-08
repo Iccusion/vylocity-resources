@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Client:onKeyDown</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,14 +14,33 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Client:onKeyDown</div>
+				<div id="doc_usage">onKeyDown(<span class="string">pKey</span>, <span class="keyword">pEvent</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pKey</span><span class="parameters_par_desc">A <a onclick="doc('general/string')" class="string">string</a> containing the code for the pressed key.</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pEvent</span><span class="parameters_par_desc"><b>CLIENT ONLY</b> The JS KeyboardEvent <a onclick="doc('general/object')">object</a>.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when a key is pressed down.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=3>
+Client
+	onKeyDown(pKey, pEvent)
+		// if the client presses the 'F' key
+		if(pKey == 'f')
+			// alert the client
+			alert('The client pressed the F key!')
+</code>
 			
-			<b>onKeyDown(pKey, pEvent)</b>
-			<div class="resources_page_documentation_sub_box">
-			pKey: code for the pressed key<br />
-			pEvent: CLIENT ONLY; the JS KeyboardEvent object<br />
-			called: called when a key is pressed down<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Client:onMouseWheelScrollUp</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,15 +14,34 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Client:onMouseWheelScrollUp</div>
+				<div id="doc_usage">onMouseWheelScrollUp(<span class="keyword">pDiob</span>, <span class="num">pX</span>, <span class="num">pY</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pDiob</span><span class="parameters_par_desc">The <a onclick="doc('Diob')" class="keyword_2">Diob</a> under the <a onclick="doc('Client')" class="keyword_2">Client</a>'s mouse, if there is one.</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pX</span><span class="parameters_par_desc">The mouse's position on the x-axis of the <a onclick="doc('Client')" class="keyword_2">Client</a>'s screen.</span>
+					</div>
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pY</span><span class="parameters_par_desc">The mouse's position on the y-axis of the <a onclick="doc('Client')" class="keyword_2">Client</a>'s screen.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when the <a onclick="doc('Client')" class="keyword_2">Client</a>'s mouse wheel scroll is scrolled upward.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=3>
+Client
+	onMouseWheelScrollUp(pDiob, pX, pY)
+		// log information from the event function
+		World.log('The mouse wheel has scrolled up at the screen position: ' + pX + ', ' + pY)
+</code>
 			
-			<b>onMouseWheelScrollUp(pDiob, pX, pY)</b>
-			<div class="resources_page_documentation_sub_box">
-			pDiob: object under the mouse; if any<br />
-			pX: the x position on the screen of the mouse<br />
-			pY: the y position on the screen of the mouse<br />
-			called: called when the mouse wheel scroll is scrolled upward<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>
