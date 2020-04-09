@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Interface/onFocus</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,13 +14,32 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Interface/onFocus</div>
+				<div id="doc_usage">onFocus(<span class="keyword">pClient</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pClient</span><span class="parameters_par_desc">The <a onclick="doc('Client')" class="keyword_2">Client</a> focusing on this <a onclick="doc('Interface')" class="keyword_2">Interface</a> object.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when a client gains focus on an <a onclick="doc('Interface')" class="keyword_2">Interface</a> object.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=8>
+// define an interface object
+Interface
+	inputBox
+		interfaceType = 'CommandInput'
+		
+		// send an alert to the client
+		onFocus()
+			alert('the client has gained focus on this input box.')
+</code>
 			
-			<b>onFocus(pClient)</b>
-			<div class="resources_page_documentation_sub_box">
-			pClient: client focusing on this interface object<br />
-			called: called when a client gains focus on this object<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>

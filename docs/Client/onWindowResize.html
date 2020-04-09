@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - Client/onWindowResize</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,15 +14,31 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">Client/onWindowResize</div>
+				<div id="doc_usage">onWindowResize(<span class="num">pWidth</span>, <span class="num">pHeight</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pWidth</span><span class="parameters_par_desc">The width of the <a onclick="doc('Client')" class="keyword_2">Client</a>'s window.</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pHeight</span><span class="parameters_par_desc">The height of the <a onclick="doc('Client')" class="keyword_2">Client</a>'s window.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event is called when the <a onclick="doc('Client')" class="keyword_2">Client</a>'s window is resized.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=3>
+Client
+	onWindowResize(pWidth, pHeight)
+		// alert the client of the new window size
+		alert('The client has resized the window to: ' + pWidth + ', ' + pHeight)
+</code>
 			
-			<b>onWindowResize(pWidth, pHeight)</b>
-			<div class="resources_page_documentation_sub_box">
-			CLIENT ONLY<br />
-			pWidth: width of the window<br />
-			pHeight: height of the window<br />
-			called: when the client window is resized<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>
