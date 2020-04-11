@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - World/onDel</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,13 +14,36 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">World/onDel</div>
+				<div id="doc_usage">onDel(<span class="keyword">pCallback</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pCallback</span><span class="parameters_par_desc"><b>(SERVER ONLY)</b> Reference to a callback function that you will need to call manually if you return true, in order to finish the game closing.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when the game is closing and being deleted.<br /><br />
+					Only synchronous code will run by default, to run asynchronous code <b>(SERVER ONLY)</b> this function will need to <span class="keyword_2">return true</span>, then you will need to manually call pCallback when all of your code is finished.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=10>
+function exampleFunc(pFunc)
+	var a = 0
+	thread(1000)
+		a ++
+		if(a >= 10)
+			pFunc() // game closes
+
+World
+	onDel(pCallback)
+		exampleFunc(pCallback)
+		return true
+</code>
 			
-			<b>onDel(pCallback)</b>
-			<div class="resources_page_documentation_sub_box">
-			pCallback: reference to a callback function that you will need to call manually if you return true, in order to finish the game closing<br />
-			called: when the game is closing and being deleted; only synchronous code will run by default, to run asynchronous code (SERVER ONLY) this function will need to return true then you will need to manually call pCallback when all of your code is finished<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>
