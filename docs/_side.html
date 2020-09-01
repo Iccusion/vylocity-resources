@@ -124,6 +124,7 @@
 			<a onclick="doc('World/onError')" id="side_World_onError" class="side_bar_row indent_1" data-tags="onerror,world,eventfunction"><span class="side_bar_row_dot"></span>onError()</a>
 			<a onclick="doc('World/onMessage')" id="side_World_onMessage" class="side_bar_row indent_1" data-tags="onmessage,world,eventfunction,multiplayer,hosting,server"><span class="side_bar_row_dot"></span>onMessage()</a>
 			<a onclick="doc('World/onPost')" id="side_World_onPost" class="side_bar_row indent_1" data-tags="onpost,world,eventfunction,server,multiplayer,hosting"><span class="side_bar_row_dot"></span>onPost()</a>
+			<a onclick="doc('World/onMapLoaded')" id="side_World_onMapLoaded" class="side_bar_row indent_1" data-tags="onmaploaded,world,eventfunction"><span class="side_bar_row_dot"></span>onMapLoaded()</a>
 			<div id="side_World_div3" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('World/getGameSize')" id="side_World_getGameSize" class="side_bar_row indent_1" data-tags="getgamesize,world,view,screen"><span class="side_bar_row_dot"></span>getGameSize()</a>
 			<a onclick="doc('World/getGameVersion')" id="side_World_getGameVersion" class="side_bar_row indent_1" data-tags="getgameversion,world,api"><span class="side_bar_row_dot"></span>getGameVersion()</a>
@@ -219,8 +220,6 @@
 			<a onclick="doc('Diob/onUncrossed')" id="side_Diob_onUncrossed" class="side_bar_row indent_1" data-tags="onuncrossed,diob,eventfunction,movement,overlap"><span class="side_bar_row_dot"></span>onUncrossed()</a>
 			<a onclick="doc('Diob/onCrossedRelocated')" id="side_Diob_onCrossedRelocated" class="side_bar_row indent_1" data-tags="oncrossedrelocated,diob,eventfunction,movement,overlap"><span class="side_bar_row_dot"></span>onCrossedRelocated()</a>
 			<a onclick="doc('Diob/onBumped')" id="side_Diob_onBumped" class="side_bar_row indent_1" data-tags="onbumped,diob,eventfunction,movement,density"><span class="side_bar_row_dot"></span>onBumped()</a>
-			<a onclick="doc('Diob/onEntered')" id="side_Diob_onEntered" class="side_bar_row indent_1" data-tags="onentered,diob,eventfunction,movement,contents"><span class="side_bar_row_dot"></span>onEntered()</a>
-			<a onclick="doc('Diob/onExited')" id="side_Diob_onExited" class="side_bar_row indent_1" data-tags="onexited,diob,eventfunction,movement,contents"><span class="side_bar_row_dot"></span>onExited()</a>
 			<a onclick="doc('Diob/onMouseClick')" id="side_Diob_onMouseClick" class="side_bar_row indent_1" data-tags="onmouseclick,diob,eventfunction,interaction"><span class="side_bar_row_dot"></span>onMouseClick()</a>
 			<a onclick="doc('Diob/onMouseDblClick')" id="side_Diob_onMouseDblClick" class="side_bar_row indent_1" data-tags="onmousedblclick,diob,eventfunction,interaction"><span class="side_bar_row_dot"></span>onMouseDblClick()</a>
 			<a onclick="doc('Diob/onMouseEnter')" id="side_Diob_onMouseEnter" class="side_bar_row indent_1" data-tags="onmouseenter,diob,eventfunction,interaction"><span class="side_bar_row_dot"></span>onMouseEnter()</a>
@@ -284,6 +283,7 @@
 			<a onclick="doc('Diob/getFilters')" id="side_Diob_getFilters" class="side_bar_row indent_1" data-tags="getfilters,diob,effect"><span class="side_bar_row_dot"></span>getFilters()</a>
 			<a onclick="doc('Diob/setSpriteData')" id="side_Diob_setSpriteData" class="side_bar_row indent_1" data-tags="setspritedata,diob,icon"><span class="side_bar_row_dot"></span>setSpriteData()</a>
 			<a onclick="doc('Diob/getSpriteData')" id="side_Diob_getSpriteData" class="side_bar_row indent_1" data-tags="getspritedata,diob,icon"><span class="side_bar_row_dot"></span>getSpriteData()</a>
+			<a onclick="doc('Diob/setPattern')" id="side_Diob_setPattern" class="side_bar_row indent_1" data-tags="setpattern,diob,icon"><span class="side_bar_row_dot"></span>setPattern()</a>
 			<a onclick="doc('Diob/sendPacket')" id="side_Diob_sendPacket" class="side_bar_row indent_1" data-tags="sendpacket,diob,multiplayer,server,client,online"><span class="side_bar_row_dot"></span>sendPacket()</a>
 			<a onclick="doc('Movable')" id="side_Movable" class="side_bar_row" data-tags="movable"><span id="plus_Movable" class="plus"></span><span class="side_bar_row_dot hidden"></span>Movable</a>
 			<a onclick="doc('Movable/dir')" id="side_Movable_dir" class="side_bar_row indent_1" data-tags="dir,movable,move,state"><span class="side_bar_row_dot"></span>dir</a>
@@ -297,6 +297,7 @@
 			<a onclick="doc('Movable/onMoveEnd')" id="side_Movable_onMoveEnd" class="side_bar_row indent_1" data-tags="onmoveend,movable,eventfunction,step,walk"><span class="side_bar_row_dot"></span>onMoveEnd()</a>
 			<a onclick="doc('Movable/onRelocated')" id="side_Movable_onRelocated" class="side_bar_row indent_1" data-tags="onrelocated,movable,eventfunction,movement,setpos"><span class="side_bar_row_dot"></span>onRelocated()</a>
 			<a onclick="doc('Movable/onScreenMoved')" id="side_Movable_onScreenMoved" class="side_bar_row indent_1" data-tags="onscreenmoved,movable,eventfunction,render"><span class="side_bar_row_dot"></span>onScreenMoved()</a>
+			<a onclick="doc('Movable/onDirUpdate')" id="side_Movable_onDirUpdate" class="side_bar_row indent_1" data-tags="ondirupdate,movable,eventfunction"><span class="side_bar_row_dot"></span>onDirUpdate()</a>
 			<div id="side_Movable_div2" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('Movable/step')" id="side_Movable_step" class="side_bar_row indent_1" data-tags="step,movable,movement"><span class="side_bar_row_dot"></span>step()</a>
 			<a onclick="doc('Movable/stepPos')" id="side_Movable_stepPos" class="side_bar_row indent_1" data-tags="steppos,movable,movement"><span class="side_bar_row_dot"></span>stepPos()</a>
@@ -309,7 +310,11 @@
 			<a onclick="doc('Tile')" id="side_Tile" class="side_bar_row" data-tags="tile"><span id="plus_Tile" class="plus"></span><span class="side_bar_row_dot hidden"></span>Tile</a>
 			<a onclick="doc('Tile/onEnter')" id="side_Tile_onEnter" class="side_bar_row indent_1" data-tags="onenter,tile,eventfunction,movement"><span class="side_bar_row_dot"></span>onEnter()</a>
 			<a onclick="doc('Tile/onExit')" id="side_Tile_onExit" class="side_bar_row indent_1" data-tags="onexit,tile,eventfunction,movement"><span class="side_bar_row_dot"></span>onExit()</a>
+			<a onclick="doc('Tile/onEntered')" id="side_Tile_onEntered" class="side_bar_row indent_1" data-tags="onentered,tile,eventfunction,movement,contents"><span class="side_bar_row_dot"></span>onEntered()</a>
+			<a onclick="doc('Tile/onExited')" id="side_Tile_onExited" class="side_bar_row indent_1" data-tags="onexited,tile,eventfunction,movement,contents"><span class="side_bar_row_dot"></span>onExited()</a>
 			<a onclick="doc('Region')" id="side_Region" class="side_bar_row" data-tags="region"><span id="plus_Region" class="plus"></span><span class="side_bar_row_dot hidden"></span>Region</a>
+			<a onclick="doc('Region/onEntered')" id="side_Region_onEntered" class="side_bar_row indent_1" data-tags="onentered,region,eventfunction,movement,contents"><span class="side_bar_row_dot"></span>onEntered()</a>
+			<a onclick="doc('Region/onExited')" id="side_Region_onExited" class="side_bar_row indent_1" data-tags="onexited,region,eventfunction,movement,contents"><span class="side_bar_row_dot"></span>onExited()</a>
 			<a onclick="doc('Mob')" id="side_Mob" class="side_bar_row" data-tags="mob"><span id="plus_Mob" class="plus"></span><span class="side_bar_row_dot hidden"></span>Mob</a>
 			<a onclick="doc('Mob/client')" id="side_Mob_client" class="side_bar_row indent_1" data-tags="client,mob"><span class="side_bar_row_dot"></span>client</a>
 			<div id="side_Mob_div1" class="side_bar_row_divider indent_m_1"></div>
@@ -363,6 +368,7 @@
 			<a onclick="doc('Interface/setPos')" id="side_Interface_setPos" class="side_bar_row indent_1" data-tags="setpos,interface"><span class="side_bar_row_dot"></span>setPos()</a>
 			<a onclick="doc('Interface/getPos')" id="side_Interface_getPos" class="side_bar_row indent_1" data-tags="getpos,interface"><span class="side_bar_row_dot"></span>getPos()</a>
 			<a onclick="doc('Interface/getInterfaceName')" id="side_Interface_getInterfaceName" class="side_bar_row indent_1" data-tags="getinterfacename,interface"><span class="side_bar_row_dot"></span>getInterfaceName()</a>
+			<a onclick="doc('Interface/getDOM')" id="side_Interface_getDOM" class="side_bar_row indent_1" data-tags="getdom,interface"><span class="side_bar_row_dot"></span>getDOM()</a>
 			<a onclick="doc('Client')" id="side_Client" class="side_bar_row" data-tags="client"><span id="plus_Client" class="plus"></span><span class="side_bar_row_dot hidden"></span>Client</a>
 			<a onclick="doc('Client/mob')" id="side_Client_mob" class="side_bar_row indent_1" data-tags="mob,client,player"><span class="side_bar_row_dot"></span>mob</a>
 			<a onclick="doc('Client/address')" id="side_Client_address" class="side_bar_row indent_1" data-tags="address,client,ip"><span class="side_bar_row_dot"></span>address</a>
@@ -379,7 +385,7 @@
 			<a onclick="doc('Client/webBackground')" id="side_Client_webBackground" class="side_bar_row indent_1" data-tags="webbackground,client,html,css,style"><span class="side_bar_row_dot"></span>webBackground</a>
 			<a onclick="doc('Client/color')" id="side_Client_color" class="side_bar_row indent_1" data-tags="color,client,screen"><span class="side_bar_row_dot"></span>color</a>
 			<a onclick="doc('Client/mapView')" id="side_Client_mapView" class="side_bar_row indent_1" data-tags="mapview,client,screen"><span class="side_bar_row_dot"></span>mapView</a>
-			<a onclick="doc('Client/screenView')" id="side_Client_screenView" class="side_bar_row indent_1" data-tags="screenview,client,scale,resize"><span class="side_bar_row_dot"></span>screenView</a>
+			<a onclick="doc('Client/screenView')" id="side_Client_screenView" class="side_bar_row indent_1" data-tags="screenview,client,scale,resize,scaleto,scalenearest"><span class="side_bar_row_dot"></span>screenView</a>
 			<a onclick="doc('Client/preventServerInterfaces')" id="side_Client_preventServerInterfaces" class="side_bar_row indent_1" data-tags="preventserverinterfaces,client,screen,gui"><span class="side_bar_row_dot"></span>preventServerInterfaces</a>
 			<div id="side_Client_div1" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('Client/onNew')" id="side_Client_onNew" class="side_bar_row indent_1" data-tags="onnew,client,eventfunction"><span class="side_bar_row_dot"></span>onNew()</a>
@@ -408,6 +414,9 @@
 			<a onclick="doc('Client/endMove')" id="side_Client_endMove" class="side_bar_row indent_1" data-tags="endmove,client,walk"><span class="side_bar_row_dot"></span>endMove()</a>
 			<div id="side_Client_div3" class="side_bar_row_divider indent_m_1"></div>
 			<a onclick="doc('Client/setMouseCursor')" id="side_Client_setMouseCursor" class="side_bar_row indent_1" data-tags="setmousecursor,client"><span class="side_bar_row_dot"></span>setMouseCursor()</a>
+			<a onclick="doc('Client/getMouseCursor')" id="side_Client_getMouseCursor" class="side_bar_row indent_1" data-tags="getmousecursor,client"><span class="side_bar_row_dot"></span>getMouseCursor()</a>
+			<a onclick="doc('Client/getMousePos')" id="side_Client_getMousePos" class="side_bar_row indent_1" data-tags="getmousepos,client"><span class="side_bar_row_dot"></span>getMousePos()</a>
+			<a onclick="doc('Client/getFPS')" id="side_Client_getFPS" class="side_bar_row indent_1" data-tags="getfps,client"><span class="side_bar_row_dot"></span>getFPS()</a>
 			<a onclick="doc('Client/setMaxFPS')" id="side_Client_setMaxFPS" class="side_bar_row indent_1" data-tags="setmaxfps,client,render"><span class="side_bar_row_dot"></span>setMaxFPS()</a>
 			<a onclick="doc('Client/setPlayerMob')" id="side_Client_setPlayerMob" class="side_bar_row indent_1" data-tags="setplayermob,client,vieweye,player"><span class="side_bar_row_dot"></span>setPlayerMob()</a>
 			<a onclick="doc('Client/getAccountName')" id="side_Client_getAccountName" class="side_bar_row indent_1" data-tags="getaccountname,client,api"><span class="side_bar_row_dot"></span>getAccountName()</a>

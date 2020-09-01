@@ -17,7 +17,7 @@
 			
 			<b>getOverScreen(pType)</b>
 			<div class="resources_page_documentation_sub_box">
-			pType: type of data to get; 'url' or 'pixels'<br />
+			pType: type of data to get; 'url', 'pixels', 'canvas', or 'sprite'<br />
 			called: grabs an object with the screen x offset, y offset, width, height, settings, and either an array of pixel data or a data url depending on pType (data returned client-side only). The data can then be changed and used elsewhere or drawn onto another screen. To read the width and height you could use object.width and object.height, where object is the object returned by the function. The object data array is as follows: object.data[0] is the red value (0-255) of the pixel at 0,0, object.data[1] is the green value (0-255) of the pixel at 0,0, object.data[2] is the blue value (0-255) of the pixel at 0,0, and object.data[3] is the alpha value (0-255) of the pixel at 0,0. Then object.data[4], object.data[5], object.data[6], and object.data[7] are the respective values for the pixel at 1,0. This trend continues through the whole array for every pixel.  object ex: {'x': 0, 'y': 0, 'width': 100, 'height': 100, 'data': ''}<br />
 			</div>
 			

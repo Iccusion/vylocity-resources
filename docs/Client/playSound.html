@@ -15,9 +15,11 @@
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
 			
-			<b>playSound(pSound)</b>
+			<b>playSound(pSound, pStart, pDuration)</b>
 			<div class="resources_page_documentation_sub_box">
 			pSound: either a string with the name of a sound file, or a string containing the path of a Sound object, or an actual Sound object, or a basic object with the proper information; ex ( {'soundName': 'name', 'volume': 50} )<br />
+			pStart: optional; time to start playing the sound at<br />
+			pDuration: optional; how long to play the sound for<br />
 			called: plays a sound to this client; returns the Sound object<br />
 			</div>
 			

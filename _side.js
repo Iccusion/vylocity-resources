@@ -7,6 +7,8 @@ window.onload = function() {
 		var t = tags[i];
 		t.onclick = clickPlusMinus;
 	}
+	var search = document.getElementById('side_bar_search_input');
+	if (search) search.focus();
 	parent.postMessage('side_load');
 };
 

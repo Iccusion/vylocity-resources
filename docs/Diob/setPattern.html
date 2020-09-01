@@ -15,15 +15,14 @@
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
 			
-			<b>color</b>: hex, rgb, rgba, color matrix value, or a tint object; applies color filter to diob; ex ( '#000000' ); ex ( 'rgb(10, 20, 30)' ); ex ( {'tint': 0x444444} )<br />
+			<b>setPattern(pX, pY, pWidth, pHeight)</b>
 			<div class="resources_page_documentation_sub_box">
-				ex (<br />
-				[-1, 0,  0, 0, 1,<br />
-				  0, -1, 0, 0, 1,<br />
-				  0, 0, -1, 0, 1,<br />
-				  0, 0,  0, 1, 0,<br />
-				]<br />
-				)<br />
+			CLIENT ONLY<br />
+			pX: default 0; position where the pattern starts on the x-axis<br />
+			pY: default 0; position where the pattern starts on the y-axis<br />
+			pWidth: optional; width of the pattern<br />
+			pHeight: optional; height of the pattern<br />
+			called: turns this diob's sprite into a repeating pattern; call with no arguments to return to a normal sprite<br />
 			</div>
 			
 			</div>
