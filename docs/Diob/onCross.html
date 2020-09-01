@@ -15,9 +15,10 @@
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
 			
-			<b>onCross(pMovable)</b>
+			<b>onCross(pMovable, pInit)</b>
 			<div class="resources_page_documentation_sub_box">
 			pMovable: movable that is attempting to cross with this diob<br />
+			pInit: if set, pMovable initiated the event<br />
 			called: when pMovable attempts to cross this diob resulting in overlapping bounding boxes; this function must return 'true' in order for pMovable to cross; this event is called for both diobs if they are both movable; tiles do not have this event<br />
 			</div>
 			

@@ -15,10 +15,11 @@
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
 			
-			<b>getDist(pA, pB)</b>
+			<b>getDist(pA, pB, pEdge)</b>
 			<div class="resources_page_documentation_sub_box">
 			pA: Diob reference or object containing location and size information; ex {'xPos': 1, 'yPos': 1, 'mapName': 'map', 'width': 32, 'height': 32}<br />
 			pB: Diob reference or object containing location and size information; ex {'xPos': 1, 'yPos': 1, 'mapName': 'map', 'width': 32, 'height': 32}<br />
+			pEdge: optional; if set, the edges of the diobs will be used instead of the center<br />
 			called: returns number of pixels between the center of pA and the center of pB; you can change the origin by passing custom objects and changing the width and height by double of the amount to offset<br />
 			</div>
 			

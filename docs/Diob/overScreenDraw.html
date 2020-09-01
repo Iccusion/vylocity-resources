@@ -34,6 +34,7 @@
 						'clipY': optional; y value inside of the image to start clipping<br />
 						'clipW': optional; width of the area to clip<br />
 						'clipH': optional; height of the area to clip<br />
+						'anchor': optional; the anchor to use for angle; ex ('x': 0.5, 'y': 0.5}<br />
 						</div>
 					</div>
 					'text': draw text<br />
@@ -61,6 +62,7 @@
 						'y': y position to start the rect<br />
 						'width': width of the rect<br />
 						'height': height of the rect<br />
+						'lineWidth': the width of the stroke<br />
 						</div>
 					'clearRect': clear a rectangular area on the screen<br />
 						<div class="resources_page_documentation_sub_box">
@@ -72,12 +74,13 @@
 					'fillPath': create a path and fill it in (shapes)<br />
 						<div class="resources_page_documentation_sub_box">
 						'color': color to fill; rgb value or hex; ex ( 'rgb(10, 10, 10)' ); ex ( '#000' )<br />
-						'path': array of path; type 'move' to move the path and type 'line' to draw a line; format of [type, x, y, type, x, y]; ex ( ['move', 1, 1, 'line', 10, 10] )<br />
+						'path': array of path; type 'move' to move the path, type 'line' to draw a line, and type 'break' to stop the line; format of [type, x, y, type, x, y]; ex ( ['move', 1, 1, 'line', 10, 10] )<br />
 						</div>
 					'strokePath': create a path of lines<br />
 						<div class="resources_page_documentation_sub_box">
 						'color': color to stroke; rgb value or hex; ex ( 'rgb(10, 10, 10)' ); ex ( '#000' )<br />
-						'path': array of path; type 'move' to move the path and type 'line' to draw a line; format of [type, x, y, type, x, y]; ex ( ['move', 1, 1, 'line', 10, 10] )<br />
+						'path': array of path; type 'move' to move the path, type 'line' to draw a line, and type 'break' to stop the line; format of [type, x, y, type, x, y]; ex ( ['move', 1, 1, 'line', 10, 10] )<br />
+						'lineWidth': the width of the stroke<br />
 						</div>
 				}<br />
 				'angle': angle of the draw; 0 to 2PI (radians)<br />
