@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Vylocity Documentation - </title>
+		<title>Vylocity Documentation - World/onPost</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="icon" type="image/png" href="../../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="../../_style.css" />
@@ -14,16 +14,41 @@
 		<div id="page_body">
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
+				<div class="content_title">World/onPost</div>
+				<div id="doc_usage">onPost(<span class="string">pPost</span>, <span class="string">pFrom</span>, <span class="keyword">pHeaders</span>)</div>
+				<div class="content_subtitle">Parameters</div>
+				<div id="parameters_box">
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pPost</span><span class="parameters_par_desc">A <a onclick="doc('general/string')" class="string">string</a> containing the post data received.</span>
+					</div>
+					<div class="parameters_row content_row_odd">
+						<span class="parameters_par_title">pFrom</span><span class="parameters_par_desc">A <a onclick="doc('general/string')" class="string">string</a> containing the address of the sender.</span>
+					</div>
+					<div class="parameters_row content_row_even">
+						<span class="parameters_par_title">pHeaders</span><span class="parameters_par_desc">An <a onclick="doc('general/object')" class="keyword">object</a> containing the sent headers.</span>
+					</div>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+					This event function is called when a post request is sent to the game server.<br /><br />
+					<a onclick="doc('World/apiOrigin')">World/apiOrigin</a> must be set in order to receive messages; the return value will be written back.<br /><br />
+					You may return an array to customize the header type. Example: [401, 'return text']<br />
+					A third value may be included in said array as an <a onclick="doc('general/object')" class="keyword">object</a> containing headers. Example: {'Content-Type': 'text/html'}
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=3>
+World
+	onPost(pPost, pFrom, pHeaders)
+		// Output the post and sender to the console.
+		World.log(pFrom + ' has sent the following data: ' + pPost)
+		// Output the headers object to the console.
+		World.log(pHeaders)
+		// Returning an array customizes the header type.
+		return [401, 'This is the return text', {'Content-Type': 'text/html'}]
+</code>
 			
-			<b>onPost(pPost, pFrom, pHeaders)</b>
-			<div class="resources_page_documentation_sub_box">
-			SERVER ONLY<br />
-			pPost: string containing the post data received<br />
-			pFrom: address of the sender<br />
-			pHeaders: object containing headers sent<br />
-			called: called when post request is send to the game server; World/apiOrigin must be set in order to get messages; the return value will be written back; you may use an array as the return to customize the header type [401, 'return text'] (a third value may be included which is an object containing headers, for example {'Content-Type': 'text/html'})<br />
-			</div>
-			
+				</div>
 			</div>
 		</div>
 	</body>
