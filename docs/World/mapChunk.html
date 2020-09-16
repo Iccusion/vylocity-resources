@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - </title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+			<b>mapChunk</b>: default 45; how many tiles to combine into chunks to improve efficiency for rendering and networking; recommended to use at least 1.5x map view, so if the map view is 1920x1080 and the tile size is 32x32, you would want at least 90 chunk (90x90 tiles); if a part of the remaining map (after other parts have been chunked) is smaller than the chunk size, it will be added to the nearest chunk instead<br />
+			</div>
+		</div>
+	</body>
+</html>
