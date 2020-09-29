@@ -15,11 +15,12 @@
 			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
 			<div id="content_body">
 			
-			<b>getScreenScale(pO)</b>
+			<b>stat(pPath, pFunc)</b>
+			SERVER-ONLY<br />
 			<div class="resources_page_documentation_sub_box">
-			CLIENT ONLY<br />
-			pO: optional; an existing object to set the x and y of<br />
-			called: returns an object containing the x and y of the game scale; ex: {'x': 2, 'y': 2}<br />
+			pPath: path to the file or directory<br />
+			pFunc: function to call after pPath has been checked; first argument pStat is an object containing stat information for the file, second argument pErr is an error if there is one<br />
+			called: provides a stat object which contains information on the file; you can use isFile() and isDirectory() on the object to check if they are files or directories<br />
 			</div>
 			
 			</div>
