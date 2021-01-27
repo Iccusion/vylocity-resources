@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vylocity Documentation - Tile/autoTile</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="icon" type="image/png" href="../../favicon.png" />
+		<link rel="stylesheet" type="text/css" href="../../_style.css" />
+		<link rel="stylesheet" type="text/css" href="../_style.css" />
+		<script type="text/javascript" src="../../_script.js"></script>
+	</head>
+	<body>
+		<iframe id="top_bar_iframe" seamless src="../_top.html"></iframe>
+		<div id="page_body">
+			<iframe id="side_bar_iframe" seamless src="../_side.html"></iframe>
+			<div id="content_body">
+				<div class="content_title">Tile/autoTile</div>
+				<div id="doc_usage"><span class="keyword_2">Tile</span><br />&emsp;&emsp;autoTile = <span class="num">16</span></div>
+				<div class="content_subtitle">Default Value</div>
+				<div class="general_info_box">
+					<span class="undefined">undefined</span>
+				</div>
+				<div class="content_subtitle">Variable Type</div>
+				<div class="general_info_box">
+					<a onclick="doc('general/number')">number</a>
+				</div>
+				<div class="content_subtitle">Description</div>
+				<div id="description_box">
+                    Autotiling is a system which, if enabled, automatically checks the surrounding tiles of a placement and changes each tile's iconState to be appropriate for its connection to its surrounding tiles. Autotiling allows you to more quickly draw your levels.<br /><br />
+                    autoTile can be assigned to the values of 48, 16, or 1, depending on the amount of states you want to use.<br />
+                    autoTileBlend can be a type to autotile with that is a different type than the Tile. This is useful for a base type.<br />
+                    Assigning a Tile's autoTile to 1 will not autotile itself, but will force surrounding Tiles to autotile if they use autoTileBlend with this Tile's type.<br /><br />
+                    Check out <a href="https://www.vylocity.com/socialize/discussions/c=7&pid=238">this demo</a> to see the required organization for autotiles to be used.
+				</div>
+				<div class="content_subtitle">Example Code</div>
+				<div id="example_code">
+<code hl=9>
+
+Tile
+    atlasName = 'icon1'
+    iconName = 'grass'
+    Dirt
+        iconName = 'dirt'
+        // this tile wont autotile itself, but can force other tiles around it to autotile if they use autoTileBlend with this type
+        autoTile = 1
+    DirtGrass48
+        iconName = 'dirt_grass_48'
+        // this tile has 48 iconStates
+        autoTile = 48
+        autoTileBlend = 'Tile/Dirt'
+    DirtGrass16
+        iconName = 'dirt_grass_16'
+        // this tile has 16 iconStates
+        autoTile = 16
+
+</code>
+			
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
