@@ -33,7 +33,8 @@
 					This event function is called when a post request is sent to the game server.<br /><br />
 					<a onclick="doc('World/apiOrigin')">World/apiOrigin</a> must be set in order to receive messages; the return value will be written back.<br /><br />
 					You may return an array to customize the header type. Example: [401, 'return text']<br />
-					A third value may be included in said array as an <a onclick="doc('general/object')" class="keyword">object</a> containing headers. Example: {'Content-Type': 'text/html'}
+					A third value may be included in said array as an <a onclick="doc('general/object')" class="keyword">object</a> containing headers. Example: {'Content-Type': 'text/html'}<br />
+					When sending a post to a server, append <b>/api?post</b> to the end of the address
 				</div>
 				<div class="content_subtitle">Example Code</div>
 				<div id="example_code">

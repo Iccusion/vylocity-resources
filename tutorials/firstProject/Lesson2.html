@@ -226,7 +226,7 @@ So now that we have a feel of functions, local variables, objects, some built-in
 
 <b>Diob</b>: onBumped, onNew, onDel<br /><br />
 
-<b>Tile</b>: onEnter, onEntered, onExit, onExited<br /><br />
+<b>Tile</b>: onEnter, onEntered, onExited<br /><br />
 
 <b>Movable</b>: onBump, onMove, onMoved, onCrossed, onUncrossed<br /><br />
 
@@ -256,7 +256,7 @@ The <b>onBumped</b> event function has an extra part to it. When it is called, i
 
 Note: The standard in VyScript for naming arguments is to start it with a <b>p</b> to show that it was passed into the function call as a parameter. This is entirely optional and arguments can be given any name you want<br /><br />
 
-Let's briefly go over the other mentioned event functions. The event function <b>tile.onEnter</b> is called when a movable tries to enter a tile on the map. If you wish, you can stop the movable from entering by returning false inside of it. We'll discuss <b>return</b> more in the functions tutorial. Moving on, <b>tile.onExit</b> is called when a movable tries to exit a tile on the map, <b>tile.onEntered</b> is called when a movable succeeds in entering the tile, and <b>tile.onExited</b> is called when the movable succeeds in exiting the tile.<br /><br />
+Let's briefly go over the other mentioned event functions. The event function <b>tile.onEnter</b> is called when a movable tries to enter a tile on the map. If you wish, you can stop the movable from entering by returning false inside of it. We'll discuss <b>return</b> more in the functions tutorial. Moving on, <b>tile.onEntered</b> is called when a movable succeeds in entering the tile, and <b>tile.onExited</b> is called when the movable succeeds in exiting the tile.<br /><br />
 
 Like mentioned before, the event function <b>diob.onNew</b> is called when a diob is created. Then <b>diob.onDel</b> is called when a diob is deleted, <b>movable.onMove</b> is called when a movable is attempting to move, <b>movable.onMoved</b> is called when a movable has successfully moved, <b>movable.onCrossed</b> is called when a movable's position on the map overlaps another diob's position, and <b>movable.onUncrossed</b> is called when a movable's position on the map no longer overlays another diob's position.<br /><br />
 
